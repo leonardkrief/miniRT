@@ -1,0 +1,3 @@
+TASKS:
+	*still have to find a nice way to alpha blend
+	*have to handle ppm files (20)
