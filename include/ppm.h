@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   ppm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 01:30:13 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/03 01:51:59 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef PPM_H
+# define PPM_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <limits.h>
-# include <mlx.h>
-# include <math.h>
-# include <fcntl.h>
-# include <sys/stat.h>
-# include "libft.h"
-# include "define.h"
-# include "error_handler.h"
-# include "pixels.h"
-# include "ppm.h"
+# include "miniRT.h"
 # include "graphics.h"
-# include "tuples.h"
+
+// ppm/ppm.c
+int	open_ppm();
+void	ppm_header(int fd);
+void	ppm_data(int fd, t_image image);
+void	close_ppm(int fd);
+void	get_ppm(t_image image);
 
 #endif

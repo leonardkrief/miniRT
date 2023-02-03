@@ -10,6 +10,7 @@ SRCS_NAMES		=	error_handler/error.c \
 					pixels/ops.c \
 					pixels/pixels.c \
 					pixels/print.c \
+					ppm/ppm.c \
 					tuples/init.c \
 					tuples/ops/p_ops.c \
 					tuples/ops/v_ops.c \
@@ -46,6 +47,7 @@ ${DIR_OBJS}:
 				mkdir -p ${addprefix ${DIR_OBJS}/, error_handler}
 				mkdir -p ${addprefix ${DIR_OBJS}/, graphics}
 				mkdir -p ${addprefix ${DIR_OBJS}/, pixels}
+				mkdir -p ${addprefix ${DIR_OBJS}/, ppm}
 				mkdir -p ${addprefix ${DIR_OBJS}/, tuples}
 				mkdir -p ${addprefix ${DIR_OBJS}/, tuples/ops}
 

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/02 19:24:50 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 01:48:40 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,19 @@
 
 # include "miniRT.h"
 
-# define NO_FAILURE			UINT64_C(0)
-# define FAILED_MALLOC		UINT64_C(1)
-# define LAST_FAILURE		FAILED_MALLOC
+# define NO_FAILURE					UINT64_C(0)
+# define FAILED_MALLOC				UINT64_C(1)
+# define FAILED_OPEN				UINT64_C(2)
+# define FAILED_CLOSE				UINT64_C(3)
+# define NO_FILENAME_AVAILABLE		UINT64_C(100)
+# define LAST_FAILURE				NO_FILENAME_AVAILABLE
 
 static const char	*failure_strings[] = {
 	"No failure",
-	"Failed malloc"
+	"Failed malloc",
+	"Failed open",
+	"Failed close",
+	"No more filenames available. Remove or rename ppm files"
 };
 
 typedef uint64_t failure_t;
