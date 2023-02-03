@@ -6,18 +6,18 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:55:54 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 16:25:00 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 18:08:02 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	null_row_forward(t_matrix m, int row)
+int	null_row_forward(t_matrix m, int row, int dim)
 {
 	int	i;
 
 	i = row;
-	while (i < MATRIX_DIM && eq(m.m[row][i], 0))
+	while (i < dim && eq(m.m[row][i], 0))
 		i++;
 	return (i);
 }

@@ -16,6 +16,8 @@ SRCS_NAMES		=	error_handler/error.c \
 					pixels/pixels.c \
 					pixels/print.c \
 					ppm/ppm.c \
+					transformations/transformations1.c \
+					transformations/transformations2.c \
 					tuples/init.c \
 					tuples/ops.c \
 					tuples/scalar_ops.c \
@@ -53,6 +55,7 @@ ${DIR_OBJS}:
 				mkdir -p ${addprefix ${DIR_OBJS}/, matrixes}
 				mkdir -p ${addprefix ${DIR_OBJS}/, pixels}
 				mkdir -p ${addprefix ${DIR_OBJS}/, ppm}
+				mkdir -p ${addprefix ${DIR_OBJS}/, transformations}
 				mkdir -p ${addprefix ${DIR_OBJS}/, tuples}
 
 bonus:			${MINIRT}

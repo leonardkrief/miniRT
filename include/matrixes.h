@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 17:15:09 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 18:07:37 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ t_matrix	matrix_matrix(t_matrix m, t_matrix n, int dim);
 t_matrix	transpose(t_matrix m);
 
 // matrixes/linear_ops.c
-int	null_row_forward(t_matrix m, int row);
+int	null_row_forward(t_matrix m, int row, int dim);
 t_matrix	swap_cols(t_matrix m, int col1, int col2);
 t_matrix	row_transmutation(t_matrix m, int row, double q, int to_add);
 
 // matrixes/invert.c
 t_matrix	submatrix(t_matrix a, int row, int col);
-t_matrix	pivot(t_matrix m, int col, int *row_is_null);
+t_matrix	pivot(t_matrix m, int col, int dim, int *row_is_null);
 double	det(t_matrix m, int dim);
 double	cofactor(t_matrix m, int row, int col, int dim);
 t_matrix	invert(t_matrix m, int dim);

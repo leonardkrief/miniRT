@@ -6,14 +6,14 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:14:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 17:20:10 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:24:56 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 #define MAX_PRINT_LEN "4"
-#define PRECISION "1"
+#define PRECISION "5"
 #define TUPLE_F "%-"MAX_PRINT_LEN"."PRECISION"lf"
 
 // This function does not entirely depends on MATRIX_DIM

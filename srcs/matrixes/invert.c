@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 07:03:41 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 17:20:50 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 18:18:03 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ t_matrix	submatrix(t_matrix a, int row, int col)
 	return (a);
 }
 
-t_matrix	pivot(t_matrix m, int col, int *row_is_null)
+t_matrix	pivot(t_matrix m, int col, int dim, int *row_is_null)
 {
 	int		row;
 	int		non_null_col;
 	double	pivot;
 
-	non_null_col = null_row_forward(m, col);
-	if (non_null_col >= MATRIX_DIM)
+	non_null_col = null_row_forward(m, col, dim);
+	if (non_null_col >= dim)
 	{
 		*row_is_null = 1;
 		return (m);
@@ -58,7 +58,7 @@ t_matrix	pivot(t_matrix m, int col, int *row_is_null)
 	m = swap_cols(m, col, non_null_col);
 	pivot = m.m[col][col];
 	row = col;
-	while (++row < MATRIX_DIM)
+	while (++row < dim)
 		m = row_transmutation(m, row, -m.m[row][col] / pivot, col);
 	return (m);
 }
@@ -70,15 +70,17 @@ double	det(t_matrix m, int dim)
 	float	det;
 
 	row_is_null = 0;
+	det = 1;
 	row = -1;
 	while (++row < dim)
 	{
-		m = pivot(m, row, &row_is_null);
+		if (eq(m.m[row][row], 0))
+			det *= -1;
+		m = pivot(m, row, dim, &row_is_null);
 		if (row_is_null == 1)
 			return (0);
 	}
-	det = m.m[0][0];
-	row = 0;
+	row = -1;
 	while (++row < dim)
 		det *= m.m[row][row];
 	return (det);
@@ -88,6 +90,10 @@ double	cofactor(t_matrix m, int row, int col, int dim)
 {
 	double	res;
 
+	if (row == 3 && col == 1)
+	{
+		res = 0;
+	}
 	res = det(submatrix(m, row, col), dim - 1);
 	if ((row + col) % 2)
 		return (-res);
@@ -101,7 +107,7 @@ t_matrix	invert(t_matrix m, int dim)
 	int			d;
 	t_matrix	inv;
 
-	memset(&inv, 0, sizeof (inv));
+	ft_memset(&inv, 0, sizeof (inv));
 	d = det(m, dim);
 	if (eq(d, 0))
 	{

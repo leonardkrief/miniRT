@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 06:08:09 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 17:18:18 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 18:01:53 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_matrix	matrix_matrix(t_matrix m, t_matrix n, int dim)
 	t_matrix	result;
 
 	i = -1;
+	ft_memset(&result, 0, sizeof(result));
 	while (++i < dim)
 	{
 		j = -1;

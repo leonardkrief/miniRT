@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 14:48:32 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:39:20 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@
 # include <sys/stat.h>
 # include "libft.h"
 # include "define.h"
-# include "error_handler.h"
-# include "pixels.h"
-# include "ppm.h"
-# include "graphics.h"
 # include "tuples.h"
 # include "matrixes.h"
+# include "pixels.h"
+# include "graphics.h"
+# include "ppm.h"
+# include "error_handler.h"
+# include "transformations.h"
 
 #endif
