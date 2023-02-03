@@ -5,42 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 02:34:33 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 07:25:58 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/01 15:14:07 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/03 07:38:32 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_tuple	point(float x, float y, float z)
+void	insert_col_in_matrix(t_matrix *m, t_tuple a, int n)
 {
-	t_tuple a; 
-
-	a.x = x;
-	a.y = y;
-	a.z = z;
-	a.w = 1;
-	return (a);
+	if (!(n >= 0 && n <= 3))
+		return ;
+	(m->m)[0][n] = a.x;
+	(m->m)[1][n] = a.y;
+	(m->m)[2][n] = a.z;
+	(m->m)[3][n] = a.w;
 }
 
-t_tuple	vector(float x, float y, float z)
+t_matrix	matrix(t_tuple a, t_tuple b, t_tuple c, t_tuple d)
 {
-	t_tuple	a;
+	t_matrix	m;
 
-	a.x = x;
-	a.y = y;
-	a.z = z;
-	a.w = 0;
-	return (a);
-}
-
-t_tuple	tuple(float x, float y, float z, float w)
-{
-	t_tuple	a;
-
-	a.x = x;
-	a.y = y;
-	a.z = z;
-	a.w = w;
-	return (a);
+	ft_memset(&m, 0, sizeof(m));
+	insert_col_in_matrix(&m, a, 0);
+	insert_col_in_matrix(&m, b, 1);
+	insert_col_in_matrix(&m, c, 2);
+	insert_col_in_matrix(&m, d, 3);
+	return (m);
 }
