@@ -6,22 +6,28 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 01:46:26 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/01 01:48:42 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 00:38:35 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int	z;
 	char			c;
+	int				len;
 
+	len = 1;
 	z = (-(n < 0) + (n >= 0)) * n;
 	if (n < 0)
+	{
 		write(fd, "-", 1);
+		len++;
+	}
 	c = '0' + z % 10;
 	if (z >= 10)
-		ft_putnbr_fd(z / 10, fd);
+		len += ft_putnbr_fd(z / 10, fd);
 	write(fd, &c, 1);
+	return (len);
 }
