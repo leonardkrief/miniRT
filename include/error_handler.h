@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 08:01:02 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 16:59:43 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define ERROR_NORMALIZE			UINT64_C(97) //"Error normalize: non-vector object detected"
 # define ERROR_DOTPROD				UINT64_C(97) //"Error dotprod: non-vector objects detected"
 # define ERROR_DETERMINANT			UINT64_C(97) //"Error determinant: wrong dimension"
+# define ERROR_INVERT_MATRIX		UINT64_C(97) //"Error invert matrix: det = 0"
 # define FALSE_MATRIX_INPUT			UINT64_C(99) //"Cannot create matrix out of non-vector objects"
 # define NO_FILENAME_AVAILABLE		UINT64_C(100) //"No more filenames available. Remove or rename ppm files"
 # define LAST_FAILURE				NO_FILENAME_AVAILABLE

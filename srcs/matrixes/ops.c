@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_ops.c                                            :+:      :+:    :+:   */
+/*   ops.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 06:08:09 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 06:54:16 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:18:18 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+// This function does not entirely depends on MATRIX_DIM
 t_tuple	matrix_vect(t_matrix m, t_tuple t)
 {
 	t_tuple	result;
@@ -23,19 +24,23 @@ t_tuple	matrix_vect(t_matrix m, t_tuple t)
 	return (result);
 }
 
-t_matrix	matrix_matrix(t_matrix m, t_matrix n)
+t_matrix	matrix_matrix(t_matrix m, t_matrix n, int dim)
 {
 	int			i;
 	int			j;
+	int			k;
 	t_matrix	result;
 
 	i = -1;
-	while (++i <= 3)
+	while (++i < dim)
 	{
 		j = -1;
-		while (++j <= 3)
-			result.m[i][j] = m.m[i][0] * n.m[0][j] + m.m[i][1] * n.m[1][j]
-				+ m.m[i][2] * n.m[2][j] + m.m[i][3] * n.m[3][j];
+		while (++j < dim)
+		{
+			k = -1;
+			while (++k < dim)
+				result.m[i][j] += m.m[i][k] * n.m[k][j];
+		}
 	}
 	return (result);
 }
@@ -47,10 +52,10 @@ t_matrix	transpose(t_matrix m)
 	double		tmp;
 
 	i = 0;
-	while (++i <= 3)
+	while (++i < MATRIX_DIM)
 	{
 		j = -1;
-		while (++j <= i)
+		while (++j < i)
 		{
 			tmp = m.m[i][j];
 			m.m[i][j] = m.m[j][i];

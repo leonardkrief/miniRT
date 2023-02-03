@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 02:29:22 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 14:48:32 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <limits.h>
+# include <stdbool.h>
 # include <mlx.h>
 # include <math.h>
 # include <fcntl.h>

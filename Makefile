@@ -9,6 +9,7 @@ SRCS_NAMES		=	error_handler/error.c \
 					graphics/graphics.c \
 					matrixes/init.c \
 					matrixes/invert.c \
+					matrixes/linear_ops.c \
 					matrixes/ops.c \
 					matrixes/print.c \
 					pixels/ops.c \

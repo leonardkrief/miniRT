@@ -6,73 +6,114 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 07:03:41 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 08:23:23 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:20:50 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_matrix	submatrix(t_matrix a, int n, int m)
+t_matrix	submatrix(t_matrix a, int row, int col)
 {
 	int	i;
 	int	j;
 
 	j = -1;
-	while (++j < m)
+	while (++j < col)
 	{
-		i = n - 1;
-		while (++i < 3)
+		i = row - 1;
+		while (++i < MATRIX_DIM - 1)
 			a.m[i][j] = a.m[i + 1][j];
 	}
 	j--;
-	while (++j < 3)
+	while (++j < MATRIX_DIM - 1)
 	{
 		i = -1;
-		while (++i < n)
+		while (++i < row)
 			a.m[i][j] = a.m[i][j + 1];
 		i--;
-		while (++i < 3)
+		while (++i < MATRIX_DIM - 1)
 			a.m[i][j] = a.m[i + 1][j + 1];
 	}
 	i = -1;
-	while (++i < 4)
+	while (++i < MATRIX_DIM)
 	{
-		a.m[i][3] = 0;
-		a.m[3][i] = 0;
+		a.m[i][MATRIX_DIM - 1] = 0;
+		a.m[MATRIX_DIM - 1][i] = 0;
 	}
 	return (a);
 }
 
-int	nullify_col(t_matrix *m, int col)
+t_matrix	pivot(t_matrix m, int col, int *row_is_null)
 {
-	int		i;
+	int		row;
+	int		non_null_col;
 	double	pivot;
-	double	nulling;
 
-	pivot = (*m).m[col][col];
-	if (eq(pivot, 0) && switch_cols_nullify(m) == 0)
-		
-	i = col;
-	while (++i < 4)
+	non_null_col = null_row_forward(m, col);
+	if (non_null_col >= MATRIX_DIM)
 	{
-		nulling = 
+		*row_is_null = 1;
+		return (m);
 	}
+	m = swap_cols(m, col, non_null_col);
+	pivot = m.m[col][col];
+	row = col;
+	while (++row < MATRIX_DIM)
+		m = row_transmutation(m, row, -m.m[row][col] / pivot, col);
+	return (m);
 }
 
 double	det(t_matrix m, int dim)
 {
-	if (dim == 2)
-		return (m.m[0][0] * m.m[1][1] - m.m[1][0] * m.m[0][1]);
-	else if (dim == 3)
-		return (m.m[0][0] * det(submatrix(m, 0, 0), 2)
-			- m.m[0][1] * det(submatrix(m, 0, 1), 2)
-			+ m.m[0][2] * det(submatrix(m, 0, 2), 2));
-	else if (dim == 4)
-		return (m.m[0][0] * det(submatrix(m, 0, 0), 3)
-			- m.m[0][1] * det(submatrix(m, 0, 1), 3)
-			+ m.m[0][2] * det(submatrix(m, 0, 2), 3))
-			- m.m[0][3] * det(submatrix(m, 0, 3), 3);
-	else
-		ft_puterror(ERROR_DETERMINANT, (char *)__func__);
-	return (INT_MIN);
+	int	row;
+	int	row_is_null;
+	float	det;
+
+	row_is_null = 0;
+	row = -1;
+	while (++row < dim)
+	{
+		m = pivot(m, row, &row_is_null);
+		if (row_is_null == 1)
+			return (0);
+	}
+	det = m.m[0][0];
+	row = 0;
+	while (++row < dim)
+		det *= m.m[row][row];
+	return (det);
+}
+
+double	cofactor(t_matrix m, int row, int col, int dim)
+{
+	double	res;
+
+	res = det(submatrix(m, row, col), dim - 1);
+	if ((row + col) % 2)
+		return (-res);
+	return (res);
+}
+
+t_matrix	invert(t_matrix m, int dim)
+{
+	int			row;
+	int			col;
+	int			d;
+	t_matrix	inv;
+
+	memset(&inv, 0, sizeof (inv));
+	d = det(m, dim);
+	if (eq(d, 0))
+	{
+		ft_puterror(ERROR_INVERT_MATRIX, (char *)__func__);
+		return (inv);
+	}
+	row = -1;
+	while (++row < dim)
+	{
+		col = -1;
+		while (++col < dim)
+			inv.m[row][col] = cofactor(m, col, row, dim) / d;
+	}
+	return (inv);
 }

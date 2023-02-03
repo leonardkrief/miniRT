@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:48:55 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 08:08:59 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:19:16 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,25 @@ int	main(int ac, char **av)
 	// mlx_loop(cvs.window.mlx);
 
 	t_matrix	m;
+	t_matrix	n;
 	t_tuple		a;
 	t_tuple		b;
 	t_tuple		c;
 	t_tuple		d;
+	int			dim = 4;
 
-	a = tuple(1, 10, 3, 2);
-	b = tuple(0, 10, 3, 0);
-	c = tuple(7, 8, 21, 14);
-	d = tuple(-1, 0, -3, -2);
+	a = tuple(1, 2, 3, 4);
+	b = tuple(-2, 1, 3, 2);
+	c = tuple(-1, 0, -4, 2);
+	d = tuple(3, 2, 0, -2);
+
 	m = matrix(a, b, c, d);
 	m = transpose(m);
 	print_matrix(m, "M");
-	printf("det (M) = %f\n", det(m, 4));
-	printf("det (M) = %f, det (M) = %f, det (M) = %f, det (M) = %f\n",
-		det(submatrix(m, 0, 0), 3), det(submatrix(m, 0, 1), 3),
-		det(submatrix(m, 0, 2), 3), det(submatrix(m, 0, 3), 3));
+	printf("det M = %f\n", det(m, dim));
+	print_matrix(m, "M");
+	n = invert(m, dim);
+	print_matrix(n, "M^-1");
+	print_matrix(matrix_matrix(m, n, dim), "MM^-1");
 	// print_tuple(*p_matrix_vect(m, a), "M*X");
 }
