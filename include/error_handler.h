@@ -6,14 +6,15 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 16:59:43 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/04 14:42:19 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_HANDLER_H
 # define ERROR_HANDLER_H
 
-# include "miniRT.h"
+# include <stdio.h>
+# include "libft.h"
 
 # define NO_FAILURE					UINT64_C(0)
 # define FAILED_MALLOC				UINT64_C(1)
@@ -24,6 +25,8 @@
 # define ERROR_DOTPROD				UINT64_C(97) //"Error dotprod: non-vector objects detected"
 # define ERROR_DETERMINANT			UINT64_C(97) //"Error determinant: wrong dimension"
 # define ERROR_INVERT_MATRIX		UINT64_C(97) //"Error invert matrix: det = 0"
+# define ERROR_RAY					UINT64_C(97) //"Error creating ray"
+# define ERROR_SPHERE				UINT64_C(97) //"Error creating sphere"
 # define FALSE_MATRIX_INPUT			UINT64_C(99) //"Cannot create matrix out of non-vector objects"
 # define NO_FILENAME_AVAILABLE		UINT64_C(100) //"No more filenames available. Remove or rename ppm files"
 # define LAST_FAILURE				NO_FILENAME_AVAILABLE

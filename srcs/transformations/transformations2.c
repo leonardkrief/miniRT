@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:27:54 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 18:35:06 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/04 15:04:01 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "transformations.h"
 
 t_matrix	shearing(double x[2], double y[2], double z[2])
 {

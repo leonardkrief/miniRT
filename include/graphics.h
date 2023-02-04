@@ -6,15 +6,20 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 00:16:21 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/04 14:59:58 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
 
-# include "miniRT.h"
+# include <stdlib.h>
+# include <mlx.h>
+# include "tuples.h"
 
+# define WINDOW_NAME	"miniRT"
+# define HEIGHT			500
+# define WIDTH			500
 typedef struct s_window{
 	void	*mlx;
 	void	*win;
@@ -27,12 +32,16 @@ typedef struct s_image {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	t_tuple	origin;
+	t_tuple	extension;
 }	t_image;
 
 typedef struct s_canvas{
 	t_window	window;
 	t_image		image;
 } t_canvas;
+
+# include "pixels.h"
 
 // graphics/graphics.c
 t_window	*window(t_window *cvs);

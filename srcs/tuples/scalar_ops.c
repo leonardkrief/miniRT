@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 02:40:00 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 07:36:16 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/04 14:45:30 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "tuples.h"
 
 int	eq(double a, double b)
 {

@@ -6,13 +6,13 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 02:23:34 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 06:59:26 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/04 14:45:16 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "tuples.h"
 
-t_tuple	add(t_tuple a, t_tuple b)
+t_tuple	tuple_add(t_tuple a, t_tuple b)
 {
 	a.x += b.x;
 	a.y += b.y;
@@ -21,7 +21,7 @@ t_tuple	add(t_tuple a, t_tuple b)
 	return (a);
 }
 
-t_tuple	sub(t_tuple a, t_tuple b)
+t_tuple	tuple_sub(t_tuple a, t_tuple b)
 {
 	a.x -= b.x;
 	a.y -= b.y;
@@ -30,7 +30,7 @@ t_tuple	sub(t_tuple a, t_tuple b)
 	return (a);
 }
 
-t_tuple	neg(t_tuple a)
+t_tuple	tuple_neg(t_tuple a)
 {
 	a.x = -a.x;
 	a.y = -a.y;
@@ -39,7 +39,7 @@ t_tuple	neg(t_tuple a)
 	return (a);
 }
 
-t_tuple	mul(double q, t_tuple a)
+t_tuple	tuple_mul(double q, t_tuple a)
 {
 	a.x *= q;
 	a.y *= q;

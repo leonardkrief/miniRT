@@ -6,13 +6,13 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 07:03:41 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 18:18:03 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/04 14:26:56 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "matrixes.h"
 
-t_matrix	submatrix(t_matrix a, int row, int col)
+t_matrix	matrix_submatrix(t_matrix a, int row, int col)
 {
 	int	i;
 	int	j;
@@ -43,23 +43,23 @@ t_matrix	submatrix(t_matrix a, int row, int col)
 	return (a);
 }
 
-t_matrix	pivot(t_matrix m, int col, int dim, int *row_is_null)
+t_matrix	matrix_pivot(t_matrix m, int col, int dim, int *row_is_null)
 {
 	int		row;
 	int		non_null_col;
 	double	pivot;
 
-	non_null_col = null_row_forward(m, col, dim);
+	non_null_col = matrix_null_row_forward(m, col, dim);
 	if (non_null_col >= dim)
 	{
 		*row_is_null = 1;
 		return (m);
 	}
-	m = swap_cols(m, col, non_null_col);
+	m = matrix_swap_cols(m, col, non_null_col);
 	pivot = m.m[col][col];
 	row = col;
 	while (++row < dim)
-		m = row_transmutation(m, row, -m.m[row][col] / pivot, col);
+		m = matrix_row_transmutation(m, row, -m.m[row][col] / pivot, col);
 	return (m);
 }
 
@@ -76,7 +76,7 @@ double	det(t_matrix m, int dim)
 	{
 		if (eq(m.m[row][row], 0))
 			det *= -1;
-		m = pivot(m, row, dim, &row_is_null);
+		m = matrix_pivot(m, row, dim, &row_is_null);
 		if (row_is_null == 1)
 			return (0);
 	}
@@ -86,7 +86,7 @@ double	det(t_matrix m, int dim)
 	return (det);
 }
 
-double	cofactor(t_matrix m, int row, int col, int dim)
+double	matrix_cofactor(t_matrix m, int row, int col, int dim)
 {
 	double	res;
 
@@ -94,13 +94,13 @@ double	cofactor(t_matrix m, int row, int col, int dim)
 	{
 		res = 0;
 	}
-	res = det(submatrix(m, row, col), dim - 1);
+	res = det(matrix_submatrix(m, row, col), dim - 1);
 	if ((row + col) % 2)
 		return (-res);
 	return (res);
 }
 
-t_matrix	invert(t_matrix m, int dim)
+t_matrix	matrix_invert(t_matrix m, int dim)
 {
 	int			row;
 	int			col;
@@ -119,7 +119,7 @@ t_matrix	invert(t_matrix m, int dim)
 	{
 		col = -1;
 		while (++col < dim)
-			inv.m[row][col] = cofactor(m, col, row, dim) / d;
+			inv.m[row][col] = matrix_cofactor(m, col, row, dim) / d;
 	}
 	return (inv);
 }

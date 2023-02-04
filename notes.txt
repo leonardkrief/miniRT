@@ -1,3 +1,5 @@
-TASKS:
-	*still have to find a nice way to alpha blend
-	*have to handle ppm files (20)
+TO_DO:
+	*find a nice way to alpha blend
+
+DONE:
+	*handle ppm files (20)

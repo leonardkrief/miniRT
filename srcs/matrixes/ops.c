@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 06:08:09 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 18:01:53 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/04 14:27:07 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "matrixes.h"
 
 // This function does not entirely depends on MATRIX_DIM
 t_tuple	matrix_vect(t_matrix m, t_tuple t)
@@ -46,7 +46,7 @@ t_matrix	matrix_matrix(t_matrix m, t_matrix n, int dim)
 	return (result);
 }
 
-t_matrix	transpose(t_matrix m)
+t_matrix	matrix_transpose(t_matrix m)
 {
 	int			i;
 	int			j;

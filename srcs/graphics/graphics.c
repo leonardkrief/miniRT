@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:59:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 03:15:24 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/04 14:48:30 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "graphics.h"
 
 t_window	*window(t_window *window)
 {
@@ -34,6 +34,8 @@ t_image	*image(t_image *image, void *mlx)
 		return (NULL);
 	image->addr = mlx_get_data_addr(image->img, &(image->bits_per_pixel),
 			&(image->line_length), &(image->endian));
+	image->origin = point(0, 0, 0);
+	image->extension = vector(2, 2, 0);
 	return (image);
 }
 

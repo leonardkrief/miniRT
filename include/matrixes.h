@@ -6,14 +6,17 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 18:07:37 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/04 15:03:32 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATRIXES_H
 # define MATRIXES_H
 
-# include "miniRT.h"
+# include <stdio.h>
+# include "libft.h"
+# include "tuples.h"
+# include "error_handler.h"
 
 # define MATRIX_DIM 4
 typedef struct s_matrix{
@@ -21,29 +24,29 @@ typedef struct s_matrix{
 } t_matrix;
 
 // matrixes/print.c
-void	print_row(t_matrix m, int n);
-void	print_matrix(t_matrix m, char *name);
+void	matrix_print_row(t_matrix m, int n);
+void	matrix_print(t_matrix m, char *name);
 
 // matrixes/init.c
-void	insert_col_in_matrix(t_matrix *m, t_tuple a, int n);
+void	matrix_insert_col(t_matrix *m, t_tuple a, int n);
 t_matrix	matrix(t_tuple a, t_tuple b, t_tuple c, t_tuple d);
 
 // matrixes/ops.c
 t_tuple	matrix_vect(t_matrix m, t_tuple t);
 t_matrix	matrix_matrix(t_matrix m, t_matrix n, int dim);
-t_matrix	transpose(t_matrix m);
+t_matrix	matrix_transpose(t_matrix m);
 
 // matrixes/linear_ops.c
-int	null_row_forward(t_matrix m, int row, int dim);
-t_matrix	swap_cols(t_matrix m, int col1, int col2);
-t_matrix	row_transmutation(t_matrix m, int row, double q, int to_add);
+int	matrix_null_row_forward(t_matrix m, int row, int dim);
+t_matrix	matrix_swap_cols(t_matrix m, int col1, int col2);
+t_matrix	matrix_row_transmutation(t_matrix m, int row, double q, int to_add);
 
 // matrixes/invert.c
-t_matrix	submatrix(t_matrix a, int row, int col);
-t_matrix	pivot(t_matrix m, int col, int dim, int *row_is_null);
+t_matrix	matrix_submatrix(t_matrix a, int row, int col);
+t_matrix	matrix_pivot(t_matrix m, int col, int dim, int *row_is_null);
 double	det(t_matrix m, int dim);
-double	cofactor(t_matrix m, int row, int col, int dim);
-t_matrix	invert(t_matrix m, int dim);
+double	matrix_cofactor(t_matrix m, int row, int col, int dim);
+t_matrix	matrix_invert(t_matrix m, int dim);
 
 
 #endif

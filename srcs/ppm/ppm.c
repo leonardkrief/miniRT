@@ -6,25 +6,25 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 00:01:41 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 03:21:46 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/04 14:49:46 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "ppm.h"
 
-#define FILENAME "screen_capture_01.ppm"
+#define FILENAME "screenshot_01.ppm"
 #define MAX_CHARS_ON_LINE 70
 
-int	open_ppm(void)
+int	open_ppm(char *file)
 {
 	static int	file_number = 1;
 	int			fd;
 	struct stat	buffer;
 
-	while (file_number < 1000 && stat(FILENAME, &buffer) == 0)
+	while (file_number < 1000 && stat(file, &buffer) == 0)
 	{
-		FILENAME[15] = '0' + file_number / 10;
-		FILENAME[16] = '0' + file_number % 10;
+		file[11] = '0' + file_number / 10;
+		file[12] = '0' + file_number % 10;
 		file_number++;
 	}
 	if (file_number == 1000)
@@ -32,9 +32,9 @@ int	open_ppm(void)
 		ft_puterror(NO_FILENAME_AVAILABLE, (char *)__func__);
 		return (-1);
 	}
-	fd = open(FILENAME, O_TRUNC | O_CREAT | O_WRONLY, 0644);
+	fd = open(file, O_TRUNC | O_CREAT | O_WRONLY, 0644);
 	if (fd == -1)
-		ft_puterror(FAILED_OPEN, FILENAME);
+		ft_puterror(FAILED_OPEN, file);
 	return (fd);
 }
 
@@ -84,12 +84,16 @@ void	close_ppm(int fd)
 
 void	get_ppm(t_image image)
 {
-	int	fd;
+	int			fd;
+	static char	file[] = FILENAME;
 
-	fd = open_ppm();
+	fd = open_ppm(file);
 	if (fd == -1)
 		return ;
 	ppm_header(fd);
 	ppm_data(fd, image);
 	close_ppm(fd);
 }
+
+#undef FILENAME
+#undef MAX_CHARS_ON_LINE

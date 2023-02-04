@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 20:41:24 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/02 20:51:50 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/04 14:48:22 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "graphics.h"
 
 void	free_window(t_window *window)
 {

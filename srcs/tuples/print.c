@@ -6,17 +6,17 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:50:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/03 03:22:12 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/04 14:45:20 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "tuples.h"
 
 #define MAX_PRINT_LEN "8"
 #define PRECISION "3"
 #define TUPLE_F "%+-"MAX_PRINT_LEN"."PRECISION"lf"
 
-void	print_tuple(t_tuple a, char *name)
+void	tuple_print(t_tuple a, char *name)
 {
 	if (eq(1, a.w))
 		printf("%s: point:\t", name);
