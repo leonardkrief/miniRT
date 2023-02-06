@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 03:46:32 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 14:24:29 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/06 03:26:43 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,31 @@ t_ray	ray(t_tuple origin, t_tuple direction)
 		return (ray);
 	}
 	ray.origin = origin;
-	ray.direction = direction;
+	ray.direction = normalize(direction);
+	ray.itr_front.t = INT_MAX;
+	ray.itr_back.t = INT_MIN;
 	return (ray);
 }
 
 t_tuple	position(t_ray ray, double t)
 {
 	return (tuple_add(ray.origin, tuple_mul(t, ray.direction)));
+}
+
+t_intersection intersection(t_geometric_figure geometric_figure_id, double t, void * figure)
+{
+	t_intersection itr;
+
+	ft_memset(&itr, 0, sizeof (itr));
+	if (geometric_figure_id < SPHERE_ID || geometric_figure_id > MAX_ID)
+	{
+		ft_puterror(ERROR_INTERSECTION, ": unvalid geometric figure");
+		itr.id = MAX_ID + 1;
+		return (itr);
+	}
+	itr.id = geometric_figure_id;
+	itr.t = t;
+	if (itr.id == SPHERE_ID)
+		itr.sp = (t_sphere *)figure;
+	return (itr);
 }

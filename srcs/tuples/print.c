@@ -6,28 +6,31 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:50:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 14:45:20 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/05 20:34:30 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tuples.h"
 
-#define MAX_PRINT_LEN "8"
-#define PRECISION "3"
-#define TUPLE_F "%+-"MAX_PRINT_LEN"."PRECISION"lf"
+void	tuple_raw_print(t_tuple a)
+{
+	if (!(eq(1, a.w) || eq(0, a.w)))
+		printf("[" TUPLE_FORMAT ", " TUPLE_FORMAT ", "
+			TUPLE_FORMAT ", " TUPLE_FORMAT_SINGLE , a.x, a.y, a.z, a.w);
+	else
+		printf("[" TUPLE_FORMAT ", " TUPLE_FORMAT
+			", " TUPLE_FORMAT_SINGLE , a.x, a.y, a.z);
+	printf("]");
+}
 
 void	tuple_print(t_tuple a, char *name)
 {
 	if (eq(1, a.w))
-		printf("%s: point:\t", name);
+		printf("%spoint:\t", name);
 	else if (eq(0, a.w))
-		printf("%s: vector:\t", name);
+		printf("%svector:\t", name);
 	else
-		printf("%s: tuple:\t", name);
-	printf("[" TUPLE_F ", " TUPLE_F ", " TUPLE_F
-		", " TUPLE_F "]\n", a.x, a.y, a.z, a.w);
+		printf("%stuple:\t", name);
+	tuple_raw_print(a);
+	printf("\n");
 }
-
-#undef MAX_PRINT_LEN
-#undef PRECISION
-#undef TUPLE_F

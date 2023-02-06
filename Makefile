@@ -7,17 +7,19 @@ DIR_OBJS		=	objs
 SRCS_NAMES		=	error_handler/error.c \
 					graphics/free.c \
 					graphics/graphics.c \
+					graphics/pixels/conversions.c \
+					graphics/pixels/ops.c \
+					graphics/pixels/pixels.c \
+					graphics/pixels/print.c \
 					matrixes/init.c \
 					matrixes/invert.c \
 					matrixes/linear_ops.c \
 					matrixes/ops.c \
 					matrixes/print.c \
-					pixels/conversions.c \
-					pixels/ops.c \
-					pixels/pixels.c \
-					pixels/print.c \
 					ppm/ppm.c \
+					rays/print.c \
 					rays/rays.c \
+					rays/sphere.c \
 					transformations/transformations1.c \
 					transformations/transformations2.c \
 					tuples/init.c \
@@ -54,8 +56,8 @@ ${DIR_OBJS}:
 				mkdir -p ${DIR_OBJS}
 				mkdir -p ${addprefix ${DIR_OBJS}/, error_handler}
 				mkdir -p ${addprefix ${DIR_OBJS}/, graphics}
+				mkdir -p ${addprefix ${DIR_OBJS}/, graphics/pixels}
 				mkdir -p ${addprefix ${DIR_OBJS}/, matrixes}
-				mkdir -p ${addprefix ${DIR_OBJS}/, pixels}
 				mkdir -p ${addprefix ${DIR_OBJS}/, ppm}
 				mkdir -p ${addprefix ${DIR_OBJS}/, rays}
 				mkdir -p ${addprefix ${DIR_OBJS}/, transformations}

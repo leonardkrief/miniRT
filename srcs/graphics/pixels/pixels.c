@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 04:07:15 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 14:33:52 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/05 20:04:23 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pixels.h"
+#include "graphics.h"
 
 t_pixel	pixel(t_pixel_color r, t_pixel_color g, t_pixel_color b, t_pixel_color a)
 {

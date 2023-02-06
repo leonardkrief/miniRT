@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:48:55 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 15:05:43 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/06 03:32:22 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	put_point(t_image image, t_tuple pix)
 	int	i;
 	int	j;
 
-	pix = point_to_pixel(image, pix.x, pix.y);
+	pix = point_to_pixel(&image, pix.x, pix.y);
 	i = pix.x - 6;
 	while (++i < pix.x + 5)
 	{
@@ -33,23 +33,16 @@ void	put_point(t_image image, t_tuple pix)
 	}
 }
 
-int	main(int ac, char **av)
-{
-	(void)ac;
-	(void)av;
+// int	main(int ac, char **av)
+// {
+// 	(void)ac;
+// 	(void)av;
 
-	t_canvas	cvs;
+// 	t_canvas	cvs;
 	
-	canvas(&cvs);
-	t_tuple point;
-
-	(void)point;
-	point = pixel_to_point(cvs.image, 200, 100);
-	point = point_to_pixel(cvs.image, point.x, point.y);
-
-	mlx_put_image_to_window(cvs.window.mlx, cvs.window.win, cvs.image.img, 0, 0);
-	get_ppm(cvs.image);
-	mlx_loop(cvs.window.mlx);
+// 	canvas(&cvs);
+// 	mlx_put_image_to_window(cvs.window.mlx, cvs.window.win, cvs.image.img, 0, 0);
+// 	mlx_loop(cvs.window.mlx);
 
 	// t_tuple		a;
 	// t_tuple		b;
@@ -71,4 +64,16 @@ int	main(int ac, char **av)
 
 	// origin = origin
 	// t = translation(1, 2, 3);
+// }
+
+int	main(void)
+{
+	t_ray			r  = ray(point(0, 0, 5), vector(0, 0, 1));
+	const t_sphere	*sp = sphere(point(0, 0, 0), 3);
+
+	intersection_sp(&r, sp);
+	// sphere_print(sp, "S: ");
+	ray_print(r, "R: ");
+	// intersection_sp(r, sp);
+	// printf("%lu %lu %lu\n", sizeof(itr), sizeof(t_cylinder), sizeof(t_triangle));
 }

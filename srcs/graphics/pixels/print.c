@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:50:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 15:01:03 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/05 20:04:30 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pixels.h"
+#include "graphics.h"
 
 #define B_PATTERN "%c%c%c%c%c%c%c%c"
 #define B_PIXEL(byte)  \

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 15:02:33 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/05 20:27:47 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 # include "libft.h"
 # include "error_handler.h"
 
-# define EPSILON		0.00001
+# define EPSILON	0.00001
+#define MAX_PRINT_LEN "8"
+#define PRECISION "3"
+#define TUPLE_FORMAT "%+-"MAX_PRINT_LEN"."PRECISION"lf"
+#define TUPLE_FORMAT_SINGLE "%+-1."PRECISION"lf"
 
 typedef struct s_tuple{
 	double	x;
@@ -29,6 +33,7 @@ typedef struct s_tuple{
 }	t_tuple;
 
 // tuples/print.c
+void	tuple_raw_print(t_tuple a);
 void	tuple_print(t_tuple a, char *name);
 
 // tuples/init.c
@@ -44,7 +49,7 @@ t_tuple	tuple_mul(double q, t_tuple a);
 t_tuple	crossprod(t_tuple a, t_tuple b);
 
 // tuples/scalar_ops.c
-int	eq(double a, double b);
+int		eq(double a, double b);
 double	modulus(t_tuple a);
 t_tuple	normalize(t_tuple a);
 double	dotprod(t_tuple a, t_tuple b);

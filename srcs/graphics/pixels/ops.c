@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 04:07:15 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 14:31:01 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/05 20:04:16 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pixels.h"
+#include "graphics.h"
 
 t_pixel	pixel_add(t_pixel p, t_pixel q)
 {
