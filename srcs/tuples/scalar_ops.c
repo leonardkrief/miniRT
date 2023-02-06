@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 02:40:00 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 14:45:30 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:43:05 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ double	modulus(t_tuple a)
 
 t_tuple	normalize(t_tuple a)
 {
-	int	m;
+	double	m;
 
 	if (!eq(0, a.w))
 	{
@@ -46,9 +46,9 @@ t_tuple	normalize(t_tuple a)
 	}
 	else
 	{
-		a.x /= m;
-		a.y /= m;
-		a.z /= m;
+		a.x = (double)a.x / (double)m;
+		a.y = (double)a.y / (double)m;
+		a.z = (double)a.z / (double)m;
 	}
 	return (a);
 }

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 01:13:22 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/05 20:04:08 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:46:12 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_tuple	pixel_to_point(t_image *img, int i, int j)
 {
-	return (vector(
+	return (point(
 		img->origin.x + ((double)i / (double)WIDTH - 0.5) * img->extension.x, 
 		img->origin.y - ((double)j / (double)HEIGHT - 0.5) * img->extension.y,
-		0));
+		img->origin.z));
 }
 
 t_tuple	point_to_pixel(t_image *img, double x, double y)

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:14:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 14:26:42 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/06 05:54:01 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,17 @@ t_matrix	matrix(t_tuple a, t_tuple b, t_tuple c, t_tuple d)
 	matrix_insert_col(&m, b, 1);
 	matrix_insert_col(&m, c, 2);
 	matrix_insert_col(&m, d, 3);
+	return (m);
+}
+
+t_matrix	matrix_identity(void)
+{
+	t_matrix	m;
+
+	ft_memset(&m, 0, sizeof(m));
+	m.m[0][0] = 1;
+	m.m[1][1] = 1;
+	m.m[2][2] = 1;
+	m.m[3][3] = 1;
 	return (m);
 }

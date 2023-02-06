@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 07:03:41 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 14:26:56 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/06 06:40:09 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,6 @@ double	matrix_cofactor(t_matrix m, int row, int col, int dim)
 {
 	double	res;
 
-	if (row == 3 && col == 1)
-	{
-		res = 0;
-	}
 	res = det(matrix_submatrix(m, row, col), dim - 1);
 	if ((row + col) % 2)
 		return (-res);
@@ -104,7 +100,7 @@ t_matrix	matrix_invert(t_matrix m, int dim)
 {
 	int			row;
 	int			col;
-	int			d;
+	double		d;
 	t_matrix	inv;
 
 	ft_memset(&inv, 0, sizeof (inv));

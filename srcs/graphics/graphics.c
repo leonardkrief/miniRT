@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:59:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 14:48:30 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:52:33 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_image	*image(t_image *image, void *mlx)
 		return (NULL);
 	image->addr = mlx_get_data_addr(image->img, &(image->bits_per_pixel),
 			&(image->line_length), &(image->endian));
-	image->origin = point(0, 0, 0);
+	image->origin = point(0, 0, -3);
 	image->extension = vector(2, 2, 0);
 	return (image);
 }
@@ -51,10 +51,10 @@ t_canvas	*canvas(t_canvas *canvas)
 	return (canvas);
 }
 
-void	put_pixel(t_image img, int x, int y, t_pixel pixel)
+void	put_pixel(t_image *img, int x, int y, t_pixel pixel)
 {
 	char	*dst;
 
-	dst = img.addr + (y * img.line_length + x * (img.bits_per_pixel / 8));
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = (unsigned int)pixel;
 }

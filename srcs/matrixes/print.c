@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:14:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/05 19:40:02 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/06 06:42:10 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	matrix_print_row(t_matrix m, int n)
 	if (n != 0)
 		printf("\t\t");
 	printf("[" TUPLE_FORMAT " " TUPLE_FORMAT " " TUPLE_FORMAT
-		" " TUPLE_FORMAT "]\n", (m.m)[n][0], (m.m)[n][1], (m.m)[n][2], (m.m)[n][3]);
+		" " TUPLE_FORMAT_SINGLE "]\n", (m.m)[n][0], (m.m)[n][1], (m.m)[n][2], (m.m)[n][3]);
 }
 
 // This function does not entirely depends on MATRIX_DIM

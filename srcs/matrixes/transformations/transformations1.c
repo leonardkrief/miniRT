@@ -6,13 +6,13 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:27:54 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 14:50:06 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/06 05:56:47 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "transformations.h"
+#include "matrixes.h"
 
-t_matrix	translation(double x, double y, double z)
+t_matrix	matrix_translation(const double x, const double y, const double z)
 {
 	t_tuple a;
 	t_tuple b;
@@ -29,7 +29,7 @@ t_matrix	translation(double x, double y, double z)
 // reflection can be obtained by scaling by a negative value
 // over the appropriate axis
 // eg. reflection across the y axis: scaling(1, -1, 1)
-t_matrix	scaling(double x, double y, double z)
+t_matrix	matrix_scaling(const double x, const double y, const double z)
 {
 	t_tuple a;
 	t_tuple b;
@@ -43,7 +43,7 @@ t_matrix	scaling(double x, double y, double z)
 	return (matrix(a, b, c, d));
 }
 
-t_matrix	x_rotation(double r)
+t_matrix	matrix_x_rotation(const double r)
 {
 	t_tuple a;
 	t_tuple b;
@@ -57,7 +57,7 @@ t_matrix	x_rotation(double r)
 	return (matrix(a, b, c, d));
 }
 
-t_matrix	y_rotation(double r)
+t_matrix	matrix_y_rotation(const double r)
 {
 	t_tuple a;
 	t_tuple b;
@@ -71,7 +71,7 @@ t_matrix	y_rotation(double r)
 	return (matrix(a, b, c, d));
 }
 
-t_matrix	z_rotation(double r)
+t_matrix	matrix_z_rotation(const double r)
 {
 	t_tuple a;
 	t_tuple b;

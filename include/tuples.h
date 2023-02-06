@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/05 20:27:47 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/06 06:39:10 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "libft.h"
 # include "error_handler.h"
 
-# define EPSILON	0.00001
+# define EPSILON	__DBL_EPSILON__
 #define MAX_PRINT_LEN "8"
 #define PRECISION "3"
 #define TUPLE_FORMAT "%+-"MAX_PRINT_LEN"."PRECISION"lf"

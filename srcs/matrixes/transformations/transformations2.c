@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transformations.h                                  :+:      :+:    :+:   */
+/*   transformations2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:27:54 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 15:04:11 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/06 05:56:53 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TRANSFORMATIONS_H
-# define TRANSFORMATIONS_H
+#include "matrixes.h"
 
-# include "matrixes.h"
+t_matrix	shearing(double x[2], double y[2], double z[2])
+{
+	t_tuple a;
+	t_tuple b;
+	t_tuple c;
+	t_tuple d;
 
-// transformations/transformations1.c
-t_matrix	translation(double x, double y, double z);
-t_matrix	scaling(double x, double y, double z);
-t_matrix	x_rotation(double r);
-t_matrix	y_rotation(double r);
-t_matrix	z_rotation(double r);
-
-// transformations/transformations2.c
-t_matrix	shearing(double x[2], double y[2], double z[2]);
-
-#endif
+	a = tuple(1, x[0], x[1], 0);
+	b = tuple(y[0], 1, y[1], 0);
+	c = tuple(z[0], z[1], 1, 0);
+	d = tuple(0, 0, 0, 1);
+	return (matrix(a, b, c, d));
+}
