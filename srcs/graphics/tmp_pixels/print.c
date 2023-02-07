@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 20:41:24 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/07 12:49:24 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/01 18:50:13 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/07 13:33:03 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphics.h"
 
-void	free_window(const t_window *window)
+void	tmp_pixel_print(const t_tmp_pixel p, const char *name)
 {
-	mlx_destroy_window(window->mlx, window->win);
-	free(window->mlx);
-}
-
-void	free_image(const t_image *image)
-{
-	mlx_destroy_image(image->mlx, image->img);
-}
-
-void	free_canvas(const t_canvas *canvas)
-{
-	free_image(&canvas->image);
-	free_window(&canvas->window);
+	printf("%s: pixel:", name);
+	printf("\t-----------------------------\n");
+	printf("\t\t|  R   |  G   |  B   |  A   |\n");
+	printf("\t\t-----------------------------\n");
+	printf("\t\t| %03.2f | %03.2f | %03.2f | %03.2f |\n", p.r, p.g, p.b, p.a);
+	printf("\t\t-----------------------------\n");
 }

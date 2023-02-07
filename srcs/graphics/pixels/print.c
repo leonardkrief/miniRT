@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:50:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/05 20:04:30 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/07 12:44:52 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 (byte & 0x02 ? '1' : '0'), \
 (byte & 0x01 ? '1' : '0')
 
-void	pixel_print(t_pixel p, char *name)
+void	pixel_print(const t_pixel p, const char *name)
 {
 	printf("%s: pixel:", name);
 	printf("\t---------------------------------------------\n");
@@ -36,3 +36,6 @@ void	pixel_print(t_pixel p, char *name)
 		" |\n", B_PIXEL(pixel_get_r(p)), B_PIXEL(pixel_get_g(p)), B_PIXEL(pixel_get_b(p)), B_PIXEL(pixel_get_a(p)));
 	printf("\t\t---------------------------------------------\n");
 }
+
+#undef B_PATTERN
+#undef B_PIXEL

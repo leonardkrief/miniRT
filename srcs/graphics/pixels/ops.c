@@ -6,13 +6,13 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 04:07:15 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/05 20:04:16 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/07 12:44:19 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphics.h"
 
-t_pixel	pixel_add(t_pixel p, t_pixel q)
+t_pixel	pixel_add(const t_pixel p, const t_pixel q)
 {
 	t_pixel	u;
 
@@ -23,7 +23,7 @@ t_pixel	pixel_add(t_pixel p, t_pixel q)
 	return (u);
 }
 
-t_pixel	pixel_sub(t_pixel p, t_pixel q)
+t_pixel	pixel_sub(const t_pixel p, const t_pixel q)
 {
 	t_pixel	u;
 
@@ -34,24 +34,24 @@ t_pixel	pixel_sub(t_pixel p, t_pixel q)
 	return (u);
 }
 
-t_pixel	pixel_scal(float q, t_pixel p)
+t_pixel	pixel_scal(const double q, const t_pixel p)
 {
 	t_pixel	u;
 
 	u = 0;
-	u |= (int)(q * (float)pixel_get_r(p)) << 16;
-	u |= (int)(q * (float)pixel_get_g(p)) << 8;
-	u |= (int)(q * (float)pixel_get_b(p));
+	u |= (int)(q * (double)pixel_get_r(p)) << 16;
+	u |= (int)(q * (double)pixel_get_g(p)) << 8;
+	u |= (int)(q * (double)pixel_get_b(p));
 	return (u);
 }
 
-t_pixel	pixel_mul(t_pixel p, t_pixel q)
+t_pixel	pixel_mul(const t_pixel p, const t_pixel q)
 {
 	t_pixel	u;
 
 	u = 0;
-	u |= (int)((float)pixel_get_r(p) * (float)pixel_get_r(q) / 255) << 16;
-	u |= (int)((float)pixel_get_g(p) * (float)pixel_get_g(q) / 255) << 8;
-	u |= (int)((float)pixel_get_b(p) * (float)pixel_get_b(q) / 255);
+	u |= (int)((double)pixel_get_r(p) * (double)pixel_get_r(q) / 255) << 16;
+	u |= (int)((double)pixel_get_g(p) * (double)pixel_get_g(q) / 255) << 8;
+	u |= (int)((double)pixel_get_b(p) * (double)pixel_get_b(q) / 255);
 	return (u);
 }

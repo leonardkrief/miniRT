@@ -6,13 +6,13 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 01:13:22 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/06 16:46:12 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/07 12:49:09 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphics.h"
 
-t_tuple	pixel_to_point(t_image *img, int i, int j)
+t_tuple	pixel_to_point(const t_image *img, const int i, const int j)
 {
 	return (point(
 		img->origin.x + ((double)i / (double)WIDTH - 0.5) * img->extension.x, 
@@ -20,7 +20,7 @@ t_tuple	pixel_to_point(t_image *img, int i, int j)
 		img->origin.z));
 }
 
-t_tuple	point_to_pixel(t_image *img, double x, double y)
+t_tuple	point_to_pixel(const t_image *img, const double x, const double y)
 {
 	double tmp;
 
