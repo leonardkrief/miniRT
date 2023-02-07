@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/06 05:56:26 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/07 03:23:35 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include "error_handler.h"
 
 # define MATRIX_DIM 4
-typedef struct s_matrix{
+typedef struct s_matrix {
 	double	m[MATRIX_DIM][MATRIX_DIM];
 } t_matrix;
 
 // matrixes/transformations/transformations2.c
-t_matrix	shearing(double x[2], double y[2], double z[2]);
+t_matrix	matrix_shearing(double x[2], double y[2], double z[2]);
 
 // matrixes/transformations/transformations1.c
 t_matrix	matrix_translation(const double x, const double y, const double z);

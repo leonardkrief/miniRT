@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 21:12:27 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/07 02:52:38 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <sys/stat.h>
 # include "graphics.h"
+
+# define SCREENSHOT(image) get_ppm(image)
 
 // ppm/ppm.c
 int		open_ppm(char *file);

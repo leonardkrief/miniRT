@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/06 06:39:10 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/07 00:13:37 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,20 @@ t_tuple	point(float x, float y, float z);
 t_tuple	vector(float x, float y, float z);
 t_tuple	tuple(float x, float y, float z, float w);
 
-// tuples/ops.c
+// tuples/ops1.c
 t_tuple	tuple_add(t_tuple a, t_tuple b);
 t_tuple	tuple_sub(t_tuple a, t_tuple b);
 t_tuple	tuple_neg(t_tuple a);
 t_tuple	tuple_mul(double q, t_tuple a);
-t_tuple	crossprod(t_tuple a, t_tuple b);
+t_tuple	tuple_crossprod(t_tuple a, t_tuple b);
+
+// tuples/ops2.c
+t_tuple	tuple_reflect(const t_tuple r, const t_tuple n);
 
 // tuples/scalar_ops.c
 int		eq(double a, double b);
-double	modulus(t_tuple a);
-t_tuple	normalize(t_tuple a);
-double	dotprod(t_tuple a, t_tuple b);
+double	tuple_modulus(t_tuple a);
+t_tuple	tuple_normalize(t_tuple a);
+double	tuple_dotprod(t_tuple a, t_tuple b);
 
 #endif
