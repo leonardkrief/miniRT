@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 03:46:32 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/06 06:15:45 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/07 13:11:18 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_raytracer	raytracer(t_tuple origin, t_tuple direction)
 		return (rt);
 	}
 	rt.ray.origin = origin;
-	rt.ray.direction = normalize(direction);
+	rt.ray.direction = tuple_normalize(direction);
 	rt.itr_front.t = __DBL_MAX__;
 	rt.itr_back.t = -__DBL_MAX__;
 	return (rt);
@@ -39,7 +39,7 @@ t_tuple	position(t_ray ray, double t)
 	return (tuple_add(ray.origin, tuple_mul(t, ray.direction)));
 }
 
-t_intersection intersection(t_geometric_figure geometric_figure_id, double t, void * figure)
+t_intersection intersection(t_shape geometric_figure_id, double t, void * figure)
 {
 	t_intersection itr;
 

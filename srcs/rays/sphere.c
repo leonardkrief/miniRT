@@ -6,42 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 02:04:01 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/06 07:49:02 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/07 13:09:50 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rays.h"
-
-t_sphere	*sphere(t_tuple origin, double radius)
-{
-	t_sphere	*sp;
-
-	if (!eq(origin.w, 1))
-	{
-		ft_puterror(ERROR_SPHERE, ": origin should be a point");
-		return (NULL);
-	}
-	if (radius <= 0)
-	{
-		ft_puterror(ERROR_SPHERE, ": radius should be positive");
-		return (NULL);
-	}
-	sp = ft_calloc(1, sizeof (*sp));
-	if (sp == NULL)
-	{
-		ft_puterror(FAILED_MALLOC, (char *)__func__);
-		return (NULL);
-	}
-	sp->origin = origin;
-	sp->radius = radius;
-	sp->m = matrix_identity();
-	return (sp);
-}
-
-void	transform_sp(t_sphere *sp, const t_matrix *m)
-{
-	sp->m = matrix_matrix(sp->m, matrix_invert(*m, 4), 4);
-}
 
 void	intersection_sp(t_raytracer *rt, const t_sphere *sp)
 {
@@ -52,9 +21,9 @@ void	intersection_sp(t_raytracer *rt, const t_sphere *sp)
 
 	ray = matrix_ray(&sp->m, &rt->ray);
 	sp_to_ray = tuple_sub(ray.origin, sp->origin);
-	q[0] = dotprod(ray.direction, ray.direction);
-	q[1] = 2 * dotprod(ray.direction, sp_to_ray);
-	q[2] = dotprod(sp_to_ray, sp_to_ray) - 1;
+	q[0] = tuple_dotprod(ray.direction, ray.direction);
+	q[1] = 2 * tuple_dotprod(ray.direction, sp_to_ray);
+	q[2] = tuple_dotprod(sp_to_ray, sp_to_ray) - 1;
 	q[3] = q[1] * q[1] - 4 * q[0] * q[2];
 	if (q[3] >= 0)
 	{
@@ -72,4 +41,19 @@ void	intersection_sp(t_raytracer *rt, const t_sphere *sp)
 				rt->itr_back = itr[0];
 		}
 	}
+}
+
+// After tranbsforming the point from world space to object
+// space (1st matrix_vect call), we should get the normal vector
+// of the sphere at this point. But as the point was transformed
+// to object space, origin of the sphere stays 0,0,0 so the
+// calculation should be tuple_sub(point, point(0,0,0)) which achieves
+// exactly the same as writing point.w = 0.
+t_tuple	normal_at_sp(const t_sphere *sp, t_tuple t)
+{
+	t = matrix_vect(sp->m, t);
+	t.w = 0;
+	t = matrix_vect(sp->t_m, t);
+	t.w = 0;
+	return (tuple_normalize(t));
 }
