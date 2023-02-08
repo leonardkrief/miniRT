@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/08 04:31:59 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 06:43:09 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 #  define MOUSE_ZOOM_OUT	53
 # endif
 
-# define CLOSE_WINDOW_KEY_EVENT		17
+# define CLOSE_WINDOW_KEY_EVENT	17
 
 typedef struct s_window{
 	void	*mlx;
