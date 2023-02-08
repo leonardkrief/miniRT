@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 03:10:56 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/07 13:30:03 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 01:20:53 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_tmp_pixel	lighting(t_material material, t_light light, t_tuple point, t_tuple 
 		else
 		{
 			// compute the specular contribution
-			factor = pow(reflect_dot_eye, material.shininess);
+			factor = powf(reflect_dot_eye, material.shininess);
 			specular = tmp_pixel_scal(material.specular * factor, light.intensity);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 02:04:01 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/07 13:09:50 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/07 20:52:05 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,3 @@ void	intersection_sp(t_raytracer *rt, const t_sphere *sp)
 // to object space, origin of the sphere stays 0,0,0 so the
 // calculation should be tuple_sub(point, point(0,0,0)) which achieves
 // exactly the same as writing point.w = 0.
-t_tuple	normal_at_sp(const t_sphere *sp, t_tuple t)
-{
-	t = matrix_vect(sp->m, t);
-	t.w = 0;
-	t = matrix_vect(sp->t_m, t);
-	t.w = 0;
-	return (tuple_normalize(t));
-}

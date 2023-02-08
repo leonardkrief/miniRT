@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 03:46:32 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/07 13:11:18 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/07 23:18:26 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,4 @@ t_ray	matrix_ray(const t_matrix *m, const t_ray *ray)
 	r.origin = matrix_vect(*m, ray->origin);
 	r.direction = matrix_vect(*m, ray->direction);
 	return (r);
-}
-
-t_ray	ray_translation(const t_ray *ray, const t_tuple ts)
-{
-	t_matrix	m;
-
-	m = matrix_translation(ts.x, ts.y, ts.z);
-	return (matrix_ray(&m, ray));
-}
-
-t_ray	ray_scaling(const t_ray *ray, const t_tuple ts)
-{
-	t_matrix	m;
-
-	m = matrix_scaling(ts.x, ts.y, ts.z);
-	return (matrix_ray(&m, ray));
 }
