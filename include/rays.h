@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 03:46:32 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/07 13:31:36 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/07 23:44:05 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define MAX_INTERSECTIONS 10
 typedef struct	s_intersection{
-	double					t;
+	double		t;
 	t_shape		id;
 	union{
 		t_sphere *sp;
@@ -35,6 +35,12 @@ typedef struct	s_ray{
 	t_tuple			direction;
 } t_ray;
 
+// raytracer is the main structure used to cast a ray and store the closest intersection
+// ray:				-origin:	origin of the ray
+//					-direction:	direction of the ray
+// intersection:	-t:			shortest distance from the origin of the ray to an object
+//					-id:		id of the object intersected
+//					-object:	pointer to the object intersected
 typedef struct	s_raytracer{
 	t_ray			ray;
 	t_intersection	itr_front;
@@ -44,17 +50,6 @@ typedef struct	s_raytracer{
 // rays/print.c
 void	ray_print_padding(const t_ray ray, const char *name, const int padding);
 void	ray_print(const t_ray ray, const char *name);
-void	sphere_print_padding(const t_sphere sphere, const char *name, const int padding);
-void	sphere_print(const t_sphere sphere, const char *name);
-void	intersection_print_padding(const t_intersection itr, const char *name, const int padding);
-void	intersection_print(const t_intersection itr, const char *name);
-void	raytracer_print(const t_raytracer rt, const char *name);
-
-// rays/print.c
-void	ray_print_padding(const t_ray ray, const char *name, const int padding);
-void	ray_print(const t_ray ray, const char *name);
-void	sphere_print_padding(const t_sphere sphere, const char *name, const int padding);
-void	sphere_print(const t_sphere sphere, const char *name);
 void	intersection_print_padding(const t_intersection itr, const char *name, const int padding);
 void	intersection_print(const t_intersection itr, const char *name);
 void	raytracer_print(const t_raytracer rt, const char *name);

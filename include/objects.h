@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 03:16:52 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/07 13:21:50 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/07 17:20:22 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,13 @@ static const t_shape	fig_size[MAX_ID + 1] = {
 	};
 
 // objects/material.c
-t_light	point_light(const t_tuple position, const t_tmp_pixel color);
+t_light	point_light(const t_tuple position, const t_tmp_pixel intensity);
 t_material	material(void);
 
 // objects/sphere.c
-t_sphere	*sphere(const t_tuple origin, const double radius);
+t_sphere	*sphere(t_tuple origin, double radius);
 void	transform_sp(t_sphere *sp, const t_matrix *m);
+void	sphere_print_padding(const t_sphere sphere, const char *name, const int padding);
+void	sphere_print(const t_sphere sphere, const char *name);
 
 #endif

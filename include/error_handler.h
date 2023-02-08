@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/05 20:10:49 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 04:23:08 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ERROR_HANDLER_H
 
 # include <stdio.h>
+# include <stdint.h>
 # include "libft.h"
 
 # define NO_FAILURE					UINT64_C(0)
