@@ -1,3 +1,5 @@
+UNAME			=	$(shell uname)
+
 MINIRT			=	miniRT
 
 DIR_SRCS		=	srcs
@@ -8,6 +10,7 @@ SRCS_NAMES		=	error_handler/error.c \
 					graphics/conversions.c \
 					graphics/free.c \
 					graphics/graphics.c \
+					graphics/inputs/inputs.c \
 					graphics/pixels/ops.c \
 					graphics/pixels/pixels.c \
 					graphics/pixels/print.c \
@@ -44,10 +47,18 @@ DEPS			=	${SRCS_NAMES:.c=.d}
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror
 CDFLAGS 		=	-MMD -MP
-INCLUDE			=	-Iinclude -I/usr/X11/include -Ilibft/include
-LIBS			=	-L/usr/X11/lib -Llibft -lft -l mlx
-FRAMEWORKS		=	-framework OpenGL -framework AppKit
-RM				=	rm -rf
+INCLUDE			=	-Iinclude -Ilibft/include -I/usr/X11/include
+
+ifeq (${UNAME}, Darwin)
+	INCLUDE			=	-Iinclude -Ilibft/include -I/usr/X11/include
+	LIBS			=	-L/usr/X11/lib -Llibft -lft -l mlx
+	FRAMEWORKS		=	-framework OpenGL -framework AppKit
+else ifeq (${UNAME}, Linux)
+	INCLUDE			=	-Iinclude -Ilibft/include -Imlx
+	LIBS			=	-L/usr/lib -Llibft -Lmlx -lft -lmlx -lXext -lX11 -lm
+endif
+
+RM					=	rm -rf
 
 all:			${MINIRT}
 
@@ -62,6 +73,7 @@ ${DIR_OBJS}:
 				mkdir -p ${DIR_OBJS}
 				mkdir -p ${addprefix ${DIR_OBJS}/, error_handler}
 				mkdir -p ${addprefix ${DIR_OBJS}/, graphics}
+				mkdir -p ${addprefix ${DIR_OBJS}/, graphics/inputs}
 				mkdir -p ${addprefix ${DIR_OBJS}/, graphics/pixels}
 				mkdir -p ${addprefix ${DIR_OBJS}/, graphics/tmp_pixels}
 				mkdir -p ${addprefix ${DIR_OBJS}/, phong}
@@ -74,13 +86,6 @@ ${DIR_OBJS}:
 
 bonus:			${MINIRT}
 
-debug:			CFLAGS += -g3
-debug:			all
-
-performance:	CC = gcc
-performance:	CFLAGS += -O3
-performance:	all
-
 clean:
 				make clean -C libft
 				${RM} ${DIR_OBJS}
@@ -90,8 +95,18 @@ fclean:			clean
 				${RM} ${MINIRT}
 
 re:				fclean all
-red:			fclean debug
-rep:			fclean performance
+
+# Debug
+d:				CFLAGS += -g3
+d:				all
+red:			fclean d
+
+# Performance
+p:				CC = gcc
+p:				CFLAGS += -O3
+p:				all
+rep:			fclean p
+
 
 -include		${DEPS}
 
