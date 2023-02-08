@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:44:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/08 04:38:15 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 06:53:28 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	input_mouse(int mousesym, int x, int y, t_canvas *cvs)
 	fflush(stdout);
 	if (mousesym == MOUSE_ZOOM_IN || mousesym == MOUSE_ZOOM_OUT)
 	{
-		// zoom in n out
+		// zoom in & out
 	}
 	return (0);
 }
