@@ -6,49 +6,49 @@ DIR_SRCS		=	srcs
 
 DIR_OBJS		=	objs
 
-SRCS_NAMES		=	error_handler/error.c \
-					graphics/conversions.c \
-					graphics/free.c \
-					graphics/graphics.c \
-					graphics/inputs/inputs.c \
-					graphics/pixels/ops.c \
-					graphics/pixels/pixels.c \
-					graphics/pixels/print.c \
-					graphics/tmp_pixels/ops.c \
-					graphics/tmp_pixels/tmp_pixels.c \
-					graphics/tmp_pixels/print.c \
-					objects/lights/lights.c \
-					objects/lights/print.c \
-					matrixes/init.c \
-					matrixes/invert.c \
-					matrixes/linear_ops.c \
-					matrixes/ops.c \
-					matrixes/print.c \
-					matrixes/transformations/transformations1.c \
-					matrixes/transformations/transformations2.c \
-					objects/sphere.c \
-					objects/material.c \
-					ppm/ppm.c \
-					raytracer/intersections/intersect_objects.c \
-					raytracer/intersections/intersections.c \
-					raytracer/intersections/print.c \
-					raytracer/rays/lighting.c \
-					raytracer/rays/print.c \
-					raytracer/rays/rays.c \
-					tuples/init.c \
-					tuples/ops1.c \
-					tuples/ops2.c \
-					tuples/scalar_ops.c \
-					tuples/print.c \
-					world/camera.c \
-					world/display.c \
-					world/object_lists/basics.c \
-					world/object_lists/more.c \
-					world/add_elements.c \
-					world/hits.c \
-					world/print.c \
-					world/transformations.c \
-					world/world.c \
+SRCS_NAMES		=	core/graphics/conversions.c \
+					core/graphics/free.c \
+					core/graphics/graphics.c \
+					core/graphics/inputs/inputs.c \
+					core/graphics/pixels/ops.c \
+					core/graphics/pixels/pixels.c \
+					core/graphics/pixels/print.c \
+					core/graphics/tmp_pixels/ops.c \
+					core/graphics/tmp_pixels/tmp_pixels.c \
+					core/graphics/tmp_pixels/print.c \
+					core/objects/lights/lights.c \
+					core/objects/lights/print.c \
+					core/objects/sphere.c \
+					core/objects/material.c \
+					core/raytracer/intersections/intersect_objects.c \
+					core/raytracer/intersections/intersections.c \
+					core/raytracer/intersections/print.c \
+					core/raytracer/rays/lighting.c \
+					core/raytracer/rays/print.c \
+					core/raytracer/rays/rays.c \
+					core/world/camera.c \
+					core/world/display.c \
+					core/world/object_lists/basics.c \
+					core/world/object_lists/more.c \
+					core/world/add_elements.c \
+					core/world/hits.c \
+					core/world/print.c \
+					core/world/transformations.c \
+					core/world/world.c \
+					geometry/matrixes/init.c \
+					geometry/matrixes/invert.c \
+					geometry/matrixes/linear_ops.c \
+					geometry/matrixes/ops.c \
+					geometry/matrixes/print.c \
+					geometry/matrixes/transformations/transformations1.c \
+					geometry/matrixes/transformations/transformations2.c \
+					geometry/tuples/init.c \
+					geometry/tuples/ops1.c \
+					geometry/tuples/ops2.c \
+					geometry/tuples/scalar_ops.c \
+					geometry/tuples/print.c \
+					utils/error_handler/error.c \
+					utils/ppm/ppm.c \
 					main.c
 
 SRCS			=	$(addprefix $(DIR_SRCS)/, $(SRCS_NAMES))
@@ -83,25 +83,25 @@ ${OBJS} :		${DIR_OBJS}/%.o : ${DIR_SRCS}/%.c
 
 ${DIR_OBJS}:
 				mkdir -p ${DIR_OBJS}
-				mkdir -p ${addprefix ${DIR_OBJS}/, error_handler}
-				mkdir -p ${addprefix ${DIR_OBJS}/, graphics}
-				mkdir -p ${addprefix ${DIR_OBJS}/, graphics/inputs}
-				mkdir -p ${addprefix ${DIR_OBJS}/, graphics/pixels}
-				mkdir -p ${addprefix ${DIR_OBJS}/, graphics/tmp_pixels}
-				mkdir -p ${addprefix ${DIR_OBJS}/, lights}
-				mkdir -p ${addprefix ${DIR_OBJS}/, lists}
-				mkdir -p ${addprefix ${DIR_OBJS}/, phong}
-				mkdir -p ${addprefix ${DIR_OBJS}/, matrixes}
-				mkdir -p ${addprefix ${DIR_OBJS}/, matrixes/transformations}
-				mkdir -p ${addprefix ${DIR_OBJS}/, objects}
-				mkdir -p ${addprefix ${DIR_OBJS}/, objects/lights}
-				mkdir -p ${addprefix ${DIR_OBJS}/, ppm}
-				mkdir -p ${addprefix ${DIR_OBJS}/, raytracer}
-				mkdir -p ${addprefix ${DIR_OBJS}/, raytracer/intersections}
-				mkdir -p ${addprefix ${DIR_OBJS}/, raytracer/rays}
-				mkdir -p ${addprefix ${DIR_OBJS}/, tuples}
-				mkdir -p ${addprefix ${DIR_OBJS}/, world}
-				mkdir -p ${addprefix ${DIR_OBJS}/, world/object_lists}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/graphics}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/graphics/inputs}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/graphics/pixels}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/graphics/tmp_pixels}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/lights}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/lists}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/phong}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/objects}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/objects/lights}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/raytracer}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/raytracer/intersections}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/raytracer/rays}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/world}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/world/object_lists}
+				mkdir -p ${addprefix ${DIR_OBJS}/, geometry/tuples}
+				mkdir -p ${addprefix ${DIR_OBJS}/, geometry/matrixes}
+				mkdir -p ${addprefix ${DIR_OBJS}/, geometry/matrixes/transformations}
+				mkdir -p ${addprefix ${DIR_OBJS}/, utils/error_handler}
+				mkdir -p ${addprefix ${DIR_OBJS}/, utils/ppm}
 
 bonus:			${MINIRT}
 
