@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 00:01:41 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 14:49:46 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/10 13:39:05 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int	open_ppm(char *file)
 void	ppm_header(int fd)
 {
 	ft_putstr_fd("P3\n", fd);
-	ft_putnbr_fd(WIDTH, fd);
+	ft_putnbr_fd(WINDOW_WIDTH, fd);
 	ft_putstr_fd(" ", fd);
-	ft_putnbr_fd(HEIGHT, fd);
+	ft_putnbr_fd(WINDOW_HEIGHT, fd);
 	ft_putstr_fd("\n255\n", fd);
 }
 
@@ -59,10 +59,10 @@ void	ppm_data(int fd, t_image i)
 	s = i.addr;
 	c = 0;
 	y = -1;
-	while (++y < HEIGHT)
+	while (++y < WINDOW_HEIGHT)
 	{
 		x = -1;
-		while (++x < WIDTH * bytes_per_pixel)
+		while (++x < WINDOW_WIDTH * bytes_per_pixel)
 		{
 			if (c >= MAX_CHARS_ON_LINE - 4)
 				c = ft_putchar_fd('\n', fd) - 1;
