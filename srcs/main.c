@@ -6,10 +6,14 @@
 
 int	main(void)
 {
-	t_tuple from, to, up;
+	t_canvas 	cvs;
+	t_camera 	c;
+	t_world		w;
+	t_all		args;
 
-	from = point(1, 3, 2);
-	to = point(4, -2, 8);
-	up = vector(1, 1, 0);
-	matrix_print(view_transform(from, to, up), "M: ");
+	canvas(&cvs);
+	w = world();
+	c = camera(DEFAULT_CAMERA_WIDTH_HI, DEFAULT_CAMERA_HEIGHT_HI, DEFAULT_CAMERA_FOV);
+	all(&args, &cvs, &c, &w);
+	display_loop(&args);
 }

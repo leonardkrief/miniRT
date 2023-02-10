@@ -17,8 +17,8 @@ SRCS_NAMES		=	error_handler/error.c \
 					graphics/tmp_pixels/ops.c \
 					graphics/tmp_pixels/tmp_pixels.c \
 					graphics/tmp_pixels/print.c \
-					lights/lights.c \
-					lights/print.c \
+					objects/lights/lights.c \
+					objects/lights/print.c \
 					matrixes/init.c \
 					matrixes/invert.c \
 					matrixes/linear_ops.c \
@@ -40,6 +40,8 @@ SRCS_NAMES		=	error_handler/error.c \
 					tuples/ops2.c \
 					tuples/scalar_ops.c \
 					tuples/print.c \
+					world/camera.c \
+					world/display.c \
 					world/object_lists/basics.c \
 					world/object_lists/more.c \
 					world/add_elements.c \
@@ -57,15 +59,14 @@ DEPS			=	${SRCS_NAMES:.c=.d}
 
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror
-CDFLAGS 		=	-MMD -MP
-INCLUDE			=	-Iinclude -Ilibft/include -I/usr/X11/include
+CDFLAGS			=	-MMD -MP
 
 ifeq (${UNAME}, Darwin)
-	INCLUDE			=	-Iinclude -Ilibft/include -I/usr/X11/include
+	INCLUDE			=	-Iinclude -Iinclude/structs -Ilibft/include -I/usr/X11/include
 	LIBS			=	-L/usr/X11/lib -Llibft -lft -l mlx
 	FRAMEWORKS		=	-framework OpenGL -framework AppKit
 else ifeq (${UNAME}, Linux)
-	INCLUDE			=	-Iinclude -Ilibft/include -Imlx
+	INCLUDE			=	-Iinclude -Iinclude/structs -Ilibft/include -Imlx
 	LIBS			=	-L/usr/lib -Llibft -Lmlx -lft -lmlx -lXext -lX11 -lm
 endif
 
@@ -93,6 +94,7 @@ ${DIR_OBJS}:
 				mkdir -p ${addprefix ${DIR_OBJS}/, matrixes}
 				mkdir -p ${addprefix ${DIR_OBJS}/, matrixes/transformations}
 				mkdir -p ${addprefix ${DIR_OBJS}/, objects}
+				mkdir -p ${addprefix ${DIR_OBJS}/, objects/lights}
 				mkdir -p ${addprefix ${DIR_OBJS}/, ppm}
 				mkdir -p ${addprefix ${DIR_OBJS}/, raytracer}
 				mkdir -p ${addprefix ${DIR_OBJS}/, raytracer/intersections}
