@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:06:55 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/10 02:00:21 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/11 00:13:09 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,8 @@
 # include <stdio.h>
 # include "libft.h"
 # include "objects.h"
+# include "structs_all.h"
 # include "error_handler.h"
-
-typedef struct s_object_list
-{
-	t_object_id				id;
-	t_object				*ob;
-	struct s_object_list	*next;
-}	t_object_list;
 
 // lists/basics.c
 t_object_list	*ft_lstnew(void *ob, int id);

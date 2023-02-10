@@ -6,40 +6,19 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 03:46:32 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/10 03:42:39 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/11 00:14:41 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYTRACER_H
 # define RAYTRACER_H
 
+# include "structs_all.h"
 # include "libft.h"
 # include "tuples.h"
 # include "matrixes.h"
 # include "objects.h"
 # include "error_handler.h"
-
-typedef struct s_intersection{
-	double					t;
-	t_object_id				id;
-	t_object				*ob;
-	struct s_intersection	*next;
-}	t_intersection;
-
-typedef struct s_ray{
-	t_tuple			origin;
-	t_tuple			direction;
-	t_intersection	*itr_front;
-	t_intersection	*itr_back;
-}	t_ray;
-
-// raytracer is the structure that both casts a ray while storing
-// the closest intersection
-// ray:				_origin: origin of the ray
-//					_direction: direction of the ray
-// intersection:	_t: shortest dist from ray's origin to an object
-//					_id: id of the object intersected
-//					_object: pointer to the object intersected
 
 // raytracer/intersections/intersections.c
 t_intersection	*intersection(t_object_id object_id, t_object *object);

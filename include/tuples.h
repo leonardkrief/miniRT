@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/08 16:32:03 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/11 00:15:02 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <math.h>
+# include "structs_geometry.h"
 # include "libft.h"
 # include "error_handler.h"
 
@@ -24,13 +25,6 @@
 # define PRECISION "3"
 # define TUPLE_FORMAT "%+-"MAX_PRINT_LEN"."PRECISION"lf"
 # define TUPLE_FORMAT_SINGLE "%+-1."PRECISION"lf"
-
-typedef struct s_tuple{
-	double	x;
-	double	y;
-	double	z;
-	double	w;
-}	t_tuple;
 
 // tuples/print.c
 void	tuple_raw_print(t_tuple a);

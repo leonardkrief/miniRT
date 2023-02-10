@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   structs_all.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 00:24:41 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/11 00:10:21 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/11 00:11:52 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef STRUCTS_ALL_H
+# define STRUCTS_ALL_H
 
-# include "structs_all.h"
-# include "error_handler.h"
-# include "graphics.h"
-# include "object_lists.h"
-# include "matrixes.h"
-# include "objects.h"
-# include "ppm.h"
-# include "raytracer.h"
-# include "tuples.h"
-# include "world.h"
+# include "structs_geometry.h"
+# include "structs_mlx.h"
+# include "structs_objects.h"
+# include "structs_pixels.h"
+# include "structs_raytracer.h"
 
 #endif

@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lights.h                                           :+:      :+:    :+:   */
+/*   structs.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 15:54:18 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/09 16:05:43 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/10 23:29:27 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/10 23:46:50 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHTS_H
-# define LIGHTS_H
+#ifndef STRUCTS_PIXELS_H
+# define STRUCTS_PIXELS_H
 
-# include "tuples.h"
-# include "graphics.h"
+// Splitting these files into structs.h was necessary to avoid circular
+// dependecies between header files...
 
-typedef struct s_light{
-	t_tuple		position;
-	t_tmp_pixel	intensity;
-}	t_light;
+# include <stdint.h>
 
-// lights/print.c
-void	light_print_padding(const t_light *light, const char *name,
-			const int padding);
-void	light_print(const t_light *light, const char *name);
+typedef struct s_tmp_pixel{
+	float	r;
+	float	g;
+	float	b;
+	float	a;
+}	t_tmp_pixel;
 
-// lights/lights.c
-t_light	light_point(const t_tuple position, const t_tmp_pixel intensity);
+typedef unsigned char	t_pixel_color;
+typedef uint32_t		t_pixel;
 
 #endif

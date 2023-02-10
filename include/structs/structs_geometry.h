@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   structs.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 00:24:41 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/10 23:29:27 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/10 23:46:50 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef STRUCTS_GEOMETRY_H
+# define STRUCTS_GEOMETRY_H
 
-# include "structs_all.h"
-# include "error_handler.h"
-# include "graphics.h"
-# include "object_lists.h"
-# include "matrixes.h"
-# include "objects.h"
-# include "ppm.h"
-# include "raytracer.h"
-# include "tuples.h"
-# include "world.h"
+// Splitting these files into structs.h was necessary to avoid circular
+// dependecies between header files...
+
+typedef struct s_tuple{
+	double	x;
+	double	y;
+	double	z;
+	double	w;
+}	t_tuple;
+
+# define MATRIX_DIM 4
+typedef struct s_matrix{
+	double	m[MATRIX_DIM][MATRIX_DIM];
+}	t_matrix;
 
 #endif
