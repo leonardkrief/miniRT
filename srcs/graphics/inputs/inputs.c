@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:44:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/08 06:53:28 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/09 06:36:59 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,24 @@ void	input_key_camera_translation(int keysym, t_canvas *cvs)
 
 void	input_key_close_window(int keysym, t_canvas *cvs)
 {
-	if (keysym == KEY_ESC || keysym == CLOSE_WINDOW_KEY_EVENT)
-		mlx_loop_end(cvs->window.mlx);
+	if (keysym == KEY_ESC || keysym == CLOSE_WINDOW_BUTTON_EVENT)
+		exit_program(cvs);
 }
 
 int	input_key(int keysym, t_canvas *cvs)
 {
+	printf("pressed key: %3d\n", keysym);
 	input_key_camera_translation(keysym, cvs);
 	input_key_close_window(keysym, cvs);
 	return (0);
 }
 
-int	input_mouse(int mousesym, int x, int y, t_canvas *cvs)
+int	input_mouse(int mousesym, int i, int j, t_canvas *cvs)
 {
 	(void)cvs;
-	printf("mouse click: %d, x: %d, y: %d\n", mousesym, x, y);
+	printf("mouse click: %3d  i: %d  j: %d\n", mousesym, i, j);
+	t_tuple t = pixel_to_point(&cvs->image, i, j);
+	printf("                  x: %f  y: %f\n", t.x, t.y);
 	fflush(stdout);
 	if (mousesym == MOUSE_ZOOM_IN || mousesym == MOUSE_ZOOM_OUT)
 	{

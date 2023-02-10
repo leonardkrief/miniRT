@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 20:52:44 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/01 01:48:42 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 20:06:38 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*ft_strtrim(const char *s1, const char *set)
 	size_t	len;
 	char	*dst;
 
-	if (!s1 || !set)
-		return (NULL);
 	len = ft_strlen(s1);
 	i = 0;
 	while (len >= i + 1 && ft_strchr(set, s1[len - i - 1]))

@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/25 02:14:55 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/01 01:48:42 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/09 15:51:18 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/09 16:22:00 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "world.h"
 
-int	ft_lstsize(t_list *lst)
+void	world_print(t_world *world)
 {
-	int	n;
+	size_t i;
+	char light_id[] = "spot _:   ";
 
-	n = 0;
-	while (lst)
+	i = 0;
+	while (i < world->nb_lights)
 	{
-		lst = lst->next;
-		n++;
+		light_id[5] = i + '0';
+		light_print(&world->lights[i], light_id);
+		i++;
 	}
-	return (n);
+	ft_lstprint(world->objs);
 }

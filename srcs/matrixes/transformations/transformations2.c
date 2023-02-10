@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:27:54 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/06 19:58:49 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 09:28:03 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_matrix	matrix_shearing(double x[2], double y[2], double z[2])
 {
-	t_tuple a;
-	t_tuple b;
-	t_tuple c;
-	t_tuple d;
+	t_tuple	a;
+	t_tuple	b;
+	t_tuple	c;
+	t_tuple	d;
 
 	a = tuple(1, x[0], x[1], 0);
 	b = tuple(y[0], 1, y[1], 0);

@@ -6,20 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 03:31:45 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/07 13:45:33 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/09 14:16:55 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "objects.h"
-
-t_light	point_light(const t_tuple position, const t_tmp_pixel intensity)
-{
-	t_light	light;
-
-	light.position = position;
-	light.intensity = intensity;
-	return (light);
-}
 
 t_material	material(void)
 {

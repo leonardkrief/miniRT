@@ -6,13 +6,14 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 04:07:15 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/07 12:44:39 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/09 06:28:48 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphics.h"
 
-t_pixel	pixel(const t_pixel_color r, const t_pixel_color g, const t_pixel_color b, const t_pixel_color a)
+t_pixel	pixel(const t_pixel_color r, const t_pixel_color g,
+		const t_pixel_color b, const t_pixel_color a)
 {
 	return ((int)a << 24 | (int)r << 16 | (int)g << 8 | (int)b);
 }

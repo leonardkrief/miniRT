@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   more.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/25 01:57:38 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/01 01:48:42 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/09 15:31:21 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/10 01:59:17 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "object_lists.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_object_list **lst, void (*del)(void*))
 {
-	t_list	*begin;
-	t_list	*before;
+	t_object_list	*begin;
+	t_object_list	*before;
 
 	if (lst && *lst && del)
 	{
@@ -28,4 +28,36 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		}
 		*lst = NULL;
 	}
+}
+
+void	ft_lstiter(t_object_list *lst, void (*f)(void *))
+{
+	while (lst)
+	{
+		(*f)(lst->ob);
+		lst = lst->next;
+	}
+}
+
+t_object_list	*ft_lstlast(t_object_list *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+void	ft_lstprint(t_object_list *lst)
+{
+	if (lst == NULL)
+		printf("(null)");
+	while (lst)
+	{
+		printf("%d", lst->id);
+		if (lst->next)
+			printf(" -> ");
+		lst = lst->next;
+	}
+	printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 07:03:41 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/06 06:40:09 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 09:35:54 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,16 @@ t_matrix	matrix_submatrix(t_matrix a, int row, int col)
 		while (++i < MATRIX_DIM - 1)
 			a.m[i][j] = a.m[i + 1][j + 1];
 	}
-	i = -1;
-	while (++i < MATRIX_DIM)
-	{
-		a.m[i][MATRIX_DIM - 1] = 0;
-		a.m[MATRIX_DIM - 1][i] = 0;
-	}
+	// i = -1;
+	// while (++i < MATRIX_DIM)
+	// {
+	// 	a.m[i][MATRIX_DIM - 1] = 0;
+	// 	a.m[MATRIX_DIM - 1][i] = 0;
+	// }
+	// Cette portion de code remplit les dernières lignes et colonnes
+	// avec des 0 mais normalement, on sait que l'on vient de calculer
+	// une sous-matrice donc on se fiche de ces dernières.
+	// Cette portion de code peut donc etre supprimee.
 	return (a);
 }
 
@@ -65,8 +69,8 @@ t_matrix	matrix_pivot(t_matrix m, int col, int dim, int *row_is_null)
 
 double	det(t_matrix m, int dim)
 {
-	int	row;
-	int	row_is_null;
+	int		row;
+	int		row_is_null;
 	float	det;
 
 	row_is_null = 0;

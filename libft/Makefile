@@ -40,17 +40,6 @@ SRCS_NAMES		=	ft_put_fd/ft_putchar_fd.c \
 					utils/ft_free_tab.c \
 					utils/ft_itoa.c \
 					utils/ft_split.c \
-					lst/ft_lstadd_back.c \
-					lst/ft_lstadd_front.c \
-					lst/ft_lstclear.c \
-					lst/ft_lstdelone.c \
-					lst/ft_lstiter.c \
-					lst/ft_lstlast.c \
-					lst/ft_lstmap.c \
-					lst/ft_lstnew.c \
-					lst/ft_lstpop.c \
-					lst/ft_lstprint.c \
-					lst/ft_lstsize.c \
 					get_next_line/get_next_line.c
 
 SRCS			=	${addprefix ${DIR_SRCS}/,${SRCS_NAMES}}

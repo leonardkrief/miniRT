@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstprint.c                                      :+:      :+:    :+:   */
+/*   lights.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 20:31:52 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/01 01:48:42 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/09 14:16:57 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/09 14:17:32 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "objects.h"
 
-void	ft_lstprint(t_list *lst)
+t_light	light_point(const t_tuple position, const t_tmp_pixel intensity)
 {
-	while (lst)
-	{
-		if (lst->content == NULL)
-			printf("(null)");
-		else
-			printf("%s", (char *)lst->content);
-		if (lst->next)
-			printf(" -> ");
-		lst = lst->next;
-	}
-	printf("\n");
+	t_light	light;
+
+	light.position = position;
+	light.intensity = intensity;
+	return (light);
 }

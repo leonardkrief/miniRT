@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:50:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/05 20:34:30 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 09:37:53 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	tuple_raw_print(t_tuple a)
 {
 	if (!(eq(1, a.w) || eq(0, a.w)))
 		printf("[" TUPLE_FORMAT ", " TUPLE_FORMAT ", "
-			TUPLE_FORMAT ", " TUPLE_FORMAT_SINGLE , a.x, a.y, a.z, a.w);
+			TUPLE_FORMAT ", " TUPLE_FORMAT_SINGLE, a.x, a.y, a.z, a.w);
 	else
 		printf("[" TUPLE_FORMAT ", " TUPLE_FORMAT
-			", " TUPLE_FORMAT_SINGLE , a.x, a.y, a.z);
+			", " TUPLE_FORMAT_SINGLE, a.x, a.y, a.z);
 	printf("]");
 }
 

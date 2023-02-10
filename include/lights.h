@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   lights.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/10 02:13:43 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/09 15:54:18 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/09 16:05:43 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef LIGHTS_H
+# define LIGHTS_H
 
-# include "error_handler.h"
-# include "graphics.h"
-# include "lights.h"
-# include "object_lists.h"
-# include "matrixes.h"
-# include "objects.h"
-# include "ppm.h"
-# include "raytracer.h"
 # include "tuples.h"
-# include "world.h"
+# include "graphics.h"
+
+typedef struct s_light{
+	t_tuple		position;
+	t_tmp_pixel	intensity;
+}	t_light;
+
+// lights/print.c
+void	light_print_padding(const t_light *light, const char *name,
+			const int padding);
+void	light_print(const t_light *light, const char *name);
+
+// lights/lights.c
+t_light	light_point(const t_tuple position, const t_tmp_pixel intensity);
 
 #endif

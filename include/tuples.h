@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/07 00:13:37 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 16:32:03 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include "error_handler.h"
 
 # define EPSILON	__DBL_EPSILON__
-#define MAX_PRINT_LEN "8"
-#define PRECISION "3"
-#define TUPLE_FORMAT "%+-"MAX_PRINT_LEN"."PRECISION"lf"
-#define TUPLE_FORMAT_SINGLE "%+-1."PRECISION"lf"
+# define MAX_PRINT_LEN "8"
+# define PRECISION "3"
+# define TUPLE_FORMAT "%+-"MAX_PRINT_LEN"."PRECISION"lf"
+# define TUPLE_FORMAT_SINGLE "%+-1."PRECISION"lf"
 
 typedef struct s_tuple{
 	double	x;

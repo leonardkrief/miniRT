@@ -17,6 +17,8 @@ SRCS_NAMES		=	error_handler/error.c \
 					graphics/tmp_pixels/ops.c \
 					graphics/tmp_pixels/tmp_pixels.c \
 					graphics/tmp_pixels/print.c \
+					lights/lights.c \
+					lights/print.c \
 					matrixes/init.c \
 					matrixes/invert.c \
 					matrixes/linear_ops.c \
@@ -27,15 +29,24 @@ SRCS_NAMES		=	error_handler/error.c \
 					objects/sphere.c \
 					objects/material.c \
 					ppm/ppm.c \
-					rays/lighting.c \
-					rays/print.c \
-					rays/rays.c \
-					rays/sphere.c \
+					raytracer/intersections/intersect_objects.c \
+					raytracer/intersections/intersections.c \
+					raytracer/intersections/print.c \
+					raytracer/rays/lighting.c \
+					raytracer/rays/print.c \
+					raytracer/rays/rays.c \
 					tuples/init.c \
 					tuples/ops1.c \
 					tuples/ops2.c \
 					tuples/scalar_ops.c \
 					tuples/print.c \
+					world/object_lists/basics.c \
+					world/object_lists/more.c \
+					world/add_elements.c \
+					world/hits.c \
+					world/print.c \
+					world/transformations.c \
+					world/world.c \
 					main.c
 
 SRCS			=	$(addprefix $(DIR_SRCS)/, $(SRCS_NAMES))
@@ -76,13 +87,19 @@ ${DIR_OBJS}:
 				mkdir -p ${addprefix ${DIR_OBJS}/, graphics/inputs}
 				mkdir -p ${addprefix ${DIR_OBJS}/, graphics/pixels}
 				mkdir -p ${addprefix ${DIR_OBJS}/, graphics/tmp_pixels}
+				mkdir -p ${addprefix ${DIR_OBJS}/, lights}
+				mkdir -p ${addprefix ${DIR_OBJS}/, lists}
 				mkdir -p ${addprefix ${DIR_OBJS}/, phong}
 				mkdir -p ${addprefix ${DIR_OBJS}/, matrixes}
 				mkdir -p ${addprefix ${DIR_OBJS}/, matrixes/transformations}
 				mkdir -p ${addprefix ${DIR_OBJS}/, objects}
 				mkdir -p ${addprefix ${DIR_OBJS}/, ppm}
-				mkdir -p ${addprefix ${DIR_OBJS}/, rays}
+				mkdir -p ${addprefix ${DIR_OBJS}/, raytracer}
+				mkdir -p ${addprefix ${DIR_OBJS}/, raytracer/intersections}
+				mkdir -p ${addprefix ${DIR_OBJS}/, raytracer/rays}
 				mkdir -p ${addprefix ${DIR_OBJS}/, tuples}
+				mkdir -p ${addprefix ${DIR_OBJS}/, world}
+				mkdir -p ${addprefix ${DIR_OBJS}/, world/object_lists}
 
 bonus:			${MINIRT}
 

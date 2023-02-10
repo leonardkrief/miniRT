@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:50:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/07 12:44:52 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/09 06:30:09 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	pixel_print(const t_pixel p, const char *name)
 		pixel_get_r(p), pixel_get_g(p), pixel_get_b(p), pixel_get_a(p));
 	printf("\t\t---------------------------------------------\n");
 	printf("\t\t| " B_PATTERN " | " B_PATTERN " | " B_PATTERN " | " B_PATTERN
-		" |\n", B_PIXEL(pixel_get_r(p)), B_PIXEL(pixel_get_g(p)), B_PIXEL(pixel_get_b(p)), B_PIXEL(pixel_get_a(p)));
+		" |\n", B_PIXEL(pixel_get_r(p)), B_PIXEL(pixel_get_g(p)),
+		B_PIXEL(pixel_get_b(p)), B_PIXEL(pixel_get_a(p)));
 	printf("\t\t---------------------------------------------\n");
 }
 

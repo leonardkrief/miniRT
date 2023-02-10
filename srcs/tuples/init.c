@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 02:34:33 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 14:45:13 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 09:38:11 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_tuple	point(float x, float y, float z)
 {
-	t_tuple a; 
+	t_tuple	a;
 
 	a.x = x;
 	a.y = y;

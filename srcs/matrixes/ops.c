@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 06:08:09 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/04 14:27:07 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 09:27:03 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@ t_tuple	matrix_vect(t_matrix m, t_tuple t)
 {
 	t_tuple	result;
 
-	result.x = m.m[0][0] * t.x + m.m[0][1] * t.y + m.m[0][2] * t.z + m.m[0][3] * t.w;
-	result.y = m.m[1][0] * t.x + m.m[1][1] * t.y + m.m[1][2] * t.z + m.m[1][3] * t.w;
-	result.z = m.m[2][0] * t.x + m.m[2][1] * t.y + m.m[2][2] * t.z + m.m[2][3] * t.w;
-	result.w = m.m[3][0] * t.x + m.m[3][1] * t.y + m.m[3][2] * t.z + m.m[3][3] * t.w;
+	result.x = m.m[0][0] * t.x + m.m[0][1] * t.y
+		+ m.m[0][2] * t.z + m.m[0][3] * t.w;
+	result.y = m.m[1][0] * t.x + m.m[1][1] * t.y
+		+ m.m[1][2] * t.z + m.m[1][3] * t.w;
+	result.z = m.m[2][0] * t.x + m.m[2][1] * t.y
+		+ m.m[2][2] * t.z + m.m[2][3] * t.w;
+	result.w = m.m[3][0] * t.x + m.m[3][1] * t.y
+		+ m.m[3][2] * t.z + m.m[3][3] * t.w;
 	return (result);
 }
 

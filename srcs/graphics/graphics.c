@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:59:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/08 02:48:10 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 08:23:23 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_window	*window(t_window *window)
 	window->win = mlx_new_window(window->mlx, WIDTH, HEIGHT, WINDOW_NAME);
 	if (window->win == NULL)
 	{
-		mlx_destroy_display(window->mlx);
+		FREE_DISPLAY(window->mlx);
 		return (NULL);
 	}
 	return (window);

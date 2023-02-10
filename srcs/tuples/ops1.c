@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 02:23:34 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/07 01:36:41 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/10 05:58:14 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ t_tuple	tuple_crossprod(const t_tuple a, const t_tuple b)
 	c.x = y * b.z - z * b.y;
 	c.y = z * b.x - x * b.z;
 	c.z = x * b.y - y * b.x;
-	return (a);
+	return (c);
 }

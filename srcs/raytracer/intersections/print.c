@@ -5,30 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 15:14:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/08 09:26:18 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/09 18:25:47 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/09 22:30:18 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "matrixes.h"
+#include "raytracer.h"
 
-// This function does not entirely depends on MATRIX_DIM
-void	matrix_print_row(t_matrix m, int n)
+void	intersection_print_padding(const t_intersection itr, const char *name,
+			const int padding)
 {
-	if (n != 0)
-		printf("\t\t");
-	printf("[" TUPLE_FORMAT " " TUPLE_FORMAT
-		" " TUPLE_FORMAT " " TUPLE_FORMAT_SINGLE "]\n",
-		(m.m)[n][0], (m.m)[n][1], (m.m)[n][2], (m.m)[n][3]);
+	int	len;
+
+	len = ft_strlen(name);
+	printf("%*s%s%*s", padding + 1, "", name, 5, "");
+	if (itr.ob)
+	{
+		printf("t = " TUPLE_FORMAT_SINGLE ",\n", itr.t);
+		if (itr.id == SPHERE_ID)
+			sphere_print_padding(*(t_sphere *)itr.ob, "", len + padding + 7);
+	}
+	else
+		printf("no intersection\n\n");
 }
 
-// This function does not entirely depends on MATRIX_DIM
-void	matrix_print(t_matrix m, char *name)
+void	intersection_print(const t_intersection itr, const char *name)
 {
-	printf("%s: matrix:\t", name);
-	matrix_print_row(m, 0);
-	matrix_print_row(m, 1);
-	matrix_print_row(m, 2);
-	matrix_print_row(m, 3);
-	printf("\n");
+	intersection_print_padding(itr, name, 0);
 }

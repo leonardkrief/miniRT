@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/08 04:23:08 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/09 15:27:43 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdint.h>
 # include "libft.h"
 
+
+// Tester de remplacer ca par une enum ?
+// Not yet functional, I am waiting to have all my error codes to sort them well
 # define NO_FAILURE					UINT64_C(0)
 # define FAILED_MALLOC				UINT64_C(1)
 # define FAILED_OPEN				UINT64_C(2)
@@ -30,6 +33,8 @@
 # define ERROR_SPHERE				UINT64_C(97) //"Error creating sphere"
 # define ERROR_INTERSECTION			UINT64_C(97) //"Error creating intersection"
 # define FALSE_MATRIX_INPUT			UINT64_C(99) //"Cannot create matrix out of non-vector objects"
+# define UNKNOWN_OBJECT				UINT64_C(100) //"Unknown geometric shape detected. Failed creating it"
+# define FAILED_CREATING_OBJECT		UINT64_C(100) //"Unknown geometric shape detected. Failed creating it"
 # define NO_FILENAME_AVAILABLE		UINT64_C(100) //"No more filenames available. Remove or rename ppm files"
 # define LAST_FAILURE				NO_FILENAME_AVAILABLE
 

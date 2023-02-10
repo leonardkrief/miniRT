@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:27:54 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/06 05:56:47 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/08 09:27:51 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_matrix	matrix_translation(const double x, const double y, const double z)
 {
-	t_tuple a;
-	t_tuple b;
-	t_tuple c;
-	t_tuple d;
+	t_tuple	a;
+	t_tuple	b;
+	t_tuple	c;
+	t_tuple	d;
 
 	a = tuple(1, 0, 0, 0);
 	b = tuple(0, 1, 0, 0);
@@ -31,10 +31,10 @@ t_matrix	matrix_translation(const double x, const double y, const double z)
 // eg. reflection across the y axis: scaling(1, -1, 1)
 t_matrix	matrix_scaling(const double x, const double y, const double z)
 {
-	t_tuple a;
-	t_tuple b;
-	t_tuple c;
-	t_tuple d;
+	t_tuple	a;
+	t_tuple	b;
+	t_tuple	c;
+	t_tuple	d;
 
 	a = tuple(x, 0, 0, 0);
 	b = tuple(0, y, 0, 0);
@@ -45,10 +45,10 @@ t_matrix	matrix_scaling(const double x, const double y, const double z)
 
 t_matrix	matrix_x_rotation(const double r)
 {
-	t_tuple a;
-	t_tuple b;
-	t_tuple c;
-	t_tuple d;
+	t_tuple	a;
+	t_tuple	b;
+	t_tuple	c;
+	t_tuple	d;
 
 	a = tuple(1, 0, 0, 0);
 	b = tuple(0, cos(r), sin(r), 0);
@@ -59,10 +59,10 @@ t_matrix	matrix_x_rotation(const double r)
 
 t_matrix	matrix_y_rotation(const double r)
 {
-	t_tuple a;
-	t_tuple b;
-	t_tuple c;
-	t_tuple d;
+	t_tuple	a;
+	t_tuple	b;
+	t_tuple	c;
+	t_tuple	d;
 
 	a = tuple(cos(r), 0, -sin(r), 0);
 	b = tuple(0, 1, 0, 0);
@@ -73,10 +73,10 @@ t_matrix	matrix_y_rotation(const double r)
 
 t_matrix	matrix_z_rotation(const double r)
 {
-	t_tuple a;
-	t_tuple b;
-	t_tuple c;
-	t_tuple d;
+	t_tuple	a;
+	t_tuple	b;
+	t_tuple	c;
+	t_tuple	d;
 
 	a = tuple(cos(r), -sin(r), 0, 0);
 	b = tuple(sin(r), cos(r), 0, 0);
