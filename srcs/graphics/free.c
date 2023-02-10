@@ -6,11 +6,12 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 20:41:24 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/09 06:34:21 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/10 23:18:00 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphics.h"
+#include "world.h"
 
 void	free_window(const t_window *window)
 {
@@ -32,8 +33,9 @@ int	free_canvas(const t_canvas *canvas)
 }
 
 // devra prendre plus qu'un canvas plus tard mais ok pour l'instant
-int	exit_program(const t_canvas *canvas)
+int	exit_program(t_all *args)
 {
-	free_canvas(canvas);
+	free_canvas(args->canvas);
+	free_world(args->world);
 	exit (0);
 }

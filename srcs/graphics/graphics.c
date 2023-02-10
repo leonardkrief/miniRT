@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:59:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/08 08:23:23 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/10 20:37:51 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_window	*window(t_window *window)
 	window->mlx = mlx_init();
 	if (window->mlx == NULL)
 		return (NULL);
-	window->win = mlx_new_window(window->mlx, WIDTH, HEIGHT, WINDOW_NAME);
+	window->win = mlx_new_window(window->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
 	if (window->win == NULL)
 	{
 		FREE_DISPLAY(window->mlx);
@@ -29,7 +29,7 @@ t_window	*window(t_window *window)
 t_image	*image(t_image *image, void *mlx)
 {
 	image->mlx = mlx;
-	image->img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	image->img = mlx_new_image(mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	if (image->img == NULL)
 		return (NULL);
 	image->addr = mlx_get_data_addr(image->img, &(image->bits_per_pixel),
