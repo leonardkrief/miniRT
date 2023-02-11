@@ -23,7 +23,6 @@ SRCS_NAMES		=	core/graphics/conversions.c \
 					core/raytracer/intersections/intersect_objects.c \
 					core/raytracer/intersections/intersections.c \
 					core/raytracer/intersections/print.c \
-					core/raytracer/rays/lighting.c \
 					core/raytracer/rays/print.c \
 					core/raytracer/rays/rays.c \
 					core/world/camera.c \
@@ -114,8 +113,8 @@ fclean:			clean
 
 re:				fclean all
 
-# Debug
-d:				CFLAGS = -Wall -Wextra -g3
+# Debug			CFLAGS = -Wall -Wextra -g3
+d:				CFLAGS += -g3
 d:				all
 red:			fclean d
 

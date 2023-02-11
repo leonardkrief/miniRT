@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 03:46:32 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 15:15:18 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/11 21:52:12 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ void	intersect_sp(const t_sphere *sp, t_ray *ray0);
 void	ray_coords_print_padding(const t_ray *ray, const char *name, const int padding);
 void	ray_coords_print(const t_ray *ray, const char *name);
 void	ray_print(const t_ray *rt, const char *name);
-
-// raytracer/rays/lighting.c
-t_tmp_pixel	lighting(const t_material material, const t_light light, const t_tuple hit, const t_tuple eyev, t_tuple normalv);
 
 // raytracer/rays/rays.c
 t_ray	ray(const t_tuple origin, const t_tuple direction);

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:06:55 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 17:21:14 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/11 22:10:36 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_computations{
 	t_object_id		id;
 	t_object		*ob;
 	t_tuple			point;
+	t_tuple			over_point;
 	t_tuple			eye;
 	t_tuple			normal;
 	bool			inside;
@@ -60,6 +61,7 @@ typedef struct s_computations{
 // core/world/display.c
 void	all(t_all *args, t_canvas *cvs, t_camera *c, t_world *w);
 void	display_loop(t_all *args);
+void	render(const t_canvas *cvs, const t_camera *c, const t_world *w);
 
 // core/world/print.c
 void	world_print(t_world *world);
@@ -67,10 +69,13 @@ void	world_print(t_world *world);
 // core/world/hits.c
 t_computations	prepare_computations(const t_ray *ray, const t_intersection *itr);
 t_tmp_pixel	shade_hit(const t_world *w, const t_computations *c);
+t_tmp_pixel	lighting(const t_computations *c, const t_material *mat, 
+									const t_light *light, bool in_shadow);
+t_tmp_pixel	point_in_front_light(const t_computations *c, const t_material *mat,
+				const t_light *light, t_tmp_pixel diffuse);
 t_pixel	color_at(const t_world *w, const t_ray *ray);
 
 // core/world/world.c
-t_object_list	*new_object(const int id);
 t_world	world(void);
 void	intersect_world(const t_world *world, const t_ray *ray);
 void	free_world(t_world *world);
@@ -78,16 +83,14 @@ void	free_world(t_world *world);
 // core/world/add_elements.c
 void	world_add_light(t_world *world, t_light light);
 void	world_add_sphere(t_world *world, t_sphere *sp);
+t_object_list	*new_object(const int id);
 
 // core/world/camera.c
 t_camera	camera(double camera_width, double camera_height, double fov);
 void	pixel_size(t_camera *c);
+void	view_transform(t_camera *c, t_tuple from, t_tuple to, t_tuple up);
 t_ray	ray_for_pixel(const t_camera *c, const int i, const int j);
 void	camera_transform(t_camera *c, const t_matrix transform);
-void	render(const t_canvas *cvs, const t_camera *c, const t_world *w);
-
-// core/world/transformations.c
-void	view_transform(t_camera *c, t_tuple from, t_tuple to, t_tuple up);
 
 // core/world/object_lists/basics.c
 t_object_list	*ft_lstnew(void *ob, int id);

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 20:38:29 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 15:37:41 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/11 20:59:25 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,6 @@ void	display_loop(t_all *args)
 	mlx_mouse_hook(cvs->window.win, &input_mouse, args);
 	mlx_loop(cvs->window.mlx);
 }
-
-// t_ray	ray_for_pixel(const t_camera *c, const int i, const int j)
-// {
-// 	double	world_x;
-// 	double	world_y;
-// 	t_tuple	pixel;
-// 	t_tuple	origin;
-
-// 	// xoffset = (i + 0.5) * c.pixel_size;
-// 	// yoffset = (j + 0.5) * c.pixel_size;
-// 	world_x = c->half_width - ((i + 0.5) * c->pixel_size);
-// 	world_y = c->half_height - ((j + 0.5) * c->pixel_size);
-// 	matrix_print(matrix_invert(c->transform, 4), "c->transform^-1: ");
-// 	pixel = matrix_vect(matrix_invert(c->transform, 4), point(world_x, world_y, -1));
-// 	origin = matrix_vect(matrix_invert(c->transform, 4), point(0, 0, 0));
-// 	return ray(origin, tuple_normalize(tuple_sub(pixel, origin)));
-// }
 
 void	render(const t_canvas *cvs, const t_camera *c, const t_world *w)
 {
