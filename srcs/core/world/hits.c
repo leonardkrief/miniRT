@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 02:40:42 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/10 05:00:02 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/11 05:38:51 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_tmp_pixel	shade_hit(const t_world *w, const t_computations *c)
 	t_tmp_pixel	color;
 
 	i = 0;
+	ft_memset(&color, 0, sizeof(color));
 	if (c->id == SPHERE_ID)
 	{
 		while (i < w->nb_lights)

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:09:37 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/10 03:01:50 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/11 12:49:32 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ t_sphere	*sphere(void)
 	return (sp);
 }
 
-void	transform_sp(t_sphere *sp, const t_matrix *m)
+void	transform_sp(t_sphere *sp, const t_matrix m)
 {
-	sp->m = matrix_matrix(sp->m, matrix_invert(*m, 4), 4);
+	sp->m = matrix_matrix(matrix_invert(m, 4), sp->m, 4);
 	sp->t_m = matrix_transpose(sp->m);
 }
 

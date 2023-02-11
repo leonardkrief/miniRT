@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 03:16:52 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 00:23:11 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/11 02:35:19 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_material	material(void);
 
 // objects/sphere.c
 t_sphere	*sphere(void);
-void	transform_sp(t_sphere *sp, const t_matrix *m);
+void	transform_sp(t_sphere *sp, const t_matrix m);
 t_tuple	normal_at_sp(const t_sphere *sp, t_tuple t);
 void	sphere_print_padding(const t_sphere sphere, const char *name,
 			const int padding);

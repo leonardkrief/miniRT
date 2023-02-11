@@ -16,6 +16,7 @@
 // Splitting these files into structs.h was necessary to avoid circular
 // dependecies between header files...
 
+# include "structs_geometry.h"
 # include "structs_objects.h"
 # include "structs_mlx.h"
 
@@ -53,6 +54,7 @@ typedef struct s_camera{
 	double		half_width;
 	double		half_height;
 	t_matrix	transform;
+	t_matrix	inv_transform;
 }	t_camera;
 
 typedef struct s_all{

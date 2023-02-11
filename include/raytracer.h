@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 03:46:32 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 00:14:41 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/11 15:15:18 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	intersection_print(const t_intersection itr, const char *name);
 void	intersect_sp(const t_sphere *sp, t_ray *ray0);
 
 // raytracer/rays/print.c
-void	ray_coords_print_padding(const t_ray ray, const char *name, const int padding);
-void	ray_coords_print(const t_ray ray, const char *name);
+void	ray_coords_print_padding(const t_ray *ray, const char *name, const int padding);
+void	ray_coords_print(const t_ray *ray, const char *name);
 void	ray_print(const t_ray *rt, const char *name);
 
 // raytracer/rays/lighting.c

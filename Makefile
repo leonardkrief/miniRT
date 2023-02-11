@@ -33,7 +33,6 @@ SRCS_NAMES		=	core/graphics/conversions.c \
 					core/world/add_elements.c \
 					core/world/hits.c \
 					core/world/print.c \
-					core/world/transformations.c \
 					core/world/world.c \
 					geometry/matrixes/init.c \
 					geometry/matrixes/invert.c \
@@ -116,7 +115,7 @@ fclean:			clean
 re:				fclean all
 
 # Debug
-d:				CFLAGS += -g3
+d:				CFLAGS = -Wall -Wextra -g3
 d:				all
 red:			fclean d
 
@@ -130,3 +129,4 @@ rep:			fclean p
 -include		${DEPS}
 
 .PHONY:			all clean fclean re
+.SILENT:

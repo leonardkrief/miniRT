@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:27:54 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/08 09:27:51 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/11 03:41:00 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_matrix	matrix_scaling(const double x, const double y, const double z)
 	return (matrix(a, b, c, d));
 }
 
-t_matrix	matrix_x_rotation(const double r)
+t_matrix	matrix_rotation_x(const double r)
 {
 	t_tuple	a;
 	t_tuple	b;
@@ -57,7 +57,7 @@ t_matrix	matrix_x_rotation(const double r)
 	return (matrix(a, b, c, d));
 }
 
-t_matrix	matrix_y_rotation(const double r)
+t_matrix	matrix_rotation_y(const double r)
 {
 	t_tuple	a;
 	t_tuple	b;
@@ -71,15 +71,15 @@ t_matrix	matrix_y_rotation(const double r)
 	return (matrix(a, b, c, d));
 }
 
-t_matrix	matrix_z_rotation(const double r)
+t_matrix	matrix_rotation_z(const double r)
 {
 	t_tuple	a;
 	t_tuple	b;
 	t_tuple	c;
 	t_tuple	d;
 
-	a = tuple(cos(r), -sin(r), 0, 0);
-	b = tuple(sin(r), cos(r), 0, 0);
+	a = tuple(cos(r), sin(r), 0, 0);
+	b = tuple(-sin(r), cos(r), 0, 0);
 	c = tuple(0, 0, 1, 0);
 	d = tuple(0, 0, 0, 1);
 	return (matrix(a, b, c, d));
