@@ -38,6 +38,12 @@ typedef struct s_sphere{
 	t_matrix	t_m;
 }	t_sphere;
 
+typedef struct s_plane{
+	t_material	mat;
+	t_matrix	m;
+	t_matrix	t_m;
+}	t_plane;
+
 typedef struct s_cylinder{
 	t_tuple		origin;
 	double		height;
@@ -51,8 +57,6 @@ typedef struct s_triangle{
 	t_tuple		c;
 	t_matrix	m;
 }	t_triangle;
-
-
 
 typedef uint32_t	t_object_id;
 typedef void		t_object;

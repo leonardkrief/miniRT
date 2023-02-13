@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 05:14:20 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 05:14:12 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/12 13:48:23 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,17 @@ void	world_add_sphere(t_world *world, t_sphere *sp)
 	ft_lstadd_front(&world->objs, new);
 }
 
+void	world_add_plane(t_world *world, t_plane *pl)
+{
+	t_object_list *new;
+
+	new = ft_lstnew(pl, PLANE_ID);
+	if (new == NULL)
+		return (ft_puterror(FAILED_MALLOC, (char *)__func__));
+	ft_lstadd_front(&world->objs, new);
+}
+
+
 t_object_list	*new_object(const int id)
 {
 	t_object_list	*new;
@@ -45,8 +56,8 @@ t_object_list	*new_object(const int id)
 		return (ft_puterror(UNKNOWN_OBJECT, (char *)__func__), NULL);
 	if (id == SPHERE_ID)
 		obj = sphere();
-	// else if (id == PLANE_ID)
-	// 	obj = plane();
+	else if (id == PLANE_ID)
+		obj = plane();
 	// else if (id == CYLINDER_ID)
 	// 	obj = cylinder();
 	// else if (id == TRIANGLE_ID)
@@ -55,8 +66,8 @@ t_object_list	*new_object(const int id)
 		return (ft_puterror(FAILED_MALLOC, (char *)__func__), NULL);
 	if (id == SPHERE_ID)
 		new = ft_lstnew(obj, SPHERE_ID);
-	// else if (id == PLANE_ID)
-	// 	new = ft_lstnew(obj, PLANE_ID);
+	else if (id == PLANE_ID)
+		new = ft_lstnew(obj, PLANE_ID);
 	// else if (id == CYLINDER_ID)
 	// 	new = ft_lstnew(obj, CYLINDER_ID);
 	// else if (id == TRIANGLE_ID)

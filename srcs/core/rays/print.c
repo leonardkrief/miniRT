@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 19:10:21 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 15:17:24 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 00:20:44 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raytracer.h"
+#include "rays.h"
 
 void	ray_coords_print_padding(const t_ray *ray, const char *name, const int padding)
 {
@@ -34,14 +34,9 @@ void	ray_print(const t_ray *rt, const char *name)
 	int	len;
 
 	len = ft_strlen(name);
-	printf("%sray: origin:%*s", name, 9, "");
-	tuple_raw_print(rt->origin);
-	printf(",\n%*sdirection:%*s", len, "", 6, "");
-	tuple_raw_print(rt->direction);
-	printf(",\n");
+	ray_coords_print(rt, name);
 	if (rt->itr_front)
-		intersection_print_padding(*(rt->itr_front), "itr_front: ", 16);
+		intersection_print_padding(*(rt->itr_front), "itr_front: ", len + 6);
 	if (rt->itr_back)
-		intersection_print_padding(*(rt->itr_back), "itr_back:  ", 16);
-	printf("%*s}\n", len + 11, "");
+		intersection_print_padding(*(rt->itr_back), "itr_back:  ", len + 6);
 }

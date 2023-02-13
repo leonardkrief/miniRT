@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 00:58:34 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/12 16:09:17 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@
 # include "world.h"
 
 # define WINDOW_NAME	"miniRT"
-# define WINDOW_HEIGHT			700
-# define WINDOW_WIDTH			700
-
+# define WINDOW_HEIGHT			500
+# define WINDOW_WIDTH			800
 # if __APPLE__
 #  define KEY_ESC			53
 #  define KEY_UP			126
@@ -42,6 +41,8 @@
 #  define KEY_S				1
 #  define KEY_Q				0
 #  define KEY_D				2
+#  define KEY_SLASH			47
+#  define KEY_PLUS			44
 #  define MOUSE_ZOOM_IN		5
 #  define MOUSE_ZOOM_OUT	4
 # elif __linux__
@@ -65,15 +66,10 @@
 # define PIXEL_BLACK		0, 0, 0
 # define PIXEL_WHITE		255, 255, 255
 
-// core/graphics/graphics.c
-t_window	*window(t_window *window);
-t_image	*image(t_image *image, void *mlx);
-t_canvas	*canvas(t_canvas *canvas);
-void	put_pixel(t_image *img, int x, int y, t_pixel pixel);
-
-// core/graphics/conversions.c
-t_tuple	pixel_to_point(const t_image *img, const int i, const int j);
-t_tuple	point_to_pixel(const t_image *img, const double x, const double y);
+// core/graphics/display.c
+void	all(t_all *args, t_canvas *cvs, t_camera *c, t_world *w);
+void	display_loop(t_all *args);
+void	render(const t_canvas *cvs, const t_camera *c, const t_world *w);
 
 // core/graphics/tmp_pixels/tmp_pixels.c
 t_tmp_pixel	tmp_pixel(const float r, const float g, const float b,
@@ -93,7 +89,14 @@ t_tmp_pixel	tmp_pixel_mul(const t_tmp_pixel p, const t_tmp_pixel q);
 void	free_window(const t_window *window);
 void	free_image(const t_image *image);
 int	free_canvas(const t_canvas *canvas);
+// devra prendre plus qu'un canvas plus tard mais ok pour l'instant
 int	exit_program(t_all *args);
+
+// core/graphics/mlx_basics.c
+t_window	*window(t_window *window);
+t_image	*image(t_image *image, void *mlx);
+t_canvas	*canvas(t_canvas *canvas);
+void	put_pixel(t_image *img, int x, int y, t_pixel pixel);
 
 // core/graphics/pixels/print.c
 void	pixel_print(const t_pixel p, const char *name);
@@ -111,6 +114,13 @@ t_pixel	pixel_add(const t_pixel p, const t_pixel q);
 t_pixel	pixel_sub(const t_pixel p, const t_pixel q);
 t_pixel	pixel_scal(const double q, const t_pixel p);
 t_pixel	pixel_mul(const t_pixel p, const t_pixel q);
+
+// core/graphics/camera.c
+t_camera	camera(double camera_width, double camera_height, double fov);
+void	pixel_size(t_camera *c);
+void	view_transform(t_camera *c, t_tuple from, t_tuple to, t_tuple up);
+t_ray	ray_for_pixel(const t_camera *c, const int i, const int j);
+void	camera_transform(t_camera *c, const t_matrix transform);
 
 // core/graphics/inputs/inputs.c
 void	input_key_camera_movements(int keysym, t_all *args);

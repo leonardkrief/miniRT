@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:09:37 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 12:49:32 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/12 11:35:51 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,6 @@ void	transform_sp(t_sphere *sp, const t_matrix m)
 {
 	sp->m = matrix_matrix(matrix_invert(m, 4), sp->m, 4);
 	sp->t_m = matrix_transpose(sp->m);
-}
-
-t_tuple	normal_at_sp(const t_sphere *sp, t_tuple point)
-{
-	point = matrix_vect(sp->m,point);
-	point.w = 0;
-	point = matrix_vect(sp->t_m,point);
-	point.w = 0;
-	return (tuple_normalize(point));
 }
 
 void	sphere_print_padding(const t_sphere sphere, const char *name,

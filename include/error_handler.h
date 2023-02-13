@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/09 15:27:43 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/12 12:37:42 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static const char	*failure_strings[] = {
 
 typedef uint64_t t_failure;
 
-// error_handler/error.c
-int			ft_putstr_error(const char *s);
-const char	*get_failure_string(t_failure failure);
-void		ft_puterror(t_failure failure_set, void *args);
+// utils/error_handler/error.c
+int	ft_putstr_error(const char *s);
+const char	*get_failure_string(const t_failure failure);
+void	ft_puterror(const t_failure failure_set, const void *args);
 
 #endif

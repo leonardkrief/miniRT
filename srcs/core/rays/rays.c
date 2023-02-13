@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 03:46:32 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/10 02:50:29 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/12 12:18:37 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raytracer.h"
+#include "rays.h"
 
 t_ray	ray(const t_tuple origin, const t_tuple direction)
 {

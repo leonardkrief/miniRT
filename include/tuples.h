@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 22:23:37 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/12 17:23:44 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,29 @@
 # define TUPLE_FORMAT "%+-"MAX_PRINT_LEN"."PRECISION"lf"
 # define TUPLE_FORMAT_SINGLE "%+-1."PRECISION"lf"
 
-// tuples/print.c
+// geometry/tuples/ops2.c
+t_tuple	tuple_reflect(const t_tuple ray, const t_tuple normal);
+
+// geometry/tuples/print.c
 void	tuple_raw_print(t_tuple a);
 void	tuple_print(t_tuple a, char *name);
 
-// tuples/init.c
+// geometry/tuples/init.c
 t_tuple	point(float x, float y, float z);
 t_tuple	vector(float x, float y, float z);
 t_tuple	tuple(float x, float y, float z, float w);
 
-// tuples/ops1.c
-t_tuple	tuple_add(t_tuple a, t_tuple b);
-t_tuple	tuple_sub(t_tuple a, t_tuple b);
-t_tuple	tuple_neg(t_tuple a);
-t_tuple	tuple_mul(double q, t_tuple a);
-t_tuple	tuple_crossprod(t_tuple a, t_tuple b);
+// geometry/tuples/ops1.c
+t_tuple	tuple_add(const t_tuple a, const t_tuple b);
+t_tuple	tuple_sub(const t_tuple a, const t_tuple b);
+t_tuple	tuple_neg(const t_tuple a);
+t_tuple	tuple_mul(const double q, const t_tuple a);
+t_tuple	tuple_crossprod(const t_tuple a, const t_tuple b);
 
-// tuples/ops2.c
-t_tuple	tuple_reflect(const t_tuple r, const t_tuple n);
-
-// tuples/scalar_ops.c
-int		eq(double a, double b);
+// geometry/tuples/scalar_ops.c
+int	eq(double a, double b);
 double	tuple_modulus(t_tuple a);
 t_tuple	tuple_normalize(t_tuple a);
-double	tuple_dotprod(t_tuple a, t_tuple b);
+double	tuple_dotprod(const t_tuple a, const t_tuple b);
 
 #endif

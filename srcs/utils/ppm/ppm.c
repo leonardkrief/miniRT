@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 00:01:41 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/10 13:39:05 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/12 12:36:49 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	open_ppm(char *file)
 	return (fd);
 }
 
-void	ppm_header(int fd)
+void	ppm_header(const int fd)
 {
 	ft_putstr_fd("P3\n", fd);
 	ft_putnbr_fd(WINDOW_WIDTH, fd);
@@ -47,7 +47,7 @@ void	ppm_header(int fd)
 	ft_putstr_fd("\n255\n", fd);
 }
 
-void	ppm_data(int fd, t_image i)
+void	ppm_data(const int fd, const t_image i)
 {
 	char	*s;
 	int		x;
@@ -76,13 +76,13 @@ void	ppm_data(int fd, t_image i)
 	}
 }
 
-void	close_ppm(int fd)
+void	close_ppm(const int fd)
 {
 	if (close(fd) == -1)
 		ft_puterror(FAILED_CLOSE, strerror(errno));
 }
 
-void	get_ppm(t_image image)
+void	get_ppm(const t_image image)
 {
 	int			fd;
 	static char	file[] = FILENAME;

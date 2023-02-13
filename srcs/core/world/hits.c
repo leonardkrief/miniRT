@@ -6,13 +6,14 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 02:40:42 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 22:23:44 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 01:37:04 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
 
-t_computations	prepare_computations(const t_ray *ray, const t_intersection *itr)
+t_computations	prepare_computations(const t_ray *ray,
+										const t_intersection *itr)
 {
 	t_computations	comps;
 
@@ -51,33 +52,28 @@ bool	is_shadowed(const t_world *w, const t_tuple point, const t_light *light)
 
 t_tmp_pixel	shade_hit(const t_world *w, const t_computations *c)
 {
-	size_t	i;
+	size_t		i;
 	t_tmp_pixel	color;
+	t_material	*mat;
 
 	i = 0;
 	ft_memset(&color, 0, sizeof(color));
 	if (c->id == SPHERE_ID)
-	{
-		while (i < w->nb_lights)
-		{
-			color = tmp_pixel_add(color, lighting(c, &((t_sphere *)(c->ob))->mat,
-						&w->lights[i], is_shadowed(w, c->over_point, &w->lights[i])));
-			i++;
-		}
-		return (color);
-	}
-	// else if (c->id == PLANE_ID)
-	// 	return (lighting(((t_plane *)(c->ob))->mat, w->lights[0], c->over_point, c->eye, c->normal));
-	// else if (c->id == CYLINDER_ID)
-	// 	return (lighting(((t_cylinder *)(c->ob))->mat, w->lights[0], c->over_point, c->eye, c->normal));
-	// else if (c->id == TRIANGLE_ID)
-	// 	return(lighting(((t_triangle *)(c->ob))->mat, w->lights[0], c->over_point, c->eye, c->normal));
+		mat = &((t_sphere *)(c->ob))->mat;
+	else if (c->id == PLANE_ID)
+		mat = &((t_plane *)(c->ob))->mat;
 	else
 		return (tmp_pixel(TMP_PIXEL_BLACK, 0));
+	while (i < w->nb_lights)
+	{
+		color = tmp_pixel_add(color, lighting(c, mat,
+					&w->lights[i], is_shadowed(w, c->over_point, &w->lights[i])));
+		i++;
+	}
+	return (color);
 }
 
-
-t_tmp_pixel	lighting(const t_computations *c, const t_material *mat, 
+t_tmp_pixel	lighting(const t_computations *c, const t_material *mat,
 									const t_light *light, bool in_shadow)
 {
 	t_tmp_pixel	effective_color;
@@ -103,7 +99,6 @@ t_tmp_pixel	lighting(const t_computations *c, const t_material *mat,
 
 // I was forced to recalculate the lightv vector because of this stupid
 // 4 arguments limit rule
-
 t_tmp_pixel	point_in_front_light(const t_computations *c, const t_material *mat,
 				const t_light *light, t_tmp_pixel diffuse)
 {

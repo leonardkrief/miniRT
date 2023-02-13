@@ -6,9 +6,10 @@ DIR_SRCS		=	srcs
 
 DIR_OBJS		=	objs
 
-SRCS_NAMES		=	core/graphics/conversions.c \
+SRCS_NAMES		=	core/graphics/camera.c \
+					core/graphics/display.c \
 					core/graphics/free.c \
-					core/graphics/graphics.c \
+					core/graphics/mlx_basics.c \
 					core/graphics/inputs/inputs.c \
 					core/graphics/pixels/ops.c \
 					core/graphics/pixels/pixels.c \
@@ -18,17 +19,17 @@ SRCS_NAMES		=	core/graphics/conversions.c \
 					core/graphics/tmp_pixels/print.c \
 					core/objects/lights/lights.c \
 					core/objects/lights/print.c \
-					core/objects/sphere.c \
-					core/objects/material.c \
-					core/raytracer/intersections/intersect_objects.c \
-					core/raytracer/intersections/intersections.c \
-					core/raytracer/intersections/print.c \
-					core/raytracer/rays/print.c \
-					core/raytracer/rays/rays.c \
-					core/world/camera.c \
-					core/world/display.c \
-					core/world/object_lists/basics.c \
-					core/world/object_lists/more.c \
+					core/objects/objects.c \
+					core/objects/object_lists/basics.c \
+					core/objects/object_lists/more.c \
+					core/objects/shapes/plane.c \
+					core/objects/shapes/sphere.c \
+					core/intersections/intersect_plane.c \
+					core/intersections/intersect_sphere.c \
+					core/intersections/intersections.c \
+					core/intersections/print.c \
+					core/rays/print.c \
+					core/rays/rays.c \
 					core/world/add_elements.c \
 					core/world/hits.c \
 					core/world/print.c \
@@ -90,11 +91,11 @@ ${DIR_OBJS}:
 				mkdir -p ${addprefix ${DIR_OBJS}/, core/phong}
 				mkdir -p ${addprefix ${DIR_OBJS}/, core/objects}
 				mkdir -p ${addprefix ${DIR_OBJS}/, core/objects/lights}
-				mkdir -p ${addprefix ${DIR_OBJS}/, core/raytracer}
-				mkdir -p ${addprefix ${DIR_OBJS}/, core/raytracer/intersections}
-				mkdir -p ${addprefix ${DIR_OBJS}/, core/raytracer/rays}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/objects/object_lists}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/objects/shapes}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/intersections}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/rays}
 				mkdir -p ${addprefix ${DIR_OBJS}/, core/world}
-				mkdir -p ${addprefix ${DIR_OBJS}/, core/world/object_lists}
 				mkdir -p ${addprefix ${DIR_OBJS}/, geometry/tuples}
 				mkdir -p ${addprefix ${DIR_OBJS}/, geometry/matrixes}
 				mkdir -p ${addprefix ${DIR_OBJS}/, geometry/matrixes/transformations}
@@ -128,4 +129,4 @@ rep:			fclean p
 -include		${DEPS}
 
 .PHONY:			all clean fclean re
-.SILENT:
+# .SILENT:

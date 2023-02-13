@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:44:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 17:21:50 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/12 18:29:05 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,13 @@ void	input_key_camera_movements(int keysym, t_all *args)
 		camera_transform(args->camera, matrix_rotation_y(r_tick));
 	else if (keysym == KEY_LEFT)
 		camera_transform(args->camera, matrix_rotation_y(-r_tick));
+	else if (keysym == KEY_SLASH)
+		camera_transform(args->camera, matrix_rotation_z(r_tick));
+	else if (keysym == KEY_PLUS)
+		camera_transform(args->camera, matrix_rotation_z(-r_tick));
 	render(args->canvas, args->camera, args->world);
-	mlx_put_image_to_window(args->canvas->window.mlx, args->canvas->window.win, args->canvas->image.img, 0, 0);
+	mlx_put_image_to_window(args->canvas->window.mlx,
+			args->canvas->window.win, args->canvas->image.img, 0, 0);
 }
 
 void	input_key_close_window(int keysym, t_all *args)
@@ -47,7 +52,7 @@ void	input_key_close_window(int keysym, t_all *args)
 
 int	input_key(int keysym, t_all *args)
 {
-	int static count;
+	static int	count;
 
 	count++;
 	printf("(%d) pressed key: %3d\n", count, keysym);
@@ -58,16 +63,16 @@ int	input_key(int keysym, t_all *args)
 
 int	input_mouse(int mousesym, int i, int j, t_all *args)
 {
-	t_canvas	*cvs;
+	(void)args;
+	static int	count;
 
-	cvs = args->canvas;
-	printf("mouse click: %3d  i: %d  j: %d\n", mousesym, i, j);
-	t_tuple t = pixel_to_point(&cvs->image, i, j);
-	printf("                  x: %f  y: %f\n", t.x, t.y);
+	count++;
+	printf("(%d) mouse click: %d  i: %d  j: %d\n", count, mousesym, i, j);
+	
+	t_ray	r = ray_for_pixel(args->camera, i, j);
+	t_pixel	color = color_at(args->world, &r);
+	printf("     %d %d %d\n\n", pixel_get_r(color), pixel_get_g(color), pixel_get_b(color));
+
 	fflush(stdout);
-	if (mousesym == MOUSE_ZOOM_IN || mousesym == MOUSE_ZOOM_OUT)
-	{
-		// zoom in & out
-	}
 	return (0);
 }

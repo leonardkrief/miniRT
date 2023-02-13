@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:31:21 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/10 01:59:08 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/12 12:16:33 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object_lists.h"
+#include "objects.h"
 
 t_object_list	*ft_lstnew(void *ob, int id)
 {

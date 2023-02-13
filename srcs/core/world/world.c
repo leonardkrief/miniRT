@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:06:22 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 05:13:53 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/12 15:43:33 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	intersect_world(const t_world *world, const t_ray *ray)
 	{
 		if (objs->id == SPHERE_ID)
 			intersect_sp(objs->ob, (t_ray *)ray);
-		// else if (objs->id == PLANE_ID)
-		// 	intersect_pl(objs->ob, ray);
+		else if (objs->id == PLANE_ID)
+			intersect_pl(objs->ob, (t_ray *)ray);
 		// else if (objs->id == CYLINDER_ID)
 		// 	intersect_cy(objs->ob, ray);
 		// else if (objs->id == TRIANGLE_ID)

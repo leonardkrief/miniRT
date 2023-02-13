@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:21:42 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/10 03:05:40 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 02:20:12 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raytracer.h"
+#include "intersections.h"
 
 t_intersection	*intersection(t_object_id object_id, t_object *object)
 {
@@ -27,6 +27,8 @@ t_intersection	*intersection(t_object_id object_id, t_object *object)
 	itr->id = object_id;
 	if (itr->id == SPHERE_ID)
 		itr->ob = (t_sphere *)object;
+	if (itr->id == PLANE_ID)
+		itr->ob = (t_sphere *)object;
 	return (itr);
 }
 
@@ -34,8 +36,8 @@ t_tuple	normal_at(const t_object_id id, const t_object *obj, t_tuple point)
 {
 	if (id == SPHERE_ID)
 		return (normal_at_sp((t_sphere *)obj, point));
-	// else if (id == PLANE_ID)
-	// 	return (normal_at_pl((t_plane *)obj, point));
+	else if (id == PLANE_ID)
+		return (normal_at_pl((t_plane *)obj, point));
 	// else if (id == CYLINDER_ID)
 	// 	return (normal_at_cy((t_cylinder *)obj, point));
 	// else if (id == TRIANGLE_ID)

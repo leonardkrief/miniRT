@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersect_objects.c                                :+:      :+:    :+:   */
+/*   intersect_sphere.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 02:04:01 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 19:33:19 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 02:37:25 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raytracer.h"
+#include "intersections.h"
+
+// local_normal_at is just the local_point.w = 0 line. I first
+// transform point to object space through m then in that space
+// (I am at the center of a 1-radius sphere)
+// that point is the normal vector (that explains the local_point.w = 0)
+// then i transform back that vector to world space through t_m
+t_tuple	normal_at_sp(const t_sphere *sp, t_tuple point)
+{
+	t_tuple	local_point;
+	t_tuple	world_normal;
+
+	local_point = matrix_vect(sp->m, point);
+	local_point.w = 0;
+	world_normal = matrix_vect(sp->t_m, local_point);
+	world_normal.w = 0;
+	return (tuple_normalize(world_normal));
+}
 
 static void	verify_intersections_sp(const double *q, t_ray *ray,
 				const t_sphere *sp)

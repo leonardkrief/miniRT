@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 20:38:29 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 20:59:25 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 00:55:37 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	display_loop(t_all *args)
 	w = args->world;
 	render(cvs, c, w);
 	mlx_put_image_to_window(cvs->window.mlx, cvs->window.win, cvs->image.img, 0, 0);
-	// mlx_key_hook(cvs->window.win, &input_key, args);
 	mlx_hook(cvs->window.win, 2, 1UL << 0, &input_key, args);
 	mlx_hook(cvs->window.win, CLOSE_WINDOW_BUTTON_EVENT, 0, &exit_program, args);
 	mlx_mouse_hook(cvs->window.win, &input_mouse, args);

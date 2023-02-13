@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material.c                                         :+:      :+:    :+:   */
+/*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 03:31:45 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/09 14:16:55 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/12 16:11:55 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/12 16:29:31 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "objects.h"
+# include "objects.h"
 
 t_material	material(void)
 {
@@ -22,4 +22,13 @@ t_material	material(void)
 	mat.specular = 0.9;
 	mat.shininess = 200;
 	return (mat);
+}
+
+void	transform_object(const t_object *obj, const t_object_id id,
+				const t_matrix m)
+{
+	if (id == SPHERE_ID)
+		transform_sp((t_sphere *)obj, m);
+	else if (id == PLANE_ID)
+		transform_pl((t_plane *)obj, m);
 }

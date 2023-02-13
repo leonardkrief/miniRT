@@ -6,20 +6,20 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 02:40:00 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/07 01:32:07 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/12 12:04:06 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tuples.h"
 
-int	eq(double a, double b)
+int	eq(const double a, const double b)
 {
 	if (fabs(a - b) < EPSILON)
 		return (1);
 	return (0);
 }
 
-double	tuple_modulus(t_tuple a)
+double	tuple_modulus(const t_tuple a)
 {
 	if (eq(0, a.w))
 		return (sqrt(a.x * a.x + a.y * a.y + a.z * a.z));
@@ -27,30 +27,24 @@ double	tuple_modulus(t_tuple a)
 	return (INT_MIN);
 }
 
-t_tuple	tuple_normalize(t_tuple a)
+t_tuple	tuple_normalize(const t_tuple a)
 {
 	double	m;
+	t_tuple	n;
 
-	if (!eq(0, a.w))
+	ft_memset(&n, 0, sizeof (n));
+	if (!eq(0, n.w))
 	{
 		ft_puterror(ERROR_NORMALIZE, (char *)__func__);
-		ft_memset(&a, 0, sizeof (a));
-		return (a);
+		return (n);
 	}
 	m = tuple_modulus(a);
 	if (eq(m, 0))
-	{
-		a.x = 0;
-		a.y = 0;
-		a.z = 0;
-	}
-	else
-	{
-		a.x = (double)a.x / (double)m;
-		a.y = (double)a.y / (double)m;
-		a.z = (double)a.z / (double)m;
-	}
-	return (a);
+		return (n);
+	n.x = (double)a.x / (double)m;
+	n.y = (double)a.y / (double)m;
+	n.z = (double)a.z / (double)m;
+	return (n);
 }
 
 double	tuple_dotprod(const t_tuple a, const t_tuple b)

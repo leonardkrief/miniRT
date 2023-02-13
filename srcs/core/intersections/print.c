@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:25:47 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/09 22:30:18 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 00:21:42 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raytracer.h"
+#include "intersections.h"
 
 void	intersection_print_padding(const t_intersection itr, const char *name,
 			const int padding)
@@ -18,10 +18,10 @@ void	intersection_print_padding(const t_intersection itr, const char *name,
 	int	len;
 
 	len = ft_strlen(name);
-	printf("%*s%s%*s", padding + 1, "", name, 5, "");
+	printf("%*s%s%*s", padding + 1, "", name, 1, "");
 	if (itr.ob)
 	{
-		printf("t = " TUPLE_FORMAT_SINGLE ",\n", itr.t);
+		printf("t = %f\n", itr.t);
 		if (itr.id == SPHERE_ID)
 			sphere_print_padding(*(t_sphere *)itr.ob, "", len + padding + 7);
 	}
