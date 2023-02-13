@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:06:55 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 13:48:37 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 16:29:26 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,6 @@
 // default camera movements settings
 # define CAMERA_TRANSLATION_SENSITIVITY	0.4
 # define CAMERA_ROTATION_SENSITIVITY	M_PI / 20
-
-typedef struct s_computations{
-	double			t;
-	t_object_id		id;
-	t_object		*ob;
-	t_tuple			point;
-	t_tuple			over_point;
-	t_tuple			eye;
-	t_tuple			normal;
-	bool			inside;
-}	t_computations;
 
 // *-$-*-$-*-$-*-$-*-$-*-$-*-$-*-$-*-$-*-$-*-$-*-$-*-$-*-$-*-$-*-$-*-$-*-$-*-$-*
 

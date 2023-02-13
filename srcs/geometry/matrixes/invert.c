@@ -6,13 +6,13 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 07:03:41 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/08 09:35:54 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 14:24:17 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrixes.h"
 
-t_matrix	matrix_submatrix(t_matrix a, int row, int col)
+t_matrix	matrix_submatrix(t_matrix a, const int row, const int col)
 {
 	int	i;
 	int	j;
@@ -47,7 +47,8 @@ t_matrix	matrix_submatrix(t_matrix a, int row, int col)
 	return (a);
 }
 
-t_matrix	matrix_pivot(t_matrix m, int col, int dim, int *row_is_null)
+t_matrix	matrix_pivot(t_matrix m, const int col, 
+								const int dim, int *row_is_null)
 {
 	int		row;
 	int		non_null_col;
@@ -67,7 +68,7 @@ t_matrix	matrix_pivot(t_matrix m, int col, int dim, int *row_is_null)
 	return (m);
 }
 
-double	det(t_matrix m, int dim)
+double	det(t_matrix m, const int dim)
 {
 	int		row;
 	int		row_is_null;
@@ -90,7 +91,8 @@ double	det(t_matrix m, int dim)
 	return (det);
 }
 
-double	matrix_cofactor(t_matrix m, int row, int col, int dim)
+double	matrix_cofactor(const t_matrix m, const int row,
+								const int col, const int dim)
 {
 	double	res;
 
@@ -100,7 +102,7 @@ double	matrix_cofactor(t_matrix m, int row, int col, int dim)
 	return (res);
 }
 
-t_matrix	matrix_invert(t_matrix m, int dim)
+t_matrix	matrix_invert(const t_matrix m, const int dim)
 {
 	int			row;
 	int			col;

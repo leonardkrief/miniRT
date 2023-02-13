@@ -6,14 +6,14 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:14:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/08 09:26:35 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 14:21:27 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrixes.h"
 
 // This function does not entirely depends on MATRIX_DIM
-void	matrix_insert_col(t_matrix *m, t_tuple a, int n)
+void	matrix_insert_col(t_matrix *m, const t_tuple a, const int n)
 {
 	if (!(n >= 0 && n <= MATRIX_DIM))
 		return ;
@@ -24,7 +24,8 @@ void	matrix_insert_col(t_matrix *m, t_tuple a, int n)
 }
 
 // This function does not entirely depends on MATRIX_DIM
-t_matrix	matrix(t_tuple a, t_tuple b, t_tuple c, t_tuple d)
+t_matrix	matrix(const t_tuple a, const t_tuple b, 
+								const t_tuple c, const t_tuple d)
 {
 	t_matrix	m;
 

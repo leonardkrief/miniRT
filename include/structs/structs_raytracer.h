@@ -44,6 +44,17 @@ typedef struct s_world
 	t_light			lights[10];
 }	t_world;
 
+typedef struct s_computations{
+	double			t;
+	t_object_id		id;
+	t_object		*ob;
+	t_tuple			point;
+	t_tuple			over_point;
+	t_tuple			eye;
+	t_tuple			normal;
+	bool			inside;
+}	t_computations;
+
 // To make calculations faster, camera.transform is directly 
 // stored as inverted matrix. IMPORTANT TO REMEMBER !
 typedef struct s_camera{

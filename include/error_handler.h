@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 12:37:42 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 14:18:48 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,32 @@
 # include <stdint.h>
 # include "libft.h"
 
-
-// Tester de remplacer ca par une enum ?
-// Not yet functional, I am waiting to have all my error codes to sort them well
-# define NO_FAILURE					UINT64_C(0)
-# define FAILED_MALLOC				UINT64_C(1)
-# define FAILED_OPEN				UINT64_C(2)
-# define FAILED_CLOSE				UINT64_C(3)
-# define ERROR_MODULUS				UINT64_C(98) //"Error modulus: non-vector object detected"
-# define ERROR_NORMALIZE			UINT64_C(97) //"Error normalize: non-vector object detected"
-# define ERROR_DOTPROD				UINT64_C(97) //"Error dotprod: non-vector objects detected"
-# define ERROR_DETERMINANT			UINT64_C(97) //"Error determinant: wrong dimension"
-# define ERROR_INVERT_MATRIX		UINT64_C(97) //"Error invert matrix: det = 0"
-# define ERROR_RAY					UINT64_C(97) //"Error creating ray"
-# define ERROR_SPHERE				UINT64_C(97) //"Error creating sphere"
-# define ERROR_INTERSECTION			UINT64_C(97) //"Error creating intersection"
-# define FALSE_MATRIX_INPUT			UINT64_C(99) //"Cannot create matrix out of non-vector objects"
-# define UNKNOWN_OBJECT				UINT64_C(100) //"Unknown geometric shape detected. Failed creating it"
-# define FAILED_CREATING_OBJECT		UINT64_C(100) //"Unknown geometric shape detected. Failed creating it"
-# define NO_FILENAME_AVAILABLE		UINT64_C(100) //"No more filenames available. Remove or rename ppm files"
-# define LAST_FAILURE				NO_FILENAME_AVAILABLE
+typedef enum	e_failure{
+	NO_FAILURE,
+	FAILED_MALLOC,
+	FAILED_OPEN,
+	FAILED_CLOSE,
+	ERROR_MODULUS, //"Error modulus: non-vector object detected"
+	ERROR_NORMALIZE, //"Error normalize: non-vector object detected"
+	ERROR_DOTPROD, //"Error dotprod: non-vector objects detected"
+	ERROR_DETERMINANT, //"Error determinant: wrong dimension"
+	ERROR_INVERT_MATRIX, //"Error invert matrix: det = 0"
+	ERROR_RAY, //"Error creating ray"
+	ERROR_SPHERE, //"Error creating sphere"
+	ERROR_INTERSECTION, //"Error creating intersection"
+	FALSE_MATRIX_INPUT, //"Cannot create matrix out of non-vector objects"
+	UNKNOWN_OBJECT, //"Unknown geometric shape detected. Failed creating it"
+	FAILED_CREATING_OBJECT, //"Unknown geometric shape detected. Failed creating it"
+	NO_FILENAME_AVAILABLE, //"No more filenames available. Remove or rename ppm files"
+	LAST_FAILURE = NO_FILENAME_AVAILABLE,
+}	t_failure;
 
 static const char	*failure_strings[] = {
 	"No failure",
 	"Failed malloc",
 	"Failed open",
 	"Failed close",
-	"No more filenames available. Remove or rename ppm files"
 };
-
-typedef uint64_t t_failure;
 
 // utils/error_handler/error.c
 int	ft_putstr_error(const char *s);

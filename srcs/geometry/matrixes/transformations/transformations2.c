@@ -6,13 +6,14 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:27:54 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/08 09:28:03 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 14:20:22 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrixes.h"
 
-t_matrix	matrix_shearing(double x[2], double y[2], double z[2])
+t_matrix	matrix_shearing(const double x[2], const double y[2],
+						const double z[2])
 {
 	t_tuple	a;
 	t_tuple	b;

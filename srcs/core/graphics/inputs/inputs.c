@@ -6,13 +6,13 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:44:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 18:29:05 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 14:10:41 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphics.h"
 
-void	input_key_camera_movements(int keysym, t_all *args)
+void	input_key_camera_movements(t_input keysym, t_all *args)
 {
 	double	t_tick;
 	double	r_tick;
@@ -27,6 +27,10 @@ void	input_key_camera_movements(int keysym, t_all *args)
 		camera_transform(args->camera, matrix_translation(-t_tick, 0, 0));
 	else if (keysym == KEY_D)
 		camera_transform(args->camera, matrix_translation(t_tick, 0, 0));
+	else if (keysym == KEY_X)
+		camera_transform(args->camera, matrix_translation(0, -t_tick, 0));
+	else if (keysym == KEY_W)
+		camera_transform(args->camera, matrix_translation(0, t_tick, 0));
 	else if (keysym == KEY_UP)
 		camera_transform(args->camera, matrix_rotation_x(-r_tick));
 	else if (keysym == KEY_DOWN)
@@ -44,13 +48,13 @@ void	input_key_camera_movements(int keysym, t_all *args)
 			args->canvas->window.win, args->canvas->image.img, 0, 0);
 }
 
-void	input_key_close_window(int keysym, t_all *args)
+void	input_key_close_window(t_input keysym, t_all *args)
 {
 	if (keysym == KEY_ESC || keysym == CLOSE_WINDOW_BUTTON_EVENT)
 		exit_program(args);
 }
 
-int	input_key(int keysym, t_all *args)
+int	input_key(t_input keysym, t_all *args)
 {
 	static int	count;
 
@@ -61,7 +65,7 @@ int	input_key(int keysym, t_all *args)
 	return (0);
 }
 
-int	input_mouse(int mousesym, int i, int j, t_all *args)
+int	input_mouse(t_input mousesym, int i, int j, t_all *args)
 {
 	(void)args;
 	static int	count;

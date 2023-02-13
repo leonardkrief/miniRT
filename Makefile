@@ -19,9 +19,11 @@ SRCS_NAMES		=	core/graphics/camera.c \
 					core/graphics/tmp_pixels/print.c \
 					core/objects/lights/lights.c \
 					core/objects/lights/print.c \
-					core/objects/objects.c \
 					core/objects/object_lists/basics.c \
 					core/objects/object_lists/more.c \
+					core/objects/patterns/patterns_basics.c \
+					core/objects/patterns/patterns.c \
+					core/objects/objects.c \
 					core/objects/shapes/plane.c \
 					core/objects/shapes/sphere.c \
 					core/intersections/intersect_plane.c \
@@ -92,6 +94,7 @@ ${DIR_OBJS}:
 				mkdir -p ${addprefix ${DIR_OBJS}/, core/objects}
 				mkdir -p ${addprefix ${DIR_OBJS}/, core/objects/lights}
 				mkdir -p ${addprefix ${DIR_OBJS}/, core/objects/object_lists}
+				mkdir -p ${addprefix ${DIR_OBJS}/, core/objects/patterns}
 				mkdir -p ${addprefix ${DIR_OBJS}/, core/objects/shapes}
 				mkdir -p ${addprefix ${DIR_OBJS}/, core/intersections}
 				mkdir -p ${addprefix ${DIR_OBJS}/, core/rays}

@@ -18,11 +18,32 @@
 
 # include "structs_geometry.h"
 # include "structs_pixels.h"
+# include <stdbool.h>
 
 typedef struct s_light{
 	t_tuple		position;
 	t_tmp_pixel	intensity;
 }	t_light;
+
+typedef void	t_object;
+
+typedef enum	e_pattern_id
+{
+	STRIPED_PATTERN,
+	GRADIENT_PATTERN,
+	RING_PATTERN,
+	THREED_CHECKER_PATTERN,
+} t_pattern_id;
+
+typedef t_tmp_pixel (*t_pattern_func)(const t_tuple p,
+					const t_tmp_pixel a, const t_tmp_pixel b);
+// A pattern is null if pat == NULL
+typedef struct s_pattern{
+	t_tmp_pixel	color1;
+	t_tmp_pixel	color2;
+	t_matrix	m;
+	t_tmp_pixel	(*f)(const t_tuple p, const struct s_pattern *pat);
+}	t_pattern;
 
 typedef struct s_material{
 	t_tmp_pixel	color;
@@ -30,8 +51,21 @@ typedef struct s_material{
 	double		diffuse;
 	double		specular;
 	double		shininess;
+	t_pattern	pattern;
 }	t_material;
 
+typedef void	t_object;
+typedef enum	e_object_id
+{
+	SPHERE_ID = 1,
+	PLANE_ID = 2,
+	CYLINDER_ID = 3,
+	TRIANGLE_ID = 4,
+	MIN_ID = SPHERE_ID,
+	MAX_ID = TRIANGLE_ID
+} t_object_id;
+// WARNING : in my objects structs, the m matrix is already inverted
+// You dont have to always recalculate it that way
 typedef struct s_sphere{
 	t_material	mat;
 	t_matrix	m;
@@ -57,9 +91,6 @@ typedef struct s_triangle{
 	t_tuple		c;
 	t_matrix	m;
 }	t_triangle;
-
-typedef uint32_t	t_object_id;
-typedef void		t_object;
 
 typedef struct s_object_list
 {

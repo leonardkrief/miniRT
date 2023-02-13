@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 02:04:01 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 02:37:25 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 02:59:31 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	intersect_sp(const t_sphere *sp, t_ray *ray0)
 	t_ray			ray;
 
 	ray = matrix_ray(&sp->m, ray0);
+	// local_intersect_at starts_here
 	sp_to_ray = tuple_sub(ray.origin, point(0, 0, 0));
 	q[0] = tuple_dotprod(ray.direction, ray.direction);
 	q[1] = 2 * tuple_dotprod(ray.direction, sp_to_ray);

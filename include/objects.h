@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 03:16:52 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 16:30:41 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 22:54:16 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,19 @@
 # include "matrixes.h"
 # include "graphics.h"
 
-# define SPHERE_ID		UINT32_C(1)
-# define PLANE_ID		UINT32_C(2)
-# define CYLINDER_ID	UINT32_C(3)
-# define TRIANGLE_ID	UINT32_C(4)
-# define MIN_ID			SPHERE_ID
-# define MAX_ID			TRIANGLE_ID
+// core/objects/patterns/patterns_basics.c
+t_pattern	pattern(const t_pattern_id id, const t_tmp_pixel a,
+							const t_tmp_pixel b);
+t_tmp_pixel	pattern_at(const t_object *obj, const t_object_id id,
+					const t_material *mat, const t_computations *c);
+void	transform_pattern(t_pattern *pat, const t_matrix m);
+
+// core/objects/patterns/patterns.c
+t_tmp_pixel	stripe_at(const t_tuple p, const t_pattern *pat);
+t_tmp_pixel	gradient_at(const t_tuple p, const t_pattern *pat);
+t_tmp_pixel	ring_at(const t_tuple p, const t_pattern *pat);
+t_tmp_pixel	threed_checker_at(const t_tuple p, const t_pattern *pat);
+t_tmp_pixel	striped_gradient_at(const t_tuple p, const t_pattern *pat);
 
 // core/objects/shapes/sphere.c
 t_sphere	*sphere(void);
@@ -60,7 +67,7 @@ void	ft_lstprint(t_object_list *lst);
 
 // core/objects/objects.c
 t_material	material(void);
-void		transform_object(const t_object *obj, const t_object_id id,
+void	transform_object(const t_object *obj, const t_object_id id,
 				const t_matrix m);
 
 #endif

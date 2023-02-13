@@ -6,14 +6,14 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 06:08:09 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 12:52:18 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 14:26:25 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrixes.h"
 
 // This function does not entirely depends on MATRIX_DIM
-t_tuple	matrix_vect(t_matrix m, t_tuple t)
+t_tuple	matrix_vect(const t_matrix m, const t_tuple t)
 {
 	t_tuple	result;
 
@@ -28,7 +28,7 @@ t_tuple	matrix_vect(t_matrix m, t_tuple t)
 	return (result);
 }
 
-t_matrix	matrix_matrix(t_matrix m, t_matrix n, int dim)
+t_matrix	matrix_matrix(const t_matrix m, const t_matrix n, const int dim)
 {
 	int			i;
 	int			j;

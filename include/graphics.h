@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 16:09:17 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 14:13:11 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,46 @@
 # define WINDOW_HEIGHT			500
 # define WINDOW_WIDTH			800
 # if __APPLE__
-#  define KEY_ESC			53
-#  define KEY_UP			126
-#  define KEY_DOWN			125
-#  define KEY_LEFT			124
-#  define KEY_RIGHT			123
-#  define KEY_Z				13
-#  define KEY_S				1
-#  define KEY_Q				0
-#  define KEY_D				2
-#  define KEY_SLASH			47
-#  define KEY_PLUS			44
-#  define MOUSE_ZOOM_IN		5
-#  define MOUSE_ZOOM_OUT	4
+typedef enum	e_input
+{
+	KEY_ESC = 53,
+	KEY_UP = 126,
+	KEY_DOWN = 125,
+	KEY_LEFT = 124,
+	KEY_RIGHT = 123,
+	KEY_Z = 13,
+	KEY_S = 1,
+	KEY_Q = 0,
+	KEY_D = 2,
+	KEY_W = 6,
+	KEY_X = 7,
+	KEY_SLASH = 47,
+	KEY_PLUS = 44,
+	MOUSE_ZOOM_IN = 5,
+	MOUSE_ZOOM_OUT = 4,
+	CLOSE_WINDOW_BUTTON_EVENT = 17,
+}	t_input;
 # elif __linux__
-#  define KEY_ESC			65307
-#  define KEY_UP			65362
-#  define KEY_DOWN			65364
-#  define KEY_LEFT			65361
-#  define KEY_RIGHT			65363
-#  define KEY_Z				-1
-#  define KEY_S				-1
-#  define KEY_Q				-1
-#  define KEY_D				-1
-#  define MOUSE_ZOOM_IN		-1
-#  define MOUSE_ZOOM_OUT	-1
+typedef enum	e_input
+{
+	KEY_ESC = 65307,
+	KEY_UP = 65362,
+	KEY_DOWN = 65364,
+	KEY_LEFT = 65361,
+	KEY_RIGHT = 65363,
+	KEY_Z = -1,
+	KEY_S = -1,
+	KEY_Q = -1,
+	KEY_D = -1,
+	KEY_W = -1,
+	KEY_X = -1,
+	KEY_SLASH = -1,
+	KEY_PLUS = -1,
+	MOUSE_ZOOM_IN = -1,
+	MOUSE_ZOOM_OUT = -1,
+	CLOSE_WINDOW_BUTTON_EVENT = 17,
+}	t_input;
 # endif
-
-# define CLOSE_WINDOW_BUTTON_EVENT	17
 
 # define TMP_PIXEL_BLACK	0, 0, 0
 # define TMP_PIXEL_WHITE	1, 1, 1
@@ -123,9 +135,9 @@ t_ray	ray_for_pixel(const t_camera *c, const int i, const int j);
 void	camera_transform(t_camera *c, const t_matrix transform);
 
 // core/graphics/inputs/inputs.c
-void	input_key_camera_movements(int keysym, t_all *args);
-void	input_key_close_window(int keysym, t_all *args);
-int	input_key(int keysym, t_all *args);
-int	input_mouse(int mousesym, int i, int j, t_all *args);
+void	input_key_camera_movements(t_input keysym, t_all *args);
+void	input_key_close_window(t_input keysym, t_all *args);
+int	input_key(t_input keysym, t_all *args);
+int	input_mouse(t_input mousesym, int i, int j, t_all *args);
 
 #endif

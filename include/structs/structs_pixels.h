@@ -18,6 +18,10 @@
 
 # include <stdint.h>
 
+typedef unsigned char	t_pixel_color;
+
+typedef uint32_t		t_pixel;
+
 typedef struct s_tmp_pixel{
 	float	r;
 	float	g;
@@ -25,7 +29,5 @@ typedef struct s_tmp_pixel{
 	float	a;
 }	t_tmp_pixel;
 
-typedef unsigned char	t_pixel_color;
-typedef uint32_t		t_pixel;
 
 #endif

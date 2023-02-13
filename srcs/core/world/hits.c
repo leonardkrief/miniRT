@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 02:40:42 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 01:37:04 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 21:04:40 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,11 @@ t_tmp_pixel	lighting(const t_computations *c, const t_material *mat,
 	double		light_dot_normal;
 	t_tmp_pixel	diffuse;
 
-	effective_color = tmp_pixel_mul(mat->color, light->intensity);
+	if (mat->pattern.f == NULL)
+		effective_color = tmp_pixel_mul(mat->color, light->intensity);
+	else
+		effective_color = tmp_pixel_mul(pattern_at(c->ob, c->id, mat, c),
+									light->intensity);
 	ambient = tmp_pixel_scal(mat->ambient, effective_color);
 	if (in_shadow)
 		return (ambient);

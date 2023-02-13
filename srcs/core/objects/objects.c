@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:11:55 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 16:29:31 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 16:03:28 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_material	material(void)
 {
 	t_material	mat;
 
+	ft_memset(&mat, 0, sizeof(mat));
 	mat.color = tmp_pixel(1, 1, 1, 0);
 	mat.ambient = 0.1;
 	mat.diffuse = 0.9;

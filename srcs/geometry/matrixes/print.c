@@ -6,14 +6,15 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:14:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 12:47:27 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/13 14:27:03 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrixes.h"
 
 // This function does not entirely depends on MATRIX_DIM
-void	matrix_print_row_padding(t_matrix m, int n, int padding)
+void	matrix_print_row_padding(const t_matrix m, const int n,
+											const int padding)
 {
 	if (n < 0 || n > 3)
 		return ;
@@ -25,7 +26,8 @@ void	matrix_print_row_padding(t_matrix m, int n, int padding)
 }
 
 // This function does not entirely depends on MATRIX_DIM
-void	matrix_print_padding(t_matrix m, char *name, int padding)
+void	matrix_print_padding(const t_matrix m, const char *name,
+									const int padding)
 {
 	int	len;
 
@@ -38,7 +40,7 @@ void	matrix_print_padding(t_matrix m, char *name, int padding)
 	printf("\n");
 }
 
-void	matrix_print(t_matrix m, char *name)
+void	matrix_print(const t_matrix m, const char *name)
 {
 	matrix_print_padding(m, name, 0);
 }
