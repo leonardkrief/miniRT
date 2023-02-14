@@ -6,22 +6,23 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:58:47 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 22:49:53 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 03:02:35 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "objects.h"
+#include "objects.h"
 
 // Multiply p by obj->m               matrix_vect(obj->m, p);
-// Multiply the result by pat->m      matrix_vect(pat->m, matrix_vect(obj->m, p));
+// Multiply the result by pat->m
+//                      matrix_vect(pat->m, matrix_vect(obj->m, p));
 // pat->m is the inverse of the 
 // transformation matrix of pattern
 // pass this point to original pattern_at and result the result
 // All of this is done in a single line in lighting function (world/hits.c)
 // because of stupid 42 limiting variables rule
 
-t_pattern	pattern(const t_pattern_id id, const t_tmp_pixel a,
-							const t_tmp_pixel b)
+t_pattern	pattern(const t_tmp_pixel a, const t_tmp_pixel b,
+		const t_pattern_id id)
 {
 	t_pattern	pat;
 
@@ -36,6 +37,12 @@ t_pattern	pattern(const t_pattern_id id, const t_tmp_pixel a,
 		pat.f = ring_at;
 	else if (id == THREED_CHECKER_PATTERN)
 		pat.f = threed_checker_at;
+	else if (id == PLATINIUM_STRIPED_PATTERN)
+		pat.f = platinium_striped_at;
+	else if (id == MASTER_PATTERN)
+		pat.f = master_at;
+	else if (id == TEST_PATTERN)
+		pat.f = test_at;
 	return (pat);
 }
 

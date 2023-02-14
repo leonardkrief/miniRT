@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 16:32:27 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 01:23:46 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 // geometry/matrixes/transformations/transformations2.c
 t_matrix	matrix_shearing(const double x[2], const double y[2],
-						const double z[2]);
+				const double z[2]);
 
 // geometry/matrixes/transformations/transformations1.c
 t_matrix	matrix_translation(const double x, const double y, const double z);

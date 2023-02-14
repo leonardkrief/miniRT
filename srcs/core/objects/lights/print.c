@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:55:14 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 00:24:05 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 00:47:16 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	light_print_padding(const t_light *light, const char *name,
 			const int padding)
 {
-	int	len;
+	int		len;
 	t_tuple	intensity;
 
 	intensity.x = light->intensity.r;

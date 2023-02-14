@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:14:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 14:21:27 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 00:36:21 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	matrix_insert_col(t_matrix *m, const t_tuple a, const int n)
 }
 
 // This function does not entirely depends on MATRIX_DIM
-t_matrix	matrix(const t_tuple a, const t_tuple b, 
+t_matrix	matrix(const t_tuple a, const t_tuple b,
 								const t_tuple c, const t_tuple d)
 {
 	t_matrix	m;

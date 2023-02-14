@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 07:03:41 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 14:24:17 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 00:37:26 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_matrix	matrix_submatrix(t_matrix a, const int row, const int col)
 	return (a);
 }
 
-t_matrix	matrix_pivot(t_matrix m, const int col, 
+t_matrix	matrix_pivot(t_matrix m, const int col,
 								const int dim, int *row_is_null)
 {
 	int		row;

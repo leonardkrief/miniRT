@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:44:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 14:10:41 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 02:15:12 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ void	input_key_camera_movements(t_input keysym, t_all *args)
 		camera_transform(args->camera, matrix_rotation_z(r_tick));
 	else if (keysym == KEY_PLUS)
 		camera_transform(args->camera, matrix_rotation_z(-r_tick));
+	else
+		return ;
 	render(args->canvas, args->camera, args->world);
 	mlx_put_image_to_window(args->canvas->window.mlx,
-			args->canvas->window.win, args->canvas->image.img, 0, 0);
+		args->canvas->window.win, args->canvas->image.img, 0, 0);
 }
 
 void	input_key_close_window(t_input keysym, t_all *args)
@@ -67,16 +69,14 @@ int	input_key(t_input keysym, t_all *args)
 
 int	input_mouse(t_input mousesym, int i, int j, t_all *args)
 {
-	(void)args;
 	static int	count;
 
+	(void)args;
 	count++;
 	printf("(%d) mouse click: %d  i: %d  j: %d\n", count, mousesym, i, j);
-	
 	t_ray	r = ray_for_pixel(args->camera, i, j);
 	t_pixel	color = color_at(args->world, &r);
 	printf("     %d %d %d\n\n", pixel_get_r(color), pixel_get_g(color), pixel_get_b(color));
-
 	fflush(stdout);
 	return (0);
 }

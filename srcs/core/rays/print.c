@@ -6,13 +6,14 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 19:10:21 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 00:20:44 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 00:48:30 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rays.h"
 
-void	ray_coords_print_padding(const t_ray *ray, const char *name, const int padding)
+void	ray_coords_print_padding(const t_ray *ray,
+									const char *name, const int padding)
 {
 	int	len;
 

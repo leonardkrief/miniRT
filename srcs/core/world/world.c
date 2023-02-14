@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:06:22 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 15:43:33 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 01:24:20 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_world	world(void)
 	t_object_list	*elem;
 
 	ft_memset(&w, 0, sizeof(t_world));
-	l = light_point(point(-10, 10, -10), tmp_pixel(TMP_PIXEL_WHITE, 0));
+	l = light_point(point(-10, 10, -10), tmp_pixel(TMP_PIXEL_WHITE));
 	world_add_light(&w, l);
 	elem = new_object(SPHERE_ID);
 	if (elem == NULL)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   graphics.c                                         :+:      :+:    :+:   */
+/*   mlx_basics.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:59:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/10 20:37:51 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 00:39:02 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_window	*window(t_window *window)
 	window->mlx = mlx_init();
 	if (window->mlx == NULL)
 		return (NULL);
-	window->win = mlx_new_window(window->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
+	window->win = mlx_new_window(window->mlx, WINDOW_WIDTH,
+			WINDOW_HEIGHT, WINDOW_NAME);
 	if (window->win == NULL)
 	{
 		FREE_DISPLAY(window->mlx);

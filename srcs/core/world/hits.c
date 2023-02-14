@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 02:40:42 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 21:04:40 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 01:24:08 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ t_tmp_pixel	shade_hit(const t_world *w, const t_computations *c)
 	else if (c->id == PLANE_ID)
 		mat = &((t_plane *)(c->ob))->mat;
 	else
-		return (tmp_pixel(TMP_PIXEL_BLACK, 0));
+		return (tmp_pixel(TMP_PIXEL_BLACK));
 	while (i < w->nb_lights)
 	{
-		color = tmp_pixel_add(color, lighting(c, mat,
-					&w->lights[i], is_shadowed(w, c->over_point, &w->lights[i])));
+		color = tmp_pixel_add(color, lighting(c, mat, &w->lights[i],
+					is_shadowed(w, c->over_point, &w->lights[i])));
 		i++;
 	}
 	return (color);
@@ -86,7 +86,7 @@ t_tmp_pixel	lighting(const t_computations *c, const t_material *mat,
 		effective_color = tmp_pixel_mul(mat->color, light->intensity);
 	else
 		effective_color = tmp_pixel_mul(pattern_at(c->ob, c->id, mat, c),
-									light->intensity);
+				light->intensity);
 	ambient = tmp_pixel_scal(mat->ambient, effective_color);
 	if (in_shadow)
 		return (ambient);
@@ -96,8 +96,10 @@ t_tmp_pixel	lighting(const t_computations *c, const t_material *mat,
 		return (ambient);
 	else
 	{
-		diffuse = tmp_pixel_scal(mat->diffuse * light_dot_normal, effective_color);
-		return (tmp_pixel_add(ambient, point_in_front_light(c, mat, light, diffuse)));
+		diffuse = tmp_pixel_scal(mat->diffuse * light_dot_normal,
+				effective_color);
+		return (tmp_pixel_add(ambient,
+				point_in_front_light(c, mat, light, diffuse)));
 	}
 }
 
@@ -116,7 +118,7 @@ t_tmp_pixel	point_in_front_light(const t_computations *c, const t_material *mat,
 	reflectv = tuple_reflect(tuple_neg(lightv), c->normal);
 	reflect_dot_eye = tuple_dotprod(reflectv, c->eye);
 	if (reflect_dot_eye <= 0)
-		specular = tmp_pixel(TMP_PIXEL_BLACK, 0);
+		specular = tmp_pixel(TMP_PIXEL_BLACK);
 	else
 	{
 		factor = powf(reflect_dot_eye, mat->shininess);
@@ -132,7 +134,7 @@ t_pixel	color_at(const t_world *w, const t_ray *ray)
 
 	intersect_world(w, ray);
 	if (ray->itr_front == NULL)
-		return (pixel(PIXEL_BLACK, 0));
+		return (pixel(PIXEL_BLACK));
 	c = prepare_computations(ray, ray->itr_front);
 	tmp_p = shade_hit(w, &c);
 	return (tmp_pixel_to_pixel(tmp_p));

@@ -27,17 +27,18 @@ typedef struct s_light{
 
 typedef void	t_object;
 
-typedef enum	e_pattern_id
+typedef enum e_pattern_id
 {
 	STRIPED_PATTERN,
 	GRADIENT_PATTERN,
 	RING_PATTERN,
 	THREED_CHECKER_PATTERN,
-} t_pattern_id;
+	PLATINIUM_STRIPED_PATTERN,
+	MASTER_PATTERN,
+	TEST_PATTERN,
+}	t_pattern_id;
 
-typedef t_tmp_pixel (*t_pattern_func)(const t_tuple p,
-					const t_tmp_pixel a, const t_tmp_pixel b);
-// A pattern is null if pat == NULL
+// A pattern is null if f == NULL
 typedef struct s_pattern{
 	t_tmp_pixel	color1;
 	t_tmp_pixel	color2;
@@ -51,11 +52,12 @@ typedef struct s_material{
 	double		diffuse;
 	double		specular;
 	double		shininess;
+	double		reflective;
 	t_pattern	pattern;
 }	t_material;
 
 typedef void	t_object;
-typedef enum	e_object_id
+typedef enum e_object_id
 {
 	SPHERE_ID = 1,
 	PLANE_ID = 2,
@@ -63,7 +65,7 @@ typedef enum	e_object_id
 	TRIANGLE_ID = 4,
 	MIN_ID = SPHERE_ID,
 	MAX_ID = TRIANGLE_ID
-} t_object_id;
+}	t_object_id;
 // WARNING : in my objects structs, the m matrix is already inverted
 // You dont have to always recalculate it that way
 typedef struct s_sphere{

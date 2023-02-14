@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 12:33:22 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/11 17:33:09 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 00:39:59 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,18 @@ void	pixel_size(t_camera *c)
 
 void	view_transform(t_camera *c, t_tuple from, t_tuple to, t_tuple up)
 {
-	t_tuple	forward;
-	t_tuple	upn;
-	t_tuple	left;
-	t_tuple	true_up;
-	t_matrix orientation;
+	t_tuple		forward;
+	t_tuple		upn;
+	t_tuple		left;
+	t_tuple		true_up;
+	t_matrix	orientation;
 
 	forward = tuple_normalize(tuple_sub(to, from));
 	upn = tuple_normalize(up);
 	left = tuple_crossprod(forward, upn);
 	true_up = tuple_crossprod(left, forward);
 	orientation = matrix_transpose(
-		matrix(left, true_up, tuple_neg(forward), point(0, 0, 0)));
+			matrix(left, true_up, tuple_neg(forward), point(0, 0, 0)));
 	c->transform = matrix_matrix(orientation, matrix_translation(
 				-from.x, -from.y, -from.z), 4);
 	c->inv_transform = matrix_invert(c->transform, 4);
@@ -81,7 +81,7 @@ t_ray	ray_for_pixel(const t_camera *c, const int i, const int j)
 	world_y = c->half_height - ((j + 0.5) * c->pixel_size);
 	pixel = matrix_vect(c->inv_transform, point(world_x, world_y, -1));
 	origin = matrix_vect(c->inv_transform, point(0, 0, 0));
-	return ray(origin, tuple_normalize(tuple_sub(pixel, origin)));
+	return (ray(origin, tuple_normalize(tuple_sub(pixel, origin))));
 }
 
 void	camera_transform(t_camera *c, const t_matrix transform)

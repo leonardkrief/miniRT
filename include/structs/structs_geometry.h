@@ -24,6 +24,7 @@ typedef struct s_tuple{
 }	t_tuple;
 
 # define MATRIX_DIM 4
+
 typedef struct s_matrix{
 	double	m[MATRIX_DIM][MATRIX_DIM];
 }	t_matrix;

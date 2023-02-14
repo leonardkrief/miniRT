@@ -6,12 +6,12 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:58:47 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 22:55:55 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 03:11:15 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "objects.h"
-# include <math.h>
+#include "objects.h"
+#include <math.h>
 
 t_tmp_pixel	stripe_at(const t_tuple p, const t_pattern *pat)
 {
@@ -53,15 +53,29 @@ t_tmp_pixel	threed_checker_at(const t_tuple p, const t_pattern *pat)
 		return (pat->color2);
 }
 
-t_tmp_pixel	striped_gradient_at(const t_tuple p, const t_pattern *pat)
+t_tmp_pixel	platinium_striped_at(const t_tuple p, const t_pattern *pat)
 {
-	t_tmp_pixel	distance;
-	double		fraction;
-	
-	
-	distance = tmp_pixel_sub(pat->color2, pat->color1);
-	fraction = cos((p.x / 2 + 0.5) * 100 * M_PI);
-	// fraction += (p.y / 2 + 0.5) - floor((p.y / 2 + 0.5)) / 3;
-	// fraction += (p.z / 2 + 0.5) - floor((p.z / 2 + 0.5)) / 3;
-	return (tmp_pixel_add(pat->color1, tmp_pixel_scal(fraction, distance)));
+	t_pattern	tmp;
+
+	tmp = pattern(gradient_at(p, pat), gradient_at(tuple_mul(1.5, p), pat), STRIPED_PATTERN);
+	transform_pattern(&tmp, matrix_rotation_y(M_PI / 6));
+	return (stripe_at(p, &tmp));
+}
+
+t_tmp_pixel	master_at(const t_tuple p, const t_pattern *pat)
+{
+	t_pattern	tmp;
+
+	tmp = pattern(stripe_at(p, pat), gradient_at(p, pat), STRIPED_PATTERN);
+	transform_pattern(&tmp, matrix_rotation_z(M_PI / 6));
+	return (ring_at(p, &tmp));
+}
+
+t_tmp_pixel	test_at(const t_tuple p, const t_pattern *pat)
+{
+	t_pattern	tmp;
+
+	tmp = pattern(ring_at(p, pat), platinium_striped_at(p, pat), STRIPED_PATTERN);
+	transform_pattern(&tmp, matrix_rotation_z(M_PI / 5));
+	return (stripe_at(p, &tmp));
 }

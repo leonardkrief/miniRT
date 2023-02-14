@@ -29,5 +29,4 @@ typedef struct s_tmp_pixel{
 	float	a;
 }	t_tmp_pixel;
 
-
 #endif

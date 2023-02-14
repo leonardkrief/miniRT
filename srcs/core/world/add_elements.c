@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 05:14:20 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 13:48:23 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 00:52:57 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	world_add_light(t_world *world, t_light light)
 {
 	if (world->nb_lights >= MAX_LIGHTS)
 		printf("Lights limit reached. You cannot put more than %d lights.\n",
-				MAX_LIGHTS);
+			MAX_LIGHTS);
 	else
 	{
 		world->lights[world->nb_lights] = light;
@@ -26,7 +26,7 @@ void	world_add_light(t_world *world, t_light light)
 
 void	world_add_sphere(t_world *world, t_sphere *sp)
 {
-	t_object_list *new;
+	t_object_list	*new;
 
 	new = ft_lstnew(sp, SPHERE_ID);
 	if (new == NULL)
@@ -36,7 +36,7 @@ void	world_add_sphere(t_world *world, t_sphere *sp)
 
 void	world_add_plane(t_world *world, t_plane *pl)
 {
-	t_object_list *new;
+	t_object_list	*new;
 
 	new = ft_lstnew(pl, PLANE_ID);
 	if (new == NULL)
@@ -44,11 +44,10 @@ void	world_add_plane(t_world *world, t_plane *pl)
 	ft_lstadd_front(&world->objs, new);
 }
 
-
 t_object_list	*new_object(const int id)
 {
 	t_object_list	*new;
-	void	*obj;
+	void			*obj;
 
 	obj = NULL;
 	new = NULL;

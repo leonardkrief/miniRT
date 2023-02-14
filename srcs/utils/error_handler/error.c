@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:56:06 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 12:37:12 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/14 01:07:23 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_putstr_error(const char *s)
 
 const char	*get_failure_string(const t_failure failure)
 {
-	return (failure_strings[failure]);
+	return (g_failure_strings[failure]);
 }
 
 void	ft_puterror(const t_failure failure_set, const void *args)
