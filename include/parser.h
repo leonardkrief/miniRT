@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/24 19:40:16 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/24 18:54:39 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/24 19:40:02 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef PARSER_H
+# define PARSER_H
 
-# include "structs_all.h"
 # include "error_handler.h"
-# include "graphics.h"
-# include "matrixes.h"
-# include "objects.h"
-# include "parser.h"
-# include "ppm.h"
-# include "rays.h"
-# include "intersections.h"
-# include "tuples.h"
-# include "world.h"
+
+typedef enum e_type{
+	AMBIENT_LIGHTNING,
+	CAMERA,
+	LIGHT,
+	SPHERE,
+	PLANE,
+	CYLINDER
+}	t_type;
+
+typedef struct s_parser{
+	char	*str;
+	int		len;
+	t_type	type;
+}	t_parser;
+
+// parser/parser.c
+t_parser	parser_new(char *str);
+int			parser_type(t_parser *ps);
 
 #endif

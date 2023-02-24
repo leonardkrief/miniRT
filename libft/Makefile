@@ -10,6 +10,7 @@ SRCS_NAMES		=	ft_put_fd/ft_putchar_fd.c \
 					is_something/ft_isalnum.c \
 					is_something/ft_isalpha.c \
 					is_something/ft_isascii.c \
+					is_something/ft_isblank.c \
 					is_something/ft_isdigit.c \
 					is_something/ft_isprint.c \
 					mem/ft_memchr.c \

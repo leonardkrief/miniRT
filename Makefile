@@ -48,6 +48,7 @@ SRCS_NAMES		=	core/graphics/camera.c \
 					geometry/tuples/ops2.c \
 					geometry/tuples/scalar_ops.c \
 					geometry/tuples/print.c \
+					parser/parser.c \
 					utils/error_handler/error.c \
 					utils/ppm/ppm.c \
 					main.c
@@ -102,6 +103,7 @@ ${DIR_OBJS}:
 				mkdir -p ${addprefix ${DIR_OBJS}/, geometry/tuples}
 				mkdir -p ${addprefix ${DIR_OBJS}/, geometry/matrixes}
 				mkdir -p ${addprefix ${DIR_OBJS}/, geometry/matrixes/transformations}
+				mkdir -p ${addprefix ${DIR_OBJS}/, parser}
 				mkdir -p ${addprefix ${DIR_OBJS}/, utils/error_handler}
 				mkdir -p ${addprefix ${DIR_OBJS}/, utils/ppm}
 

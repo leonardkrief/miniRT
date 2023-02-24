@@ -1,28 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   ft_isblank.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/24 19:40:16 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/24 19:13:49 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/24 19:17:08 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
-
-# include "structs_all.h"
-# include "error_handler.h"
-# include "graphics.h"
-# include "matrixes.h"
-# include "objects.h"
-# include "parser.h"
-# include "ppm.h"
-# include "rays.h"
-# include "intersections.h"
-# include "tuples.h"
-# include "world.h"
-
-#endif
+int	ft_isblank(int c)
+{
+	return (c == '\t' || c == '\n' || c == '\v' || c == '\f'
+				|| c == 'r' || c == ' ');
+}

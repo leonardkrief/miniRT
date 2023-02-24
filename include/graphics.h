@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/14 01:23:20 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/16 17:49:16 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ typedef enum e_input
 	KEY_ESC = 65307,
 	KEY_UP = 65362,
 	KEY_DOWN = 65364,
-	KEY_LEFT = 65361,
-	KEY_RIGHT = 65363,
-	KEY_Z = -1,
-	KEY_S = -1,
-	KEY_Q = -1,
+	KEY_LEFT = 65363,
+	KEY_RIGHT = 65361,
+	KEY_Z = 119,
+	KEY_S = 115,
+	KEY_Q = 97,
 	KEY_D = -1,
-	KEY_W = -1,
+	KEY_W = 119,
 	KEY_X = -1,
 	KEY_SLASH = -1,
 	KEY_PLUS = -1,
