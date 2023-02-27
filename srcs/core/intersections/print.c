@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:25:47 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/14 00:42:55 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/27 15:34:17 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	intersection_print_padding(const t_intersection itr, const char *name,
 	{
 		printf("t = %f\n", itr.t);
 		if (itr.id == SPHERE_ID)
-			sphere_print_padding(*(t_sphere *)itr.ob, "", len + padding + 7);
+			sphere_print_padding((t_sphere *)itr.ob, "", len + padding + 7);
 	}
 	else
 		printf("no intersection\n\n");

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 04:07:15 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/10 20:26:20 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/27 14:30:10 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,12 @@ t_pixel	tmp_pixel_to_pixel(const t_tmp_pixel p)
 			(t_pixel_color) fmax(fmin(p.g * 255, 255), 0),
 			(t_pixel_color) fmax(fmin(p.b * 255, 255), 0),
 			(t_pixel_color) fmax(fmin(p.a * 255, 255), 0)));
+}
+
+t_tmp_pixel	pixel_to_tmp_pixel(const t_pixel p)
+{
+	return (tmp_pixel((float) fmax(fmin(((double)pixel_get_r(p)) / 255, 1), 0),
+			(float) fmax(fmin(((double)pixel_get_g(p)) / 255, 1), 0),
+			(float) fmax(fmin(((double)pixel_get_b(p)) / 255, 1), 0),
+			(float) fmax(fmin(((double)pixel_get_a(p)) / 255, 1), 0)));
 }

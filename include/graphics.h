@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/16 17:49:16 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/26 10:33:09 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void			render(const t_canvas *cvs, const t_camera *c, const t_world *w);
 t_tmp_pixel		tmp_pixel(const float r, const float g, const float b,
 				const float a);
 t_pixel			tmp_pixel_to_pixel(const t_tmp_pixel p);
+t_tmp_pixel		pixel_to_tmp_pixel(const t_pixel p);
 
 // core/graphics/tmp_pixels/print.c
 void			tmp_pixel_print(const t_tmp_pixel p, const char *name);

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/24 19:26:42 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 00:34:05 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,15 @@ typedef enum e_failure{
 	FAILED_CREATING_OBJECT,
 	NO_FILENAME_AVAILABLE,
 	ERROR_PARSING_TYPE,
-	LAST_FAILURE = NO_FILENAME_AVAILABLE,
+	ERROR_PARSING_NUMBER,
+	ERROR_PARSING_SYNTAX,
+	ERROR_PARSING_UNIT,
+	ERROR_PARSING_PIXEL,
+	ERROR_PARSING_POSITIVE,
+	ERROR_PARSING_ABS_UNIT,
+	ERROR_PARSING_FOV,
+	LAST_FAILURE = ERROR_PARSING_FOV,
 }	t_failure;
-
-// static const char	*g_failure_strings[] = {
-// 	"No failure",
-// 	"Failed malloc",
-// 	"Failed open",
-// 	"Failed close",
-// 	"Error modulus: non-vector object detected",
-// 	"Error normalize: non-vector object detected",
-// 	"Error dotprod: non-vector objects detected",
-// 	"Error determinant: wrong dimension",
-// 	"Error invert matrix: det = 0",
-// 	"Error creating ray",
-// 	"Error creating sphere",
-// 	"Error creating intersection",
-// 	"Cannot create matrix out of non-vector objects",
-// 	"Unknown geometric shape detected. Failed creating it",
-// 	"Unknown geometric shape detected. Failed creating it",
-// 	"No more filenames available. Remove or rename ppm files",
-// };
 
 // utils/error_handler/error.c
 int			ft_putstr_error(const char *s);

@@ -1,34 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atodouble.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 02:10:14 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/27 15:29:32 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/27 15:52:33 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <math.h>
 
-int	ft_atoi(const char *str)
+double	ft_atodouble(char *str, int *p)
 {
-	int	i;
-	int	nb;
-	int	signe;
+	double	x;
+	int		i;
+	int		d;
+	int		sign;
 
-	nb = 0;
-	signe = 1;
-	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	x = 0;
+	i = -1;
+	sign = 1;
+	if (str[0] == '-')
 	{
-		signe = signe * ((str[i] == '+') - (str[i] == '-'));
+		sign = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-		nb = 10 * nb + str[i++] - '0';
-	return (signe * nb);
+	while (ft_isdigit(str[++i]) && x <= __DBL_MAX__ / 1e7)
+		x = 10 * x + (str[i] - '0');
+	if (str[i] == '.')
+	{
+		d = i;
+		while (ft_isdigit(str[++i]))
+			x += (str[i] - '0') / pow(10, i - d);
+	}
+	*p = i;
+	if (x > __DBL_MAX__ / 1e8)
+		*p = -1;
+	return (sign * x);
 }

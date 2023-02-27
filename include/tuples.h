@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 17:23:44 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/26 08:08:20 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	tuple_raw_print(t_tuple a);
 void	tuple_print(t_tuple a, char *name);
 
 // geometry/tuples/init.c
-t_tuple	point(float x, float y, float z);
-t_tuple	vector(float x, float y, float z);
-t_tuple	tuple(float x, float y, float z, float w);
+t_tuple	point(double x, double y, double z);
+t_tuple	vector(double x, double y, double z);
+t_tuple	tuple(double x, double y, double z, double w);
 
 // geometry/tuples/ops1.c
 t_tuple	tuple_add(const t_tuple a, const t_tuple b);

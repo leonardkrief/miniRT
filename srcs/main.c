@@ -101,12 +101,9 @@ t_world	world_three_spheres(void)
 
 int	main(int ac, char **av)
 {
-	t_parser	ps;
+	t_world		w;
+	t_camera	c;
+
 	if (ac >= 2)
-	{
-		ps = parser_new(av[1]);
-		parser_type(&ps);
-		printf("string: %s\n", ps.str);
-		printf("type: %d\n", ps.type);
-	}
+		parsing(av[1], &w, &c);
 }

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 03:16:52 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/14 03:01:50 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/27 15:03:50 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ t_tmp_pixel	test_at(const t_tuple p, const t_pattern *pat);
 // core/objects/shapes/sphere.c
 t_sphere	*sphere(void);
 void	transform_sp(t_sphere *sp, const t_matrix m);
-void	sphere_print_padding(const t_sphere sphere, const char *name,
+void	sphere_print_padding(const t_sphere *sphere, const char *name,
 			const int padding);
-void	sphere_print(const t_sphere sphere, const char *name);
+void	sphere_print(const t_sphere *sphere, const char *name);
 
 // core/objects/shapes/plane.c
 t_plane	*plane(void);

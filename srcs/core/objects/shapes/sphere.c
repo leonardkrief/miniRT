@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:09:37 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 11:35:51 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/27 15:03:14 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	transform_sp(t_sphere *sp, const t_matrix m)
 	sp->t_m = matrix_transpose(sp->m);
 }
 
-void	sphere_print_padding(const t_sphere sphere, const char *name,
+void	sphere_print_padding(const t_sphere *sphere, const char *name,
 			const int padding)
 {
 	(void)sphere;
@@ -52,7 +52,7 @@ void	sphere_print_padding(const t_sphere sphere, const char *name,
 	// printf("%*s}\n", len + 5, "");
 }
 
-void	sphere_print(const t_sphere sphere, const char *name)
+void	sphere_print(const t_sphere *sphere, const char *name)
 {
 	sphere_print_padding(sphere, name, 0);
 }

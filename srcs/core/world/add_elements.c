@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 05:14:20 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/14 00:52:57 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/27 14:56:01 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ void	world_add_sphere(t_world *world, t_sphere *sp)
 
 	new = ft_lstnew(sp, SPHERE_ID);
 	if (new == NULL)
+	{
+		free(sp);
 		return (ft_puterror(FAILED_MALLOC, (char *)__func__));
+	}
 	ft_lstadd_front(&world->objs, new);
 }
 
@@ -40,7 +43,10 @@ void	world_add_plane(t_world *world, t_plane *pl)
 
 	new = ft_lstnew(pl, PLANE_ID);
 	if (new == NULL)
+	{
+		free(pl);
 		return (ft_puterror(FAILED_MALLOC, (char *)__func__));
+	}
 	ft_lstadd_front(&world->objs, new);
 }
 

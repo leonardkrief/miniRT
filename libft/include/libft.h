@@ -25,6 +25,7 @@
 /*********************/
 
 int		ft_atoi(const char *str);
+double	ft_atodouble(char *str, int *p);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_free_tab(char **tab, int n);

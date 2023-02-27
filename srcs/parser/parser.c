@@ -6,83 +6,86 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:52:05 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/24 19:56:14 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 00:31:49 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-t_parser	parser_new(char *str)
+int	parsing(char *str, t_world *w, t_camera *c)
 {
-	t_parser	new;
-
-	new.str = str;
-	new.len = -1;
-	new.type = -1;
-	return (new);
-}
-
-int	parser_type(t_parser *ps)
-{
-	while (ft_isblank(*ps->str))
-		ps->str++;
-	if (!ft_strncmp(ps->str, "A", 1))
-		ps->type = AMBIENT_LIGHTNING;
-	else if (!ft_strncmp(ps->str, "C", 1))
-		ps->type = CAMERA;
-	else if (!ft_strncmp(ps->str, "L", 1))
-		ps->type = LIGHT;
-	else if (!ft_strncmp(ps->str, "sp", 2))
-		ps->type = SPHERE;
-	else if (!ft_strncmp(ps->str, "pl", 2))
-		ps->type = PLANE;
-	else if (!ft_strncmp(ps->str, "cy", 2))
-		ps->type = CYLINDER;
-	else
-		return (ft_puterror(ERROR_PARSING_TYPE, (char *)__func__), -1);
-	if (ps->type == SPHERE || ps->type == PLANE || ps->type == CYLINDER)
-		ps->str += 2;
-	else
-		ps->str += 1;
-	if (!ft_isblank(*ps->str))
-		return (ft_puterror(ERROR_PARSING_TYPE, (char *)__func__), -1);
-	while (ft_isblank(*ps->str))
-		ps->str++;
+	while (*str)
+	{
+		str = parser_next_object(str, w, c);
+		if (str == NULL)
+			return (-1);
+	}
 	return (0);
 }
 
-// A 0.2 255,255,255
-int	parser_ambient_lightning(t_parser *ps)
+char	*parser_next_object(char *str, t_world *w, t_camera *c)
 {
-	
+	while (ft_isblank(*str))
+		str++;
+	if (!ft_strncmp(str, "A", 1))
+		str = parser_ambient(str + 1, w);
+	else if (!ft_strncmp(str, "C", 1))
+		str = parser_camera(str + 1, c);
+	else if (!ft_strncmp(str, "L", 1))
+		str = parser_light(str + 1, w);
+	else if (!ft_strncmp(str, "sp", 2))
+		str = parser_sphere(str + 2, w);
+	else if (!ft_strncmp(str, "pl", 2))
+		str = parser_plane(str + 2, w);
+	else if (!ft_strncmp(str, "cy", 2))
+		str = parser_cylinder(str + 2, w);
+	else
+		return (ft_puterror(ERROR_PARSING_TYPE, (char *)__func__), NULL);
+	return (str);
 }
 
-// C -50.0,0,20 0,0,1 70
-int	parser_camera(t_parser *ps)
+double	parser_next_number(char **str, t_end_character end)
 {
-	
+	double	x;
+	int		p;
+
+	if (**str == '\0')
+		return (ft_puterror(ERROR_PARSING_SYNTAX, (char *)__func__), __DBL_MAX__);
+	while(ft_isblank(**str))
+		(*str)++;
+	x = ft_atodouble(*str, &p);
+	if (p == -1)
+		return (ft_puterror(ERROR_PARSING_NUMBER, (char *)__func__), __DBL_MAX__);
+	if (end == END_CHARACTER_COMMA && (*str)[p++] != ',')
+		return (ft_puterror(ERROR_PARSING_SYNTAX, (char *)__func__), __DBL_MAX__);
+	else if (end == END_CHARACTER_BLANK && !ft_isblank((*str)[p])
+			&& (*str)[p] != '\0')
+		return (ft_puterror(ERROR_PARSING_SYNTAX, (char *)__func__), __DBL_MAX__);
+	*str += p;
+	return (x);
 }
 
-// L -40.0,50.0,0.0 0.6 10,0,255
-int	parser_light(t_parser *ps)
+int	parser_valid_number(double x, t_flag_valid_number flag)
 {
-	
+	if (x > __DBL_MAX__ / 1e8)
+		return (-1);
+	if ((flag & FLAG_UNIT) && !(x >= 0 && x <= 1))
+		return (ft_puterror(ERROR_PARSING_UNIT, NULL), -1);
+	if ((flag & FLAG_PIXEL) && !(x >= 0 && x <= 255))
+		return (ft_puterror(ERROR_PARSING_PIXEL, NULL), -1);
+	if ((flag & FLAG_POSITIVE) && !(x >= 0))
+		return (ft_puterror(ERROR_PARSING_POSITIVE, NULL), -1);
+	if ((flag & FLAG_ABS_UNIT) && !(x >= -1 && x <= 1))
+		return (ft_puterror(ERROR_PARSING_ABS_UNIT, NULL), -1);
+	if ((flag & FLAG_FOV) && !(x >= 0 && x <= 180))
+		return (ft_puterror(ERROR_PARSING_FOV, NULL), -1);
+	return (0);
 }
 
-// sp 0.0,0.0,20.6 12.6 10,0,255
-int	parser_sphere(t_parser *ps)
+int	parser_valid_tuple(t_tuple t, t_flag_valid_number flag)
 {
-	
-}
-
-// pl 0.0,0.0,-10.0 0.0,1.0,0.0 0,0,225
-int	parser_plane(t_parser *ps)
-{
-	
-}
-
-// cy 50.0,0.0,20.6 0.0,0.0,1.0 14.2 21.42 10,0,255
-int	parser_cylinder(t_parser *ps)
-{
-	
+	if (parser_valid_number(t.x, flag) || parser_valid_number(t.y, flag)
+		|| parser_valid_number(t.z, flag) || parser_valid_number(t.w, flag))
+		return (-1);
+	return (0);
 }

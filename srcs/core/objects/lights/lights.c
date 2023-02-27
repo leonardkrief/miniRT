@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:16:57 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/14 00:47:26 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/27 14:44:04 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,9 @@ t_light	light_point(const t_tuple position, const t_tmp_pixel intensity)
 
 	light.position = position;
 	light.intensity = intensity;
+	light.intensity.r = (float) fmax(fmin(((double)light.intensity.r),255), 0);
+	light.intensity.g = (float) fmax(fmin(((double)light.intensity.g),255), 0);
+	light.intensity.b = (float) fmax(fmin(((double)light.intensity.b),255), 0);
+	light.intensity.a = (float) fmax(fmin(((double)light.intensity.a),255), 0);
 	return (light);
 }

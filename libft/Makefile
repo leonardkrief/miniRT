@@ -36,6 +36,7 @@ SRCS_NAMES		=	ft_put_fd/ft_putchar_fd.c \
 					to_something/ft_tolower.c \
 					to_something/ft_toupper.c \
 					utils/ft_atoi.c \
+					utils/ft_atodouble.c \
 					utils/ft_bzero.c \
 					utils/ft_calloc.c \
 					utils/ft_free_tab.c \

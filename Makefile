@@ -49,6 +49,7 @@ SRCS_NAMES		=	core/graphics/camera.c \
 					geometry/tuples/scalar_ops.c \
 					geometry/tuples/print.c \
 					parser/parser.c \
+					parser/parser_objects.c \
 					utils/error_handler/error.c \
 					utils/ppm/ppm.c \
 					main.c

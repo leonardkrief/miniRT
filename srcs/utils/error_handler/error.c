@@ -6,32 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:56:06 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/24 19:46:50 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 00:33:44 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "error_handler.h"
-
-// typedef enum e_failure{
-// 	NO_FAILURE,
-// 	FAILED_MALLOC,
-// 	FAILED_OPEN,
-// 	FAILED_CLOSE,
-// 	ERROR_MODULUS,
-// 	ERROR_NORMALIZE,
-// 	ERROR_DOTPROD,
-// 	ERROR_DETERMINANT,
-// 	ERROR_INVERT_MATRIX,
-// 	ERROR_RAY,
-// 	ERROR_SPHERE,
-// 	ERROR_INTERSECTION,
-// 	FALSE_MATRIX_INPUT,
-// 	UNKNOWN_OBJECT,
-// 	FAILED_CREATING_OBJECT,
-// 	NO_FILENAME_AVAILABLE,
-// 	ERROR_PARSING_TYPE,
-// 	LAST_FAILURE = NO_FILENAME_AVAILABLE,
-// }	t_failure;
 
 static const char	*g_failure_strings[] = {
 	"No failure",
@@ -51,6 +30,13 @@ static const char	*g_failure_strings[] = {
 	"Unknown geometric shape detected. Failed creating it",
 	"No more filenames available. Remove or rename ppm files",
 	"Unrecognized object during file parsing",
+	"Number too big for program (max supported is ~10e300). Edit .rt file",
+	"Unvalid syntax. Edit .rt file",
+	"Unvalid syntax: unit value expected (0 <= x <= 1)",
+	"Unvalid syntax. pixel value expected (0 <= x <= 255)",
+	"Unvalid syntax. positive value expected (x >= 0)",
+	"Unvalid syntax. absolut unit value expected (x >= -1, x <= 1)",
+	"Unvalid syntax. fov value expected (x >= 0, x <= 180)",
 };
 
 int	ft_putstr_error(const char *s)
@@ -65,7 +51,7 @@ const char	*get_failure_string(const t_failure failure)
 
 void	ft_puterror(const t_failure failure_set, const void *args)
 {
-	if (failure_set == NO_FAILURE || failure_set > LAST_FAILURE)
+	if (failure_set >= NO_FAILURE && failure_set <= LAST_FAILURE)
 	{
 		ft_putstr_error(get_failure_string(failure_set));
 		if (args)
