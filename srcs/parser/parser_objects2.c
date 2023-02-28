@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:52:05 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 16:30:16 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 23:01:29 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*parser_plane(char *str, t_world *w)
 			parser_next_number(&str, END_CHARACTER_BLANK));
 	if (parser_valid_tuple(clr, FLAG_PIXEL))
 		return (NULL);
-	pl->mat.color = tmp_pixel(clr.x, clr.y, clr.z, 0);
+	pl->mat.color =  pixel_to_tmp_pixel(pixel(clr.x, clr.y, clr.z, 0));
 	transform_pl(pl, plane_matrix(origin, tuple_normalize(ortn)));
 	return (world_add_plane(w, pl), str);
 }

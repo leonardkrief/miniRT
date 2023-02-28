@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:21:42 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 02:20:12 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 23:20:08 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_intersection	*intersection(t_object_id object_id, t_object *object)
 	itr->id = object_id;
 	if (itr->id == SPHERE_ID)
 		itr->ob = (t_sphere *)object;
-	if (itr->id == PLANE_ID)
+	else if (itr->id == PLANE_ID)
 		itr->ob = (t_sphere *)object;
 	return (itr);
 }

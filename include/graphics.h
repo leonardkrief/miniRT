@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/26 10:33:09 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 23:21:44 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # include "world.h"
 
 # define WINDOW_NAME	"miniRT"
-# define WINDOW_HEIGHT	500
-# define WINDOW_WIDTH	800
+# define WINDOW_HEIGHT	1
+# define WINDOW_WIDTH	1
 # if __APPLE__
 typedef enum e_input
 {
@@ -62,13 +62,13 @@ typedef enum e_input
 	KEY_Z = 119,
 	KEY_S = 115,
 	KEY_Q = 97,
-	KEY_D = -1,
-	KEY_W = 119,
-	KEY_X = -1,
-	KEY_SLASH = -1,
-	KEY_PLUS = -1,
-	MOUSE_ZOOM_IN = -1,
-	MOUSE_ZOOM_OUT = -1,
+	KEY_D = 100,
+	KEY_W = 120,
+	KEY_X = 122,
+	KEY_SLASH = 46,
+	KEY_PLUS = 47,
+	MOUSE_ZOOM_IN = 4,
+	MOUSE_ZOOM_OUT = 5,
 	CLOSE_WINDOW_BUTTON_EVENT = 17,
 }	t_input;
 # endif

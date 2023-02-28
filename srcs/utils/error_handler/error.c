@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:56:06 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 18:05:32 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 22:27:15 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ static const char	*g_failure_strings[] = {
 	"Error\nAmbient light defined twice: edit .rt file",
 	"Error\nCamera defined twice: edit .rt file",
 	"Error\nLight defined twice: edit .rt file",
+	"Error\nFailed to open .rt file",
+	"Error\nFailed to read .rt file",
+	"Error\nFailed to close .rt file",
+	"Error\nFile too big: edit .rt file",
+	"Error\nUnvalid file extension",
+	"Error\nUnvalid syntax: non null vector expected",
 };
 
 int	ft_putstr_error(const char *s)

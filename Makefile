@@ -51,6 +51,7 @@ SRCS_NAMES		=	core/graphics/camera.c \
 					parser/parser.c \
 					parser/parser_objects1.c \
 					parser/parser_objects2.c \
+					parser/handle_file.c \
 					utils/error_handler/error.c \
 					utils/ppm/ppm.c \
 					main.c

@@ -6,29 +6,47 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:52:05 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 18:09:36 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 22:26:12 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int	parsing(char *str, t_world *w, t_camera *c)
+int	parsing(char *filename, t_world *w, t_camera *c)
 {
+	char	file[MAX_FILESIZE + 2];
+	char	*str;
+
+ 	if (file_to_string(filename, file) == -1)
+		return (-1);
+	str = file;
 	while (*str)
 	{
 		str = parser_next_object(str, w, c);
 		if (str == NULL)
+		{
+			// free the allocated memory (potential shapes inside world)
 			return (-1);
+		}
 	}
 	return (0);
 }
 
 char	*parser_next_object(char *str, t_world *w, t_camera *c)
 {
+	static bool first = true;
+	bool		newline;
+
+	newline = false;
 	while (ft_isblank(*str))
-		str++;
+	{
+		if (*(str++) == '\n')
+			newline = true;
+	}
+	if (!first && !newline)
+		return (ft_puterror(ERROR_PARSING_SYNTAX, (char *)__func__), NULL);
 	if (*str == '\0')
-		return (NULL);
+		return (str);
 	else if (!ft_strncmp(str, "A", 1))
 		str = parser_ambient(str + 1, w);
 	else if (!ft_strncmp(str, "C", 1))
@@ -43,6 +61,7 @@ char	*parser_next_object(char *str, t_world *w, t_camera *c)
 		str = parser_cylinder(str + 2, w);
 	else
 		return (ft_puterror(ERROR_PARSING_TYPE, (char *)__func__), NULL);
+	first = false;
 	return (str);
 }
 
@@ -89,5 +108,7 @@ int	parser_valid_tuple(t_tuple t, t_flag_valid_number flag)
 	if (parser_valid_number(t.x, flag) || parser_valid_number(t.y, flag)
 		|| parser_valid_number(t.z, flag) || parser_valid_number(t.w, flag))
 		return (-1);
+	else if ((flag & FLAG_NON_NULL) && (!t.x && !t.y && !t.z))
+		return (ft_puterror(ERROR_PARSING_NON_NULL, NULL), -1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:54:39 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 18:25:52 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 22:24:25 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef enum e_flag_valid_number{
 	FLAG_POSITIVE	= 1 << 2,
 	FLAG_ABS_UNIT	= 1 << 3,
 	FLAG_FOV		= 1 << 4,
+	FLAG_NON_NULL	= 1 << 5,
 }	t_flag_valid_number;
 
 typedef enum e_end_character{
@@ -45,10 +46,11 @@ char	*parser_plane(char *str, t_world *w);
 char	*parser_cylinder(char *str, t_world *w);
 
 // parser/parser.c
-int	parsing(char *str, t_world *w, t_camera *c);
+int	parsing(char *filename, t_world *w, t_camera *c);
 char	*parser_next_object(char *str, t_world *w, t_camera *c);
 double	parser_next_number(char **str, t_end_character end);
 int	parser_valid_number(double x, t_flag_valid_number flag);
 int	parser_valid_tuple(t_tuple t, t_flag_valid_number flag);
 
+int	file_to_string(char *file, char *str);
 #endif
