@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:52:05 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 00:31:49 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 18:09:36 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ char	*parser_next_object(char *str, t_world *w, t_camera *c)
 {
 	while (ft_isblank(*str))
 		str++;
-	if (!ft_strncmp(str, "A", 1))
+	if (*str == '\0')
+		return (NULL);
+	else if (!ft_strncmp(str, "A", 1))
 		str = parser_ambient(str + 1, w);
 	else if (!ft_strncmp(str, "C", 1))
-		str = parser_camera(str + 1, c);
+		str = parser_camera(str + 1, w, c);
 	else if (!ft_strncmp(str, "L", 1))
 		str = parser_light(str + 1, w);
 	else if (!ft_strncmp(str, "sp", 2))

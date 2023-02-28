@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_objects.c                                   :+:      :+:    :+:   */
+/*   parser_objects1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:52:05 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 00:55:55 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 18:18:45 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,34 @@
 // A 0.2 255,255,255
 char	*parser_ambient(char *str, t_world *w)
 {
-	(void)w;
-	(void)str;
-	return (NULL);
+	double	brt;
+	t_tuple	clr;
+
+	if (w->def_ambient)
+		return (ft_puterror(ERROR_DEFINED_AMBIENT, (char *)__func__), NULL);
+	brt = parser_next_number(&str, END_CHARACTER_BLANK);
+	if (parser_valid_number(brt, FLAG_UNIT))
+		return (NULL);
+	clr = point(parser_next_number(&str, END_CHARACTER_COMMA),
+		parser_next_number(&str, END_CHARACTER_COMMA),
+		parser_next_number(&str, END_CHARACTER_BLANK));
+	if (parser_valid_tuple(clr, FLAG_PIXEL))
+		return (NULL);
+	w->ambient =
+		pixel_to_tmp_pixel(pixel(brt * clr.x, brt * clr.y, brt * clr.z, 0));
+	w->def_ambient = 1;
+	return (str);
 }
 
 // C -50.0,0,20 0,0,1 70
-char	*parser_camera(char *str, t_camera *c)
+char	*parser_camera(char *str, t_world *w, t_camera *c)
 {
 	double	fov;
 	t_tuple	origin;
 	t_tuple	ortn;
 
+	if (w->def_camera)
+		return (ft_puterror(ERROR_DEFINED_CAMERA, (char *)__func__), NULL);
 	origin = point(parser_next_number(&str, END_CHARACTER_COMMA),
 		parser_next_number(&str, END_CHARACTER_COMMA),
 		parser_next_number(&str, END_CHARACTER_BLANK));
@@ -43,6 +59,7 @@ char	*parser_camera(char *str, t_camera *c)
 	ortn = tuple_normalize(ortn);
 	*c = camera(DEFAULT_CAMERA_WIDTH_HI , DEFAULT_CAMERA_HEIGHT_HI , fov);
 	view_transform(c, origin, point(0, 0, 0), ortn);
+	w->def_camera = 1;
 	return (str);
 }
 
@@ -53,6 +70,8 @@ char	*parser_light(char *str, t_world *w)
 	t_tuple	clr;
 	double	brightness;
 
+	if (w->def_light && BONUS == 0)
+		return (ft_puterror(ERROR_DEFINED_LIGHT, (char *)__func__), NULL);
 	origin = point(parser_next_number(&str, END_CHARACTER_COMMA),
 		parser_next_number(&str, END_CHARACTER_COMMA),
 		parser_next_number(&str, END_CHARACTER_BLANK));
@@ -67,6 +86,7 @@ char	*parser_light(char *str, t_world *w)
 	if (parser_valid_tuple(clr, FLAG_DEFAULT))
 		return (NULL);
 	world_add_light(w, light_point(origin, tmp_pixel(clr.x, clr.y, clr.z, 0)));
+	w->def_light = 1;
 	return (str);
 }
 
@@ -98,43 +118,6 @@ char	*parser_sphere(char *str, t_world *w)
 			matrix_translation(origin.x, origin.y, origin.z), 4));
 	sp->mat.color = tmp_pixel(clr.x, clr.y, clr.z, 0);
 	return (world_add_sphere(w, sp), str);
-}
-
-// pl 0.0,0.0,-10.0 0.0,1.0,0.0 0,0,225
-char	*parser_plane(char *str, t_world *w)
-{
-	t_tuple		origin;
-	t_tuple		ortn;
-	t_tuple		clr;
-	t_sphere	*pl;
-
-	pl = plane();
-	if (pl == NULL)
-		return (NULL);
-	origin = point(parser_next_number(&str, END_CHARACTER_COMMA),
-		parser_next_number(&str, END_CHARACTER_COMMA),
-		parser_next_number(&str, END_CHARACTER_BLANK));
-	if (parser_valid_tuple(origin, FLAG_DEFAULT))
-		return (NULL);
-	ortn = vector(parser_next_number(&str, END_CHARACTER_COMMA),
-		parser_next_number(&str, END_CHARACTER_COMMA),
-		parser_next_number(&str, END_CHARACTER_BLANK));
-	if (parser_valid_tuple(ortn, FLAG_ABS_UNIT))
-		return (NULL);
-	ortn = tuple_normalize(ortn);
-	clr = point(parser_next_number(&str, END_CHARACTER_COMMA),
-		parser_next_number(&str, END_CHARACTER_COMMA),
-		parser_next_number(&str, END_CHARACTER_BLANK));
-	if (parser_valid_tuple(clr, FLAG_PIXEL))
-		return (NULL);
-	pl->mat.color = tmp_pixel(clr.x, clr.y, clr.z, 0);
-	//////////////////////////////////////////////////////////////////
-	//// IL FAUT TROUVER LA MATRICE DE TRANSFORMATION POUR PASSER ////
-	//// DE (0, 1, 0) A ORTN ET POUR QUE LE PLAN CONTIENNE ORIGIN ////
-	transform_pl(pl, matrix_matrix(matrix_rotation(dmtr, dmtr, dmtr),
-			matrix_translation(origin.x, origin.y, origin.z), 4));
-	//////////////////////////////////////////////////////////////////
-	return (world_add_plane(w, pl), str);
 }
 
 // cy 50.0,0.0,20.6 0.0,0.0,1.0 14.2 21.42 10,0,255

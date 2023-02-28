@@ -42,9 +42,14 @@ typedef struct s_world
 	t_object_list	*objs;
 	unsigned int	nb_lights;
 	t_light			lights[10];
+	t_tmp_pixel		ambient;
+	bool			def_ambient;
+	bool			def_camera;
+	bool			def_light;
 }	t_world;
 
 typedef struct s_computations{
+	t_world		*world;
 	double			t;
 	t_object_id		id;
 	t_object		*ob;

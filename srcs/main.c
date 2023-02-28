@@ -103,7 +103,10 @@ int	main(int ac, char **av)
 {
 	t_world		w;
 	t_camera	c;
+	char		str[MAX_FILESIZE + 2];
 
+	ft_memset(&w, 0, sizeof(t_world));
+	ft_memset(&c, 0, sizeof(t_camera));
 	if (ac >= 2)
 		parsing(av[1], &w, &c);
 }

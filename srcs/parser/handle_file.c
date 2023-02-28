@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   handle_file.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 18:17:46 by lkrief           ###   ########.fr       */
+/*   Created: 2023/02/28 18:20:17 by lkrief            #+#    #+#             */
+/*   Updated: 2023/02/28 19:11:31 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
-
-# include "structs_all.h"
-# include "error_handler.h"
-# include "graphics.h"
-# include "matrixes.h"
-# include "objects.h"
 # include "parser.h"
-# include "ppm.h"
-# include "rays.h"
-# include "intersections.h"
-# include "tuples.h"
-# include "world.h"
 
-#endif
+int	file_to_string(char *file, char *str)
+{
+	int		fd;
+	int		r;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (ft_puterror(ERROR_FILE_OPEN, (char *)__func__), -1);
+	r = read(fd, str, MAX_FILESIZE + 1);
+	if (r > MAX_FILESIZE)
+		return (ft_puterror(ERROR_FILE_TOO_LONG, (char *)__func__), -1);
+	str[r] = '\0';
+	return (0);
+}

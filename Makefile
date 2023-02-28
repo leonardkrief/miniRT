@@ -49,7 +49,8 @@ SRCS_NAMES		=	core/graphics/camera.c \
 					geometry/tuples/scalar_ops.c \
 					geometry/tuples/print.c \
 					parser/parser.c \
-					parser/parser_objects.c \
+					parser/parser_objects1.c \
+					parser/parser_objects2.c \
 					utils/error_handler/error.c \
 					utils/ppm/ppm.c \
 					main.c
@@ -63,6 +64,7 @@ DEPS			=	${SRCS_NAMES:.c=.d}
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror
 CDFLAGS			=	-MMD -MP
+DEFINES			=
 
 ifeq (${UNAME}, Darwin)
 	INCLUDE			=	-Iinclude -Iinclude/structs -Ilibft/include -I/usr/X11/include
@@ -79,10 +81,10 @@ all:			${MINIRT}
 
 ${MINIRT}:		${DIR_OBJS} ${OBJS}
 				make -C libft
-				${CC} ${CFLAGS} ${OBJS} ${LIBS} ${FRAMEWORKS} -o ${MINIRT}
+				${CC} ${CFLAGS} ${DEFINES} ${OBJS} ${LIBS} ${FRAMEWORKS} -o ${MINIRT}
 
 ${OBJS} :		${DIR_OBJS}/%.o : ${DIR_SRCS}/%.c
-				${CC} ${CFLAGS} ${CDFLAGS} ${INCLUDE} -c $< -o $@
+				${CC} ${CFLAGS} ${DEFINES} ${CDFLAGS} ${INCLUDE} -c $< -o $@
 
 ${DIR_OBJS}:
 				mkdir -p ${DIR_OBJS}
@@ -108,6 +110,7 @@ ${DIR_OBJS}:
 				mkdir -p ${addprefix ${DIR_OBJS}/, utils/error_handler}
 				mkdir -p ${addprefix ${DIR_OBJS}/, utils/ppm}
 
+bonus:			DEFINES = -D BONUS=1
 bonus:			${MINIRT}
 
 clean:

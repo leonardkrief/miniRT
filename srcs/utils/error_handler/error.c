@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:56:06 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 00:33:44 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 18:05:32 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,17 @@ static const char	*g_failure_strings[] = {
 	"Unknown geometric shape detected. Failed creating it",
 	"Unknown geometric shape detected. Failed creating it",
 	"No more filenames available. Remove or rename ppm files",
-	"Unrecognized object during file parsing",
-	"Number too big for program (max supported is ~10e300). Edit .rt file",
-	"Unvalid syntax. Edit .rt file",
-	"Unvalid syntax: unit value expected (0 <= x <= 1)",
-	"Unvalid syntax. pixel value expected (0 <= x <= 255)",
-	"Unvalid syntax. positive value expected (x >= 0)",
-	"Unvalid syntax. absolut unit value expected (x >= -1, x <= 1)",
-	"Unvalid syntax. fov value expected (x >= 0, x <= 180)",
+	"Error\nUnrecognized object. Edit .rt file",
+	"Error\nNumber too big for program (max ~10e300). Edit .rt file",
+	"Error\nUnvalid syntax. Edit .rt file",
+	"Error\nUnvalid syntax: unit value expected (0 <= x <= 1)",
+	"Error\nUnvalid syntax: pixel value expected (0 <= x <= 255)",
+	"Error\nUnvalid syntax: positive value expected (x >= 0)",
+	"Error\nUnvalid syntax: absolut unit value expected (x >= -1, x <= 1)",
+	"Error\nUnvalid syntax: fov value expected (x >= 0, x <= 180)",
+	"Error\nAmbient light defined twice: edit .rt file",
+	"Error\nCamera defined twice: edit .rt file",
+	"Error\nLight defined twice: edit .rt file",
 };
 
 int	ft_putstr_error(const char *s)

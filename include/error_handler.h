@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 00:34:05 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 18:02:33 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ typedef enum e_failure{
 	ERROR_PARSING_POSITIVE,
 	ERROR_PARSING_ABS_UNIT,
 	ERROR_PARSING_FOV,
-	LAST_FAILURE = ERROR_PARSING_FOV,
+	ERROR_DEFINED_AMBIENT,
+	ERROR_DEFINED_CAMERA,
+	ERROR_DEFINED_LIGHT,
+	LAST_FAILURE = ERROR_DEFINED_LIGHT,
 }	t_failure;
 
 // utils/error_handler/error.c

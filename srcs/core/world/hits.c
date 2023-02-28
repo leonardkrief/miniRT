@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 02:40:42 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/14 01:24:08 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/02/28 17:23:53 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_tmp_pixel	lighting(const t_computations *c, const t_material *mat,
 	else
 		effective_color = tmp_pixel_mul(pattern_at(c->ob, c->id, mat, c),
 				light->intensity);
-	ambient = tmp_pixel_scal(mat->ambient, effective_color);
+	ambient = tmp_pixel_mul(c->world->ambient, effective_color);
 	if (in_shadow)
 		return (ambient);
 	lightv = tuple_normalize(tuple_sub(light->position, c->over_point));
@@ -135,6 +135,7 @@ t_pixel	color_at(const t_world *w, const t_ray *ray)
 	intersect_world(w, ray);
 	if (ray->itr_front == NULL)
 		return (pixel(PIXEL_BLACK));
+	c.world = (t_world *)w;
 	c = prepare_computations(ray, ray->itr_front);
 	tmp_p = shade_hit(w, &c);
 	return (tmp_pixel_to_pixel(tmp_p));
