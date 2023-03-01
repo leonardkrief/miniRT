@@ -135,7 +135,6 @@ p:				CFLAGS += -O3
 p:				all
 rep:			fclean p
 
-
 -include		${DEPS}
 
 .PHONY:			all clean fclean re

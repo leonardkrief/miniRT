@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 03:46:32 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 12:19:16 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/01 00:58:15 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 // core/rays/print.c
 void	ray_coords_print_padding(const t_ray *ray, const char *name, const int padding);
+void	free_ray(t_ray r);
 void	ray_coords_print(const t_ray *ray, const char *name);
 void	ray_print(const t_ray *rt, const char *name);
 

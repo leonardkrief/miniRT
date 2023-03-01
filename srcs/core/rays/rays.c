@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 03:46:32 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/12 12:18:37 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/01 00:58:07 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,24 @@ t_ray	ray(const t_tuple origin, const t_tuple direction)
 	ray.itr_front = NULL;
 	ray.itr_back = NULL;
 	return (ray);
+}
+
+void	free_ray(t_ray r)
+{
+	t_intersection	*itr;
+
+	while (r.itr_front)
+	{
+		itr = r.itr_front;
+		r.itr_front = r.itr_front->next;
+		free(itr);
+	}
+	while (r.itr_back)
+	{
+		itr = r.itr_back;
+		r.itr_back = r.itr_back->next;
+		free(itr);
+	}
 }
 
 t_tuple	position(const t_ray ray, const double t)

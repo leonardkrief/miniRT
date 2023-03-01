@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 20:38:29 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/14 00:38:42 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/01 00:58:35 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	display_loop(t_all *args)
 
 void	render(const t_canvas *cvs, const t_camera *c, const t_world *w)
 {
-	t_ray	r;
-	int		i;
-	int		j;
+	t_ray			r;
+	int				i;
+	int				j;
 
 	j = -1;
 	while (++j < c->height)
@@ -52,10 +52,7 @@ void	render(const t_canvas *cvs, const t_camera *c, const t_world *w)
 		{
 			r = ray_for_pixel(c, i, j);
 			put_pixel((t_image *)&cvs->image, i, j, color_at(w, &r));
-			if (r.itr_back)
-				free(r.itr_back);
-			if (r.itr_front)
-				free(r.itr_front);
+			free_ray(r);
 		}
 	}
 }

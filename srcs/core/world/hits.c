@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 02:40:42 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 22:53:52 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/01 01:03:08 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ bool	is_shadowed(const t_world *w, const t_tuple point, const t_light *light)
 	r = ray(point, tuple_normalize(v));
 	intersect_world(w, &r);
 	if (r.itr_front && r.itr_front->t < distance)
+	{
+		free_ray(r);
 		return (true);
+	}
+	free_ray(r);
 	return (false);
 }
 
