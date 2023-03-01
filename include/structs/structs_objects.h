@@ -59,13 +59,14 @@ typedef struct s_material{
 typedef void	t_object;
 typedef enum e_object_id
 {
-	SPHERE_ID = 1,
-	PLANE_ID = 2,
-	CYLINDER_ID = 3,
-	TRIANGLE_ID = 4,
+	SPHERE_ID,
+	PLANE_ID,
+	CYLINDER_ID,
+	TRIANGLE_ID,
 	MIN_ID = SPHERE_ID,
 	MAX_ID = TRIANGLE_ID
 }	t_object_id;
+
 // WARNING : in my objects structs, the m matrix is already inverted
 // You dont have to always recalculate it that way
 typedef struct s_sphere{
@@ -81,18 +82,18 @@ typedef struct s_plane{
 }	t_plane;
 
 typedef struct s_cylinder{
-	t_tuple		origin;
-	double		height;
-	double		radius;
+	double		hgt;
+	t_material	mat;
 	t_matrix	m;
+	t_matrix	t_m;
 }	t_cylinder;
 
-typedef struct s_triangle{
-	t_tuple		a;
-	t_tuple		b;
-	t_tuple		c;
-	t_matrix	m;
-}	t_triangle;
+// typedef struct s_triangle{
+// 	t_tuple		a;
+// 	t_tuple		b;
+// 	t_tuple		c;
+// 	t_matrix	m;
+// }	t_triangle;
 
 typedef struct s_object_list
 {

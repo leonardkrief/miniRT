@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 02:40:42 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/01 01:03:08 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/01 03:06:26 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ t_tmp_pixel	shade_hit(const t_world *w, const t_computations *c)
 		mat = &((t_sphere *)(c->ob))->mat;
 	else if (c->id == PLANE_ID)
 		mat = &((t_plane *)(c->ob))->mat;
+	else if (c->id == CYLINDER_ID)
+		mat = &((t_cylinder *)(c->ob))->mat;
 	else
 		return (tmp_pixel(TMP_PIXEL_BLACK));
 	while (i < w->nb_lights)

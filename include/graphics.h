@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/01 01:07:54 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/01 02:29:30 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # include "world.h"
 
 # define WINDOW_NAME	"miniRT"
-# define WINDOW_HEIGHT	400
-# define WINDOW_WIDTH	400
+# define WINDOW_HEIGHT	1200
+# define WINDOW_WIDTH	2000
 # if __APPLE__
 typedef enum e_input
 {
@@ -102,7 +102,6 @@ t_tmp_pixel		tmp_pixel_mul(const t_tmp_pixel p, const t_tmp_pixel q);
 void			free_window(const t_window *window);
 void			free_image(const t_image *image);
 int				free_canvas(const t_canvas *canvas);
-// devra prendre plus qu'un canvas plus tard mais ok pour l'instant
 int				exit_program(t_all *args);
 
 // core/graphics/mlx_basics.c

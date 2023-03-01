@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:11:55 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/14 00:44:29 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/01 03:02:31 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,6 @@ void	transform_object(const t_object *obj, const t_object_id id,
 		transform_sp((t_sphere *)obj, m);
 	else if (id == PLANE_ID)
 		transform_pl((t_plane *)obj, m);
+	else if (id == CYLINDER_ID)
+		transform_cy((t_cylinder *)obj, m);
 }
