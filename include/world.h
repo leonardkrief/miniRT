@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:06:55 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 16:29:26 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/02 18:17:18 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	free_world(t_world *world);
 
 // core/world/add_elements.c
 void	world_add_light(t_world *world, t_light light);
+void	world_add_cylinder(t_world *world, t_cylinder *cy);
 void	world_add_sphere(t_world *world, t_sphere *sp);
 void	world_add_plane(t_world *world, t_plane *pl);
 t_object_list	*new_object(const int id);

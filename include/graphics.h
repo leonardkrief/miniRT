@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/01 02:29:30 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/02 18:20:05 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@
 # include "world.h"
 
 # define WINDOW_NAME	"miniRT"
-# define WINDOW_HEIGHT	1200
-# define WINDOW_WIDTH	2000
+# define WINDOW_HEIGHT	400
+# define WINDOW_WIDTH	400
+
 # if __APPLE__
 typedef enum e_input
 {

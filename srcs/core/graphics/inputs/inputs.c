@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:44:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/14 02:15:12 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/04 00:54:47 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	input_key_camera_movements(t_input keysym, t_all *args)
 		camera_transform(args->camera, matrix_rotation_z(r_tick));
 	else if (keysym == KEY_PLUS)
 		camera_transform(args->camera, matrix_rotation_z(-r_tick));
-	else
+	else if (keysym != 35)
 		return ;
 	render(args->canvas, args->camera, args->world);
 	mlx_put_image_to_window(args->canvas->window.mlx,

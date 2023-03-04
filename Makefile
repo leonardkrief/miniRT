@@ -24,8 +24,10 @@ SRCS_NAMES		=	core/graphics/camera.c \
 					core/objects/patterns/patterns_basics.c \
 					core/objects/patterns/patterns.c \
 					core/objects/objects.c \
+					core/objects/shapes/cylinder.c \
 					core/objects/shapes/plane.c \
 					core/objects/shapes/sphere.c \
+					core/intersections/intersect_cylinder.c \
 					core/intersections/intersect_plane.c \
 					core/intersections/intersect_sphere.c \
 					core/intersections/intersections.c \

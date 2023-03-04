@@ -118,5 +118,6 @@ int	main(int ac, char **av)
 		return (-1);
 	}
 	all(&args, &cvs, &c, &w);
+	// matrix_print(((t_cylinder *)(w.objs->ob))->m, "");
 	display_loop(&args);
 }

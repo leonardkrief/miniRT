@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 03:16:52 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/27 15:03:50 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/02 17:47:39 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ t_tmp_pixel	threed_checker_at(const t_tuple p, const t_pattern *pat);
 t_tmp_pixel	platinium_striped_at(const t_tuple p, const t_pattern *pat);
 t_tmp_pixel	master_at(const t_tuple p, const t_pattern *pat);
 t_tmp_pixel	test_at(const t_tuple p, const t_pattern *pat);
+
+// core/objects/shapes/cylinder.c
+t_cylinder	*cylinder(void);
+void	transform_cy(t_cylinder *cy, const t_matrix m);
 
 // core/objects/shapes/sphere.c
 t_sphere	*sphere(void);

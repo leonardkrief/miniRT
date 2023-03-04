@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:52:05 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 23:01:08 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/02 18:22:46 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char	*parser_sphere(char *str, t_world *w)
 	if (parser_valid_tuple(origin, FLAG_DEFAULT))
 		return (NULL);
 	dmtr = parser_next_number(&str, END_CHARACTER_BLANK);
-	if (parser_valid_number(dmtr, FLAG_POSITIVE))
+	if (parser_valid_number(dmtr, FLAG_POSITIVE | FLAG_NON_NULL))
 		return (NULL);
 	clr = point(parser_next_number(&str, END_CHARACTER_COMMA),
 		parser_next_number(&str, END_CHARACTER_COMMA),
@@ -119,12 +119,4 @@ char	*parser_sphere(char *str, t_world *w)
 			matrix_translation(origin.x, origin.y, origin.z), 4));
 	sp->mat.color = pixel_to_tmp_pixel(pixel(clr.x, clr.y, clr.z, 0));
 	return (world_add_sphere(w, sp), str);
-}
-
-// cy 50.0,0.0,20.6 0.0,0.0,1.0 14.2 21.42 10,0,255
-char	*parser_cylinder(char *str, t_world *w)
-{
-	(void)w;
-	(void)str;
-	return (NULL);
 }

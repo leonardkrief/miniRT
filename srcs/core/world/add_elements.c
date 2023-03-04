@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 05:14:20 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/01 03:05:58 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/02 18:29:48 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	world_add_cylinder(t_world *world, t_cylinder *cy)
 {
 	t_object_list	*new;
 
-	new = ft_lstnew(cy, PLANE_ID);
+	new = ft_lstnew(cy, CYLINDER_ID);
 	if (new == NULL)
 	{
 		free(cy);

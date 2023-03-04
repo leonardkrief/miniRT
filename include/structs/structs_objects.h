@@ -82,6 +82,7 @@ typedef struct s_plane{
 }	t_plane;
 
 typedef struct s_cylinder{
+	bool		capped;
 	double		hgt;
 	t_material	mat;
 	t_matrix	m;

@@ -6,13 +6,13 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:52:05 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 23:01:29 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/03/03 23:19:40 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-t_matrix	plane_matrix(t_tuple origin, t_tuple ortn)
+t_matrix	normal_matrix(t_tuple origin, t_tuple ortn)
 {
 	t_matrix	r;
 	t_matrix	b;
@@ -59,7 +59,7 @@ char	*parser_plane(char *str, t_world *w)
 	ortn = vector(parser_next_number(&str, END_CHARACTER_COMMA),
 			parser_next_number(&str, END_CHARACTER_COMMA),
 			parser_next_number(&str, END_CHARACTER_BLANK));
-	if (parser_valid_tuple(ortn, FLAG_ABS_UNIT))
+	if (parser_valid_tuple(ortn, FLAG_ABS_UNIT | FLAG_NON_NULL))
 		return (NULL);
 	clr = point(parser_next_number(&str, END_CHARACTER_COMMA),
 			parser_next_number(&str, END_CHARACTER_COMMA),
@@ -67,6 +67,46 @@ char	*parser_plane(char *str, t_world *w)
 	if (parser_valid_tuple(clr, FLAG_PIXEL))
 		return (NULL);
 	pl->mat.color =  pixel_to_tmp_pixel(pixel(clr.x, clr.y, clr.z, 0));
-	transform_pl(pl, plane_matrix(origin, tuple_normalize(ortn)));
+	transform_pl(pl, normal_matrix(origin, tuple_normalize(ortn)));
 	return (world_add_plane(w, pl), str);
+}
+
+// cy 50.0,0.0,20.6 0.0,0.0,1.0 14.2 21.42 10,0,255
+char	*parser_cylinder(char *str, t_world *w)
+{
+	t_tuple		origin;
+	t_tuple		ortn;
+	double		dmtr;
+	double		hgt;
+	t_tuple		clr;
+	t_cylinder	*cy;
+
+	cy = cylinder();
+	if (cy == NULL)
+		return (NULL);
+	origin = point(parser_next_number(&str, END_CHARACTER_COMMA),
+			parser_next_number(&str, END_CHARACTER_COMMA),
+			parser_next_number(&str, END_CHARACTER_BLANK));
+	if (parser_valid_tuple(origin, FLAG_DEFAULT))
+		return (NULL);
+	ortn = vector(parser_next_number(&str, END_CHARACTER_COMMA),
+			parser_next_number(&str, END_CHARACTER_COMMA),
+			parser_next_number(&str, END_CHARACTER_BLANK));
+	if (parser_valid_tuple(ortn, FLAG_ABS_UNIT | FLAG_NON_NULL))
+		return (NULL);
+	dmtr = parser_next_number(&str, END_CHARACTER_BLANK);
+	if (parser_valid_number(dmtr, FLAG_POSITIVE | FLAG_NON_NULL))
+		return (NULL);
+	hgt = parser_next_number(&str, END_CHARACTER_BLANK);
+	if (parser_valid_number(hgt, FLAG_POSITIVE | FLAG_NON_NULL))
+		return (NULL);
+	cy->hgt = hgt;
+	clr = point(parser_next_number(&str, END_CHARACTER_COMMA),
+			parser_next_number(&str, END_CHARACTER_COMMA),
+			parser_next_number(&str, END_CHARACTER_BLANK));
+	if (parser_valid_tuple(clr, FLAG_PIXEL))
+		return (NULL);
+	cy->mat.color =  pixel_to_tmp_pixel(pixel(clr.x, clr.y, clr.z, 0));
+	transform_cy(cy, normal_matrix(origin, tuple_normalize(ortn)));
+	return (world_add_cylinder(w, cy), str);
 }
