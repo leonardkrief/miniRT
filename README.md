@@ -7,7 +7,7 @@ Welcome to the world of raytracing !
 Discover my miniRT, a simple CPU-based raytracer.
 
 ## How to use ?
-For full experience compile the bonus version using `make`.
+Compile the program using `make`.
 Each map file must be terminated with the `.rt` extension.
 
 ```
@@ -17,6 +17,8 @@ make
 ```
 
 ## Creating a scene
+
+***
 
 > ### Mandatory objects (must be unique)
 <details>
@@ -31,8 +33,6 @@ C xPos,yPos,zPos xDir,yDir,zDir   FOV
 
 `FOV` is the field of view.
 </details>
-
-***
 
 <details>
 <summary> Ambient light: </summary>
@@ -67,8 +67,6 @@ L   xPos,yPos,zPos   Ratio   R,G,B
 
 > ### Geometric shapes (no number limitation)
 
-***
-
 <details>
 <summary>Sphere :</summary>
 
@@ -83,8 +81,6 @@ sp    xPos,yPos,zPos    Radius    R,G,B
 `Radius` is the radius of the sphere.
 </details>
 
-***
-
 <details>
 	<summary>Plane:</summary>
 
@@ -98,8 +94,6 @@ pl    xPos,yPos,zPos    xDir,yDir,zDir    R,G,B
 
 `R,G,B` is the color of the plane, each component is between range `[0;255]`. 
 </details>
-
-***
 
 <details>
 	<summary>Cylinder :</summary>
@@ -116,6 +110,8 @@ cy    xPos,yPos,zPos    xDir,yDir,zDir    Lenght    Diameter    R,G,B
 
 `Lenght` and `Diameter` cannot be negative.
 </details>
+
+***
 
 > ### Textures
 
