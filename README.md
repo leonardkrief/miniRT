@@ -18,9 +18,9 @@ make
 
 ## Creating a scene
 
-> ### Mandatory objects
+> ### Mandatory objects (must be unique)
 <details>
-<summary> Camera (only one per file): </summary>
+<summary> Camera: </summary>
 
 ```
 C xPos,yPos,zPos xDir,yDir,zDir   FOV
@@ -35,7 +35,7 @@ C xPos,yPos,zPos xDir,yDir,zDir   FOV
 ***
 
 <details>
-<summary> Ambient light used to <i>simulate</i> indirect illumination (only one per file): </summary>
+<summary> Ambient light: </summary>
 
 ```
 A   Ratio   R,G,B
@@ -48,9 +48,9 @@ A   Ratio   R,G,B
 
 ***
 
-> ### Lights objects
+> ### Lights objects (no number limitation)
 <details>
-<summary>Lights (no limitation):</summary>
+<summary>Lights:</summary>
 
 ```
 L   xPos,yPos,zPos   Ratio   R,G,B
@@ -65,7 +65,7 @@ L   xPos,yPos,zPos   Ratio   R,G,B
 
 ***
 
-> ### Geometric shapes
+> ### Geometric shapes (no number limitation)
 
 ***
 
