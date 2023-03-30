@@ -3,10 +3,8 @@
 [![42](https://img.shields.io/badge/42-common_core-green.svg)](https://shields.io/)
 [![42](https://img.shields.io/badge/Made%20in%20-C-blue.svg)](https://shields.io/)
 
-Welcome to the world of raytracing ! Discover my miniRT, a simple CPU-based raytracer.
-
-## Before reading
-Note that I used a right-hand coordinate system, using the y-axis as the up vector and z-axis as the forward vector of our coordinate system.
+Welcome to the world of raytracing !  
+Discover my miniRT, a simple CPU-based raytracer.
 
 ## How to use ?
 For full experience compile the bonus version using `make`.
@@ -20,6 +18,7 @@ make
 
 ## Creating a scene
 
+> ### Mandatory objects
 <details>
 <summary> Camera (only one per file): </summary>
 
@@ -49,6 +48,7 @@ A   Ratio   R,G,B
 
 ***
 
+> ### Lights objects
 <details>
 <summary>Lights (no limitation):</summary>
 
@@ -65,13 +65,7 @@ L   xPos,yPos,zPos   Ratio   R,G,B
 
 ***
 
-**Each line starts with an identifier, describing a shape.**
-
-My miniRT supports a couple of basic shapes :
-
-* Sphere : `sp`
-* Infinite plane : `pl`
-* Finite closed cylinder : `cy`
+> ### Geometric shapes
 
 ***
 
@@ -123,5 +117,7 @@ cy    xPos,yPos,zPos    xDir,yDir,zDir    Lenght    Diameter    R,G,B
 `Lenght` and `Diameter` cannot be negative.
 </details>
 
-My ray-tracer already supports several textures but I still need to code a way to parse them.
-They are modifiable in the source code though. Check my main.c for examples :)
+> ### Textures
+
+My ray-tracer supports several textures but I still need to code how to parse them.
+They are modifiable in the source code though. Check my `main.c` files for examples :)
