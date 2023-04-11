@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:06:22 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/02 17:50:50 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 23:11:05 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ void	intersect_world(const t_world *world, const t_ray *ray)
 			intersect_pl(objs->ob, (t_ray *)ray);
 		else if (objs->id == CYLINDER_ID)
 			intersect_cy(objs->ob, (t_ray *)ray);
-		// else if (objs->id == TRIANGLE_ID)
-		// 	intersect_tr(objs->ob, ray);
 		else
 			ft_puterror(UNKNOWN_OBJECT, (char *)__func__);
 		objs = objs->next;

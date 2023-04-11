@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 02:04:01 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 02:59:19 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 23:15:15 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	intersect_pl(const t_plane *pl, t_ray *ray0)
 	t_ray			ray;
 
 	ray = matrix_ray(&pl->m, ray0);
-	// local_intersect_at starts_here
 	if (eq(ray.origin.y, 0) || eq(ray.direction.y, 0))
 		return ;
 	itr = intersection(PLANE_ID, (t_object *)pl);

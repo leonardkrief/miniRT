@@ -6,11 +6,11 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 18:20:17 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 23:06:54 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 23:34:29 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "parser.h"
+#include "parser.h"
 
 int	check_filename(char *filename)
 {
@@ -20,7 +20,7 @@ int	check_filename(char *filename)
 	if (len < 3)
 		return (ft_puterror(ERROR_FILE_EXTENSION, (char *)__func__), -1);
 	if (!(filename[len - 1] == 't' && filename[len - 2] == 'r'
-		&& filename[len - 3] == '.'))
+			&& filename[len - 3] == '.'))
 		return (ft_puterror(ERROR_FILE_EXTENSION, (char *)__func__), -1);
 	return (0);
 }
@@ -43,5 +43,25 @@ int	file_to_string(char *filename, char *str)
 	str[r] = '\0';
 	if (close(fd) == -1)
 		return (ft_puterror(ERROR_FILE_CLOSE, (char *)__func__), -1);
+	return (0);
+}
+
+int	parsing(char *filename, t_world *w, t_camera *c)
+{
+	char	file[MAX_FILESIZE + 2];
+	char	*str;
+
+	if (file_to_string(filename, file) == -1)
+		return (-1);
+	str = file;
+	while (*str)
+	{
+		str = parser_next_object(str, w, c);
+		if (str == NULL)
+		{
+			free_world(w);
+			return (-1);
+		}
+	}
 	return (0);
 }

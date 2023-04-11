@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 05:14:20 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/02 18:29:48 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 23:10:18 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ t_object_list	*new_object(const int id)
 		obj = plane();
 	else if (id == CYLINDER_ID)
 		obj = cylinder();
-	// else if (id == TRIANGLE_ID)
-	// 	obj = triangle();
 	if (obj == NULL)
 		return (ft_puterror(FAILED_MALLOC, (char *)__func__), NULL);
 	if (id == SPHERE_ID)
@@ -88,8 +86,6 @@ t_object_list	*new_object(const int id)
 		new = ft_lstnew(obj, PLANE_ID);
 	else if (id == CYLINDER_ID)
 		new = ft_lstnew(obj, CYLINDER_ID);
-	// else if (id == TRIANGLE_ID)
-	// 	new = ft_lstnew(obj, TRIANGLE_ID);
 	if (new == NULL)
 		return (ft_puterror(FAILED_MALLOC, (char *)__func__), NULL);
 	return (new);

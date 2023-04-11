@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 12:33:22 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/14 00:39:59 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/02 16:10:49 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ void	pixel_size(t_camera *c)
 	c->pixel_size = (c->half_width * 2) / c->width;
 }
 
+// I had to review this function in order to assure that the resulting
+// matrix 'orientation' would be invertible.
+// This is equivalent to assure that (from - to) ^ upn is never zero
+// So I had to find a 'to' vector that assured that condition.
+// If from ^ upn is non-zero, then to = -from works.
+// Else, I just take to = ux or to = uy according to what works.
 void	view_transform(t_camera *c, t_tuple from, t_tuple to, t_tuple up)
 {
 	t_tuple		forward;
@@ -57,8 +63,15 @@ void	view_transform(t_camera *c, t_tuple from, t_tuple to, t_tuple up)
 	t_tuple		true_up;
 	t_matrix	orientation;
 
-	forward = tuple_normalize(tuple_sub(to, from));
 	upn = tuple_normalize(up);
+	to = tuple_neg(from);
+	if (tuple_eq(tuple_crossprod(from, upn), vector(0, 0, 0)))
+	{
+		to = point(1, 0, 0);
+		if (tuple_eq(tuple_crossprod(to, upn), vector(0, 0, 0)))
+			to = point(0, 1, 0);
+	}
+	forward = tuple_normalize(tuple_sub(to, from));
 	left = tuple_crossprod(forward, upn);
 	true_up = tuple_crossprod(left, forward);
 	orientation = matrix_transpose(
@@ -75,8 +88,6 @@ t_ray	ray_for_pixel(const t_camera *c, const int i, const int j)
 	t_tuple	pixel;
 	t_tuple	origin;
 
-	// xoffset = (i + 0.5) * c.pixel_size;
-	// yoffset = (j + 0.5) * c.pixel_size;
 	world_x = c->half_width - ((i + 0.5) * c->pixel_size);
 	world_y = c->half_height - ((j + 0.5) * c->pixel_size);
 	pixel = matrix_vect(c->inv_transform, point(world_x, world_y, -1));

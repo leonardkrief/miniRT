@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 02:23:34 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 23:13:35 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/11 10:33:36 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_tuple	tuple_sub(const t_tuple a, const t_tuple b)
 	c.y = a.y - b.y;
 	c.z = a.z - b.z;
 	c.w = a.w - b.w;
+	if (c.w < 0)
+		c.w = -c.w;
 	return (c);
 }
 
@@ -41,7 +43,7 @@ t_tuple	tuple_neg(const t_tuple a)
 	b.x = -a.x;
 	b.y = -a.y;
 	b.z = -a.z;
-	b.w = -a.w;
+	b.w = a.w;
 	return (b);
 }
 

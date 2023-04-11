@@ -6,23 +6,24 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 03:46:32 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/01 00:58:15 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/11 10:45:57 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYS_H
 # define RAYS_H
 
-# include "structs_all.h"
+# include "error_handler.h"
+# include "intersections.h"
 # include "libft.h"
-# include "tuples.h"
 # include "matrixes.h"
 # include "objects.h"
-# include "intersections.h"
-# include "error_handler.h"
+# include "structs_all.h"
+# include "tuples.h"
 
 // core/rays/print.c
-void	ray_coords_print_padding(const t_ray *ray, const char *name, const int padding);
+void	ray_coords_print_padding(const t_ray *ray, const char *name,
+			const int padding);
 void	free_ray(t_ray r);
 void	ray_coords_print(const t_ray *ray, const char *name);
 void	ray_print(const t_ray *rt, const char *name);

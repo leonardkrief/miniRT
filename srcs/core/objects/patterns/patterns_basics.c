@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:58:47 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/01 03:02:53 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 23:13:58 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ t_tmp_pixel	pattern_at(const t_object *obj, const t_object_id id,
 		m = ((t_plane *)obj)->m;
 	else if (id == CYLINDER_ID)
 		m = ((t_cylinder *)obj)->m;
-	// to be continued...
 	else
 	{
 		ft_puterror(UNKNOWN_OBJECT, (char *)__func__);

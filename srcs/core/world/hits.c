@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 02:40:42 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/01 03:06:26 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 22:54:14 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,18 +131,4 @@ t_tmp_pixel	point_in_front_light(const t_computations *c, const t_material *mat,
 		specular = tmp_pixel_scal(mat->specular * factor, light->intensity);
 	}
 	return (tmp_pixel_add(diffuse, specular));
-}
-
-t_pixel	color_at(const t_world *w, const t_ray *ray)
-{
-	t_computations	c;
-	t_tmp_pixel		tmp_p;
-
-	intersect_world(w, ray);
-	if (ray->itr_front == NULL)
-		return (pixel(PIXEL_BLACK));
-	c = prepare_computations(ray, ray->itr_front);
-	c.world = (t_world *)w;
-	tmp_p = shade_hit(w, &c);
-	return (tmp_pixel_to_pixel(tmp_p));
 }

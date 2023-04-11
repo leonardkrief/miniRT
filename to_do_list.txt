@@ -1,0 +1,8 @@
+Obligatoire:
+-rajouter les textures dans le parsing et au _usage_
+-finir de normer les sources
+-normer les include
+-retester encore avec d'autres maps
+
+Si on veut:
+-corriger le micro bug d'affichage des ombres sur les cylindres sous certains angles

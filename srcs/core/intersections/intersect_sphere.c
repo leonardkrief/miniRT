@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 02:04:01 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/13 02:59:31 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 23:15:27 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	verify_intersections_sp(const double *q, t_ray *ray,
 	if (itr2)
 	{
 		itr2->t = (double)(-q[1] + sqrt(q[3])) / (double)(2 * q[0]);
-		if (itr2->t != itr1->t) // If the 2 intersections are the same, we only keep one ?
+		if (itr2->t != itr1->t)
 			add_intersection_to_ray(ray, itr2);
 		else
 			free(itr2);
@@ -69,7 +69,6 @@ void	intersect_sp(const t_sphere *sp, t_ray *ray0)
 	t_ray			ray;
 
 	ray = matrix_ray(&sp->m, ray0);
-	// local_intersect_at starts_here
 	sp_to_ray = tuple_sub(ray.origin, point(0, 0, 0));
 	q[0] = tuple_dotprod(ray.direction, ray.direction);
 	q[1] = 2 * tuple_dotprod(ray.direction, sp_to_ray);

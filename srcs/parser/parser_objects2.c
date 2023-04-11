@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:52:05 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/03 23:19:40 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/11 10:38:50 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*parser_plane(char *str, t_world *w)
 			parser_next_number(&str, END_CHARACTER_BLANK));
 	if (parser_valid_tuple(clr, FLAG_PIXEL))
 		return (NULL);
-	pl->mat.color =  pixel_to_tmp_pixel(pixel(clr.x, clr.y, clr.z, 0));
+	pl->mat.color = pixel_to_tmp_pixel(pixel(clr.x, clr.y, clr.z, 0));
 	transform_pl(pl, normal_matrix(origin, tuple_normalize(ortn)));
 	return (world_add_plane(w, pl), str);
 }
@@ -106,7 +106,7 @@ char	*parser_cylinder(char *str, t_world *w)
 			parser_next_number(&str, END_CHARACTER_BLANK));
 	if (parser_valid_tuple(clr, FLAG_PIXEL))
 		return (NULL);
-	cy->mat.color =  pixel_to_tmp_pixel(pixel(clr.x, clr.y, clr.z, 0));
+	cy->mat.color = pixel_to_tmp_pixel(pixel(clr.x, clr.y, clr.z, 0));
 	transform_cy(cy, normal_matrix(origin, tuple_normalize(ortn)));
 	return (world_add_cylinder(w, cy), str);
 }

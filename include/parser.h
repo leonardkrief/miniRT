@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:54:39 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 22:24:25 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 23:32:58 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ typedef enum e_end_character{
 	END_CHARACTER_BLANK,
 }	t_end_character;
 
-// parser/parser_objects.c
-char	*parser_ambient(char *str, t_world *w);
-char	*parser_camera(char *str, t_world *w, t_camera *c);
-char	*parser_light(char *str, t_world *w);
-char	*parser_sphere(char *str, t_world *w);
+// parser/handle_file.c
+int	check_filename(char *filename);
+int	file_to_string(char *filename, char *str);
+int	parsing(char *filename, t_world *w, t_camera *c);
+
+// parser/parser_objects2.c
+t_matrix	plane_matrix(t_tuple origin, t_tuple ortn);
 char	*parser_plane(char *str, t_world *w);
-char	*parser_cylinder(char *str, t_world *w);
 
 // parser/parser.c
 int	parsing(char *filename, t_world *w, t_camera *c);
@@ -52,5 +53,11 @@ double	parser_next_number(char **str, t_end_character end);
 int	parser_valid_number(double x, t_flag_valid_number flag);
 int	parser_valid_tuple(t_tuple t, t_flag_valid_number flag);
 
-int	file_to_string(char *file, char *str);
+// parser/parser_objects1.c
+char	*parser_ambient(char *str, t_world *w);
+char	*parser_camera(char *str, t_world *w, t_camera *c);
+char	*parser_light(char *str, t_world *w);
+char	*parser_sphere(char *str, t_world *w);
+char	*parser_cylinder(char *str, t_world *w);
+
 #endif

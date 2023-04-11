@@ -6,35 +6,15 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:52:05 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 22:26:12 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 23:39:31 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int	parsing(char *filename, t_world *w, t_camera *c)
-{
-	char	file[MAX_FILESIZE + 2];
-	char	*str;
-
- 	if (file_to_string(filename, file) == -1)
-		return (-1);
-	str = file;
-	while (*str)
-	{
-		str = parser_next_object(str, w, c);
-		if (str == NULL)
-		{
-			// free the allocated memory (potential shapes inside world)
-			return (-1);
-		}
-	}
-	return (0);
-}
-
 char	*parser_next_object(char *str, t_world *w, t_camera *c)
 {
-	static bool first = true;
+	static bool	first = true;
 	bool		newline;
 
 	newline = false;
@@ -71,17 +51,21 @@ double	parser_next_number(char **str, t_end_character end)
 	int		p;
 
 	if (**str == '\0')
-		return (ft_puterror(ERROR_PARSING_SYNTAX, (char *)__func__), __DBL_MAX__);
-	while(ft_isblank(**str))
+		return (ft_puterror(ERROR_PARSING_SYNTAX,
+				(char *)__func__), __DBL_MAX__);
+	while (ft_isblank(**str))
 		(*str)++;
 	x = ft_atodouble(*str, &p);
 	if (p == -1)
-		return (ft_puterror(ERROR_PARSING_NUMBER, (char *)__func__), __DBL_MAX__);
+		return (ft_puterror(ERROR_PARSING_NUMBER,
+				(char *)__func__), __DBL_MAX__);
 	if (end == END_CHARACTER_COMMA && (*str)[p++] != ',')
-		return (ft_puterror(ERROR_PARSING_SYNTAX, (char *)__func__), __DBL_MAX__);
+		return (ft_puterror(ERROR_PARSING_SYNTAX,
+				(char *)__func__), __DBL_MAX__);
 	else if (end == END_CHARACTER_BLANK && !ft_isblank((*str)[p])
 			&& (*str)[p] != '\0')
-		return (ft_puterror(ERROR_PARSING_SYNTAX, (char *)__func__), __DBL_MAX__);
+		return (ft_puterror(ERROR_PARSING_SYNTAX,
+				(char *)__func__), __DBL_MAX__);
 	*str += p;
 	return (x);
 }

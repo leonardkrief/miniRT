@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   patterns.c                                         :+:      :+:    :+:   */
+/*   patterns_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:58:47 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/14 03:11:15 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 22:51:41 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,25 +57,8 @@ t_tmp_pixel	platinium_striped_at(const t_tuple p, const t_pattern *pat)
 {
 	t_pattern	tmp;
 
-	tmp = pattern(gradient_at(p, pat), gradient_at(tuple_mul(1.5, p), pat), STRIPED_PATTERN);
+	tmp = pattern(gradient_at(p, pat), gradient_at(tuple_mul(1.5, p), pat),
+			STRIPED_PATTERN);
 	transform_pattern(&tmp, matrix_rotation_y(M_PI / 6));
-	return (stripe_at(p, &tmp));
-}
-
-t_tmp_pixel	master_at(const t_tuple p, const t_pattern *pat)
-{
-	t_pattern	tmp;
-
-	tmp = pattern(stripe_at(p, pat), gradient_at(p, pat), STRIPED_PATTERN);
-	transform_pattern(&tmp, matrix_rotation_z(M_PI / 6));
-	return (ring_at(p, &tmp));
-}
-
-t_tmp_pixel	test_at(const t_tuple p, const t_pattern *pat)
-{
-	t_pattern	tmp;
-
-	tmp = pattern(ring_at(p, pat), platinium_striped_at(p, pat), STRIPED_PATTERN);
-	transform_pattern(&tmp, matrix_rotation_z(M_PI / 5));
 	return (stripe_at(p, &tmp));
 }

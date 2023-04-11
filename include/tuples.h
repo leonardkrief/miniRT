@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/04 00:34:27 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/11 10:49:18 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,11 @@
 # include "libft.h"
 # include "error_handler.h"
 
-# define EPSILON	__DBL_EPSILON__ * 1e6
-# define MAX_PRINT_LEN "8"
-# define PRECISION "3"
-# define TUPLE_FORMAT "%+-"MAX_PRINT_LEN"."PRECISION"lf"
-# define TUPLE_FORMAT_SINGLE "%+-1."PRECISION"lf"
+# define EPSILON	1e-10
 
 // geometry/tuples/ops2.c
 t_tuple	tuple_reflect(const t_tuple ray, const t_tuple normal);
+int		tuple_eq(const t_tuple a, const t_tuple b);
 
 // geometry/tuples/print.c
 void	tuple_raw_print(t_tuple a);
@@ -46,7 +43,7 @@ t_tuple	tuple_mul(const double q, const t_tuple a);
 t_tuple	tuple_crossprod(const t_tuple a, const t_tuple b);
 
 // geometry/tuples/scalar_ops.c
-int	eq(double a, double b);
+int		eq(double a, double b);
 double	tuple_modulus(t_tuple a);
 t_tuple	tuple_normalize(t_tuple a);
 double	tuple_dotprod(const t_tuple a, const t_tuple b);

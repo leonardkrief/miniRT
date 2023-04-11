@@ -6,11 +6,41 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:44:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/04 00:54:47 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 22:44:54 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphics.h"
+
+static int	input_key_camera_movements_aux(t_input keysym, t_all *arg,
+		const double t, const double r)
+{
+	if (keysym == KEY_Z)
+		return (camera_transform(arg->camera, matrix_translation(0, 0, t)), 0);
+	else if (keysym == KEY_S)
+		return (camera_transform(arg->camera, matrix_translation(0, 0, -t)), 0);
+	else if (keysym == KEY_Q)
+		return (camera_transform(arg->camera, matrix_translation(-t, 0, 0)), 0);
+	else if (keysym == KEY_D)
+		return (camera_transform(arg->camera, matrix_translation(t, 0, 0)), 0);
+	else if (keysym == KEY_X)
+		return (camera_transform(arg->camera, matrix_translation(0, -t, 0)), 0);
+	else if (keysym == KEY_W)
+		return (camera_transform(arg->camera, matrix_translation(0, t, 0)), 0);
+	else if (keysym == KEY_UP)
+		return (camera_transform(arg->camera, matrix_rotation_x(-r)), 0);
+	else if (keysym == KEY_DOWN)
+		return (camera_transform(arg->camera, matrix_rotation_x(r)), 0);
+	else if (keysym == KEY_RIGHT)
+		return (camera_transform(arg->camera, matrix_rotation_y(r)), 0);
+	else if (keysym == KEY_LEFT)
+		return (camera_transform(arg->camera, matrix_rotation_y(-r)), 0);
+	else if (keysym == KEY_SLASH)
+		return (camera_transform(arg->camera, matrix_rotation_z(r)), 0);
+	else if (keysym == KEY_PLUS)
+		return (camera_transform(arg->camera, matrix_rotation_z(-r)), 0);
+	return (1);
+}
 
 void	input_key_camera_movements(t_input keysym, t_all *args)
 {
@@ -19,35 +49,12 @@ void	input_key_camera_movements(t_input keysym, t_all *args)
 
 	t_tick = CAMERA_TRANSLATION_SENSITIVITY;
 	r_tick = CAMERA_ROTATION_SENSITIVITY;
-	if (keysym == KEY_Z)
-		camera_transform(args->camera, matrix_translation(0, 0, t_tick));
-	else if (keysym == KEY_S)
-		camera_transform(args->camera, matrix_translation(0, 0, -t_tick));
-	else if (keysym == KEY_Q)
-		camera_transform(args->camera, matrix_translation(-t_tick, 0, 0));
-	else if (keysym == KEY_D)
-		camera_transform(args->camera, matrix_translation(t_tick, 0, 0));
-	else if (keysym == KEY_X)
-		camera_transform(args->camera, matrix_translation(0, -t_tick, 0));
-	else if (keysym == KEY_W)
-		camera_transform(args->camera, matrix_translation(0, t_tick, 0));
-	else if (keysym == KEY_UP)
-		camera_transform(args->camera, matrix_rotation_x(-r_tick));
-	else if (keysym == KEY_DOWN)
-		camera_transform(args->camera, matrix_rotation_x(r_tick));
-	else if (keysym == KEY_RIGHT)
-		camera_transform(args->camera, matrix_rotation_y(r_tick));
-	else if (keysym == KEY_LEFT)
-		camera_transform(args->camera, matrix_rotation_y(-r_tick));
-	else if (keysym == KEY_SLASH)
-		camera_transform(args->camera, matrix_rotation_z(r_tick));
-	else if (keysym == KEY_PLUS)
-		camera_transform(args->camera, matrix_rotation_z(-r_tick));
-	else if (keysym != 35)
-		return ;
-	render(args->canvas, args->camera, args->world);
-	mlx_put_image_to_window(args->canvas->window.mlx,
-		args->canvas->window.win, args->canvas->image.img, 0, 0);
+	if (input_key_camera_movements_aux(keysym, args, t_tick, r_tick) == 0)
+	{
+		render(args->canvas, args->camera, args->world);
+		mlx_put_image_to_window(args->canvas->window.mlx,
+			args->canvas->window.win, args->canvas->image.img, 0, 0);
+	}
 }
 
 void	input_key_close_window(t_input keysym, t_all *args)
@@ -70,13 +77,16 @@ int	input_key(t_input keysym, t_all *args)
 int	input_mouse(t_input mousesym, int i, int j, t_all *args)
 {
 	static int	count;
+	t_ray		r;
+	t_pixel		color;
 
 	(void)args;
 	count++;
 	printf("(%d) mouse click: %d  i: %d  j: %d\n", count, mousesym, i, j);
-	t_ray	r = ray_for_pixel(args->camera, i, j);
-	t_pixel	color = color_at(args->world, &r);
-	printf("     %d %d %d\n\n", pixel_get_r(color), pixel_get_g(color), pixel_get_b(color));
+	r = ray_for_pixel(args->camera, i, j);
+	color = color_at(args->world, &r);
+	printf("     %d %d %d\n\n", pixel_get_r(color), pixel_get_g(color),
+		pixel_get_b(color));
 	fflush(stdout);
 	return (0);
 }

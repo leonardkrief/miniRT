@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:21:42 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/01 03:01:47 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 23:15:07 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ t_tuple	normal_at(const t_object_id id, const t_object *obj, t_tuple point)
 		return (normal_at_pl((t_plane *)obj, point));
 	else if (id == CYLINDER_ID)
 		return (normal_at_cy((t_cylinder *)obj, point));
-	// else if (id == TRIANGLE_ID)
-	// 	return (normal_at_co((t_triangle *)obj, point));
 	ft_puterror(UNKNOWN_OBJECT, (char *)__func__);
 	return (tuple(0, 0, 0, 0));
 }

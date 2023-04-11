@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:51:18 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/14 00:49:07 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/01 23:10:46 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	world_print(t_world *world)
 {
-	size_t	i;
-	char	light_id[] = "spot _:   ";
+	size_t		i;
+	static char	light_id[] = "spot _:   ";
 
 	i = 0;
 	while (i < world->nb_lights)
