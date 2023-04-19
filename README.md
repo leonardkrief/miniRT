@@ -27,8 +27,9 @@ Here are the commands for ***french keyboards***:
 If you don't have a french keyboard just enter random input, you will find  
 
 ## Preview
-<img src="https://raw.githubusercontent.com/leonardkrief/miniRT/main/images/autel.png" width="800" height="800"></img>
 <img src="https://raw.githubusercontent.com/leonardkrief/miniRT/main/images/multispot.png" width="800" height="800"></img>
+<img src="https://raw.githubusercontent.com/leonardkrief/miniRT/main/images/autel.png" width="800" height="800"></img>
+<img src="https://raw.githubusercontent.com/leonardkrief/miniRT/main/images/iris.png" width="800" height="800"></img>
 
 ## Creating a scene
 
