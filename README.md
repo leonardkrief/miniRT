@@ -19,7 +19,7 @@ sh installer.sh
 The executable miniRT will be generated and you will be able to load a scene in it with ```./miniRT path_to_scene```  
 For example
 ```
-./miniRT maps/ra.rt
+./miniRT scenes/ra.rt
 ```
 #### Movements
 Once the scene is loaded, you can move inside it !  
