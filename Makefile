@@ -59,8 +59,8 @@ OBJS			=	$(addprefix $(DIR_OBJS)/, $(OBJS_NAMES))
 OBJS_NAMES		=	${SRCS_NAMES:.c=.o}
 DEPS			=	${SRCS_NAMES:.c=.d}
 
-CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror -O3
+CC			=	gcc
+CFLAGS			=	-Wall -Wextra -Werror
 CDFLAGS			=	-MMD -MP
 DEFINES			=   -D BONUS=1
 
@@ -68,7 +68,9 @@ ifeq (${UNAME}, Darwin)
 	INCLUDE			=	-Iinclude -Iinclude/structs -Ilibft/include -I/usr/X11/include
 	LIBS			=	-L/usr/X11/lib -Llibft -lft -l mlx
 	FRAMEWORKS		=	-framework OpenGL -framework AppKit
+	CFLAGS		   +=	-O3
 else ifeq (${UNAME}, Linux)
+	CC			=	cc
 	INCLUDE			=	-Iinclude -Iinclude/structs -Ilibft/include -Imlx
 	LIBS			=	-L/usr/lib -Llibft -Lmlx -lft -lmlx -lXext -lX11 -lm
 endif
@@ -118,7 +120,7 @@ fclean:			clean
 
 re:				fclean all
 
-# Debug			CFLAGS = -Wall -Wextra -g3
+# Debug			CFLAGS = -Wall -Wextra -Werror -g3
 d:				CFLAGS += -g3
 d:				all
 red:			fclean d
