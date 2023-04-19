@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   liblkriefft.h                                            :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 01:50:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/01/06 03:00:59 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/15 20:07:15 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef liblkriefft_H
-# define liblkriefft_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -41,10 +41,10 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *s, int c, size_t n);
-int	ft_putchar_fd(char c, int fd);
-int	ft_putendl_fd(char *s, int fd);
-int	ft_putnbr_fd(int n, int fd);
-int	ft_putstr_fd(char *s, int fd);
+int		ft_putchar_fd(char c, int fd);
+int		ft_putendl_fd(char *s, int fd);
+int		ft_putnbr_fd(int n, int fd);
+int		ft_putstr_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
