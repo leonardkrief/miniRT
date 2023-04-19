@@ -1,11 +1,15 @@
-# miniRT
+# 🚀🌐 miniRT 🌐🚀
 
-Welcome to my simple CPU-based raytracer
+Welcome to my C-coded, CPU-based raytracer !  
+If I find the time later, I would like to develop a C++ raytracer with refraction/reflection, soft shadows, anti-aliasing, focal blur, multithread support, triangles, CSG and groups.  
+This project really made me realize how useful object-oriented programming can be.  
+C can be frustrating sometimes haha 😤
 
 ## How to use ?
 #### Installation
-This program is compatible with Mac and Linux based systems  
-Just clone the repo and run the ```installer.sh``` script:  
+This program is compatible with Mac and Linux-based systems.  
+Just clone the repo and run the `installer.sh` script:  
+
 ```
 git clone https://github.com/leonardkrief/miniRT
 cd miniRT
@@ -25,6 +29,13 @@ Here are the commands for ***french keyboards***:
 * Press ```ESC``` key or click the cross to quit.  
 
 If you don't have a french keyboard just enter random input, you will find  
+
+#### Window size
+The window size is modifyable in the include/graphics.h file, lines 33-34:
+```
+# define WINDOW_HEIGHT xxx
+# define WINDOW_WIDTH xxx
+```
 
 ## Creating a scene
 
@@ -125,4 +136,4 @@ cy    xPos,yPos,zPos    xDir,yDir,zDir    Lenght    Diameter    R,G,B
 > ### Patterns
 My ray-tracer supports several patterns but they are not handled in the parsing of the scenes. I will try to add that later :)
 
-### Until then, enjoy and have fun
+### Enjoy and have fun 🎨🖥️
