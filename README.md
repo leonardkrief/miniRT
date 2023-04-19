@@ -1,6 +1,6 @@
 # miniRT
 
-Discover my miniRT, a simple CPU-based raytracer.
+Welcome to my simple CPU-based raytracer
 
 ## How to use ?
 This program is compatible with Mac and Linux based systems  
