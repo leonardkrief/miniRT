@@ -26,9 +26,13 @@ Here are the commands for ***french keyboards***:
 
 If you don't have a french keyboard just enter random input, you will find  
 
+## Preview
+<img src="https://raw.githubusercontent.com/leonardkrief/miniRT/main/images/autel.png" width="800" height="800"></img>
+<img src="https://raw.githubusercontent.com/leonardkrief/miniRT/main/images/multispot.png" width="800" height="800"></img>
+
 ## Creating a scene
 
-A scene is a file containing all of the objects that will load into your raytracer. It's extension MUST BE ```.rt```  
+A scene is a file containing all of the objects that will load into your raytracer. It's extension must be ```.rt```  
 In that file will be mentionned 2 types of objects: ***special objects***, and ***shapes objects***.  
 ***3 special objects***: *Ambient Lightning*, *Camera*, *Lights*  
 ***3 shapes objects***: *Spheres*, *Plans*, *Cylinders*  
