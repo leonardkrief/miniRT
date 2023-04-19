@@ -59,19 +59,19 @@ OBJS			=	$(addprefix $(DIR_OBJS)/, $(OBJS_NAMES))
 OBJS_NAMES		=	${SRCS_NAMES:.c=.o}
 DEPS			=	${SRCS_NAMES:.c=.d}
 
-CC			=	gcc
+CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
 CDFLAGS			=	-MMD -MP
 DEFINES			=   -D BONUS=1
 
 ifeq (${UNAME}, Darwin)
-	INCLUDE			=	-Iinclude -Iinclude/structs -Ilibft/include -I/usr/X11/include
+	INCLUDES		=	-Iinclude -Iinclude/structs -Ilibft/include -I/usr/X11/include
 	LIBS			=	-L/usr/X11/lib -Llibft -lft -l mlx
 	FRAMEWORKS		=	-framework OpenGL -framework AppKit
 	CFLAGS		   +=	-O3
 else ifeq (${UNAME}, Linux)
 	CC			=	cc
-	INCLUDE			=	-Iinclude -Iinclude/structs -Ilibft/include -Imlx
+	INCLUDES		=	-Iinclude -Iinclude/structs -Ilibft/include -Imlx
 	LIBS			=	-L/usr/lib -Llibft -Lmlx -lft -lmlx -lXext -lX11 -lm
 endif
 
@@ -83,8 +83,10 @@ ${MINIRT}:		${DIR_OBJS} ${OBJS}
 				make -C libft
 				${CC} ${CFLAGS} ${DEFINES} ${OBJS} ${LIBS} ${FRAMEWORKS} -o ${MINIRT}
 
-${OBJS} :		${DIR_OBJS}/%.o : ${DIR_SRCS}/%.c
-				${CC} ${CFLAGS} ${DEFINES} ${CDFLAGS} ${INCLUDE} -c $< -o $@
+
+${DIR_OBJS}/%.o : ${DIR_SRCS}/%.c
+	${CC} ${CFLAGS} ${DEFINES} ${INCLUDES} -MMD -MP -c $< -o $@ -MF ${DIR_OBJS}/$*.d
+
 
 ${DIR_OBJS}:
 				mkdir -p ${DIR_OBJS}
