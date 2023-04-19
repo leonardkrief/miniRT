@@ -59,10 +59,10 @@ OBJS			=	$(addprefix $(DIR_OBJS)/, $(OBJS_NAMES))
 OBJS_NAMES		=	${SRCS_NAMES:.c=.o}
 DEPS			=	${SRCS_NAMES:.c=.d}
 
-CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror
+CC				=	gcc
+CFLAGS			=	-Wall -Wextra -Werror -O3
 CDFLAGS			=	-MMD -MP
-DEFINES			=
+DEFINES			=   -D BONUS=1
 
 ifeq (${UNAME}, Darwin)
 	INCLUDE			=	-Iinclude -Iinclude/structs -Ilibft/include -I/usr/X11/include
@@ -108,9 +108,6 @@ ${DIR_OBJS}:
 				mkdir -p ${addprefix ${DIR_OBJS}/, utils/error_handler}
 				mkdir -p ${addprefix ${DIR_OBJS}/, utils/ppm}
 
-bonus:			DEFINES = -D BONUS=1
-bonus:			${MINIRT}
-
 clean:
 				make clean -C libft
 				${RM} ${DIR_OBJS}
@@ -126,15 +123,10 @@ d:				CFLAGS += -g3
 d:				all
 red:			fclean d
 
-# Debug bonus	CFLAGS = -Wall -Wextra -g3
-db:				CFLAGS += -g3
-db:				bonus
-redb:			fclean db
-
-# Performance
-p:				CC = gcc
-p:				CFLAGS += -O3
-p:				all
+# Normal
+n:				CC = cc
+n:				CFLAGS = -Wall -Wextra -Werror
+n:				all
 rep:			fclean p
 
 -include		${DEPS}

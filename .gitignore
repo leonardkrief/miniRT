@@ -1,3 +1,5 @@
 **/.vscode
-objs
+**/objs
+**/*.a
 randoms
+miniRT
