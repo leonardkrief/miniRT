@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:58:47 by lkrief            #+#    #+#             */
-/*   Updated: 2023/04/01 23:13:58 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/11 12:48:05 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ t_tmp_pixel	pattern_at(const t_object *obj, const t_object_id id,
 	else
 	{
 		ft_puterror(UNKNOWN_OBJECT, (char *)__func__);
-		m = matrix(NULL_MATRIX);
+		m = matrix(vector(0, 0, 0), vector(0, 0, 0),
+				vector(0, 0, 0), vector(0, 0, 0));
 	}
 	point = matrix_vect(m, point);
 	point = matrix_vect(mat->pattern.m, point);

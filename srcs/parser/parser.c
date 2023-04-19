@@ -6,17 +6,18 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:52:05 by lkrief            #+#    #+#             */
-/*   Updated: 2023/04/01 23:39:31 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/14 19:23:56 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-char	*parser_next_object(char *str, t_world *w, t_camera *c)
+int	pre_parsing(char **addr_str, int first)
 {
-	static bool	first = true;
-	bool		newline;
+	bool	newline;
+	char	*str;
 
+	str = *addr_str;
 	newline = false;
 	while (ft_isblank(*str))
 	{
@@ -24,7 +25,20 @@ char	*parser_next_object(char *str, t_world *w, t_camera *c)
 			newline = true;
 	}
 	if (!first && !newline)
-		return (ft_puterror(ERROR_PARSING_SYNTAX, (char *)__func__), NULL);
+	{
+		ft_puterror(ERROR_PARSING_SYNTAX, (char *)__func__);
+		return (1);
+	}
+	*addr_str = str;
+	return (0);
+}
+
+char	*parser_next_object(char *str, t_world *w, t_camera *c)
+{
+	static bool	first = true;
+
+	if (pre_parsing(&str, first))
+		return (NULL);
 	if (*str == '\0')
 		return (str);
 	else if (!ft_strncmp(str, "A", 1))
@@ -53,7 +67,7 @@ double	parser_next_number(char **str, t_end_character end)
 	if (**str == '\0')
 		return (ft_puterror(ERROR_PARSING_SYNTAX,
 				(char *)__func__), __DBL_MAX__);
-	while (ft_isblank(**str))
+	while (ft_isblank(**str) && **str != '\n')
 		(*str)++;
 	x = ft_atodouble(*str, &p);
 	if (p == -1)

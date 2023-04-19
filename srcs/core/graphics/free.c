@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 20:41:24 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/10 23:18:00 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/11 12:36:21 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	free_window(const t_window *window)
 {
 	mlx_destroy_window(window->mlx, window->win);
-	FREE_DISPLAY(window->mlx);
+	mlx_destroy_display(window->mlx);
 	free(window->mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:52:05 by lkrief            #+#    #+#             */
-/*   Updated: 2023/04/02 14:12:43 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/14 19:47:55 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*parser_camera(char *str, t_world *w, t_camera *c)
 {
 	double	fov;
 	t_tuple	origin;
-	t_tuple	ortn;
+	t_tuple	forward;
 
 	if (w->def_camera)
 		return (ft_puterror(ERROR_DEFINED_CAMERA, (char *)__func__), NULL);
@@ -48,18 +48,18 @@ char	*parser_camera(char *str, t_world *w, t_camera *c)
 			parser_next_number(&str, END_CHARACTER_BLANK));
 	if (parser_valid_tuple(origin, FLAG_DEFAULT))
 		return (NULL);
-	ortn = vector(parser_next_number(&str, END_CHARACTER_COMMA),
+	forward = vector(parser_next_number(&str, END_CHARACTER_COMMA),
 			parser_next_number(&str, END_CHARACTER_COMMA),
 			parser_next_number(&str, END_CHARACTER_BLANK));
-	if (parser_valid_tuple(ortn, FLAG_ABS_UNIT | FLAG_NON_NULL))
+	if (parser_valid_tuple(forward, FLAG_ABS_UNIT | FLAG_NON_NULL))
 		return (NULL);
 	fov = parser_next_number(&str, END_CHARACTER_BLANK);
 	if (parser_valid_number(fov, FLAG_FOV))
 		return (NULL);
-	ortn = tuple_normalize(ortn);
-	*c = camera(DEFAULT_CAMERA_WIDTH_HI, DEFAULT_CAMERA_HEIGHT_HI, fov * M_PI
+	forward = tuple_normalize(forward);
+	*c = camera(WINDOW_HEIGHT, WINDOW_WIDTH, fov * M_PI
 			/ 180.0);
-	view_transform(c, origin, point(0, 0, 0), ortn);
+	view_transform(c, origin, forward, vector(0, 1, 0));
 	w->def_camera = 1;
 	return (str);
 }
@@ -107,17 +107,17 @@ char	*parser_sphere(char *str, t_world *w)
 			parser_next_number(&str, END_CHARACTER_COMMA),
 			parser_next_number(&str, END_CHARACTER_BLANK));
 	if (parser_valid_tuple(origin, FLAG_DEFAULT))
-		return (NULL);
+		return (free(sp), NULL);
 	dmtr = parser_next_number(&str, END_CHARACTER_BLANK);
 	if (parser_valid_number(dmtr, FLAG_POSITIVE))
-		return (NULL);
+		return (free(sp), NULL);
 	clr = point(parser_next_number(&str, END_CHARACTER_COMMA),
 			parser_next_number(&str, END_CHARACTER_COMMA),
 			parser_next_number(&str, END_CHARACTER_BLANK));
 	if (parser_valid_tuple(clr, FLAG_PIXEL))
-		return (NULL);
-	transform_sp(sp, matrix_matrix(matrix_scaling(dmtr, dmtr, dmtr),
-			matrix_translation(origin.x, origin.y, origin.z), 4));
+		return (free(sp), NULL);
+	transform_sp(sp, matrix_matrix(matrix_translation(origin.x, origin.y,
+				origin.z), matrix_scaling(dmtr, dmtr, dmtr), 4));
 	sp->mat.color = pixel_to_tmp_pixel(pixel(clr.x, clr.y, clr.z, 0));
 	return (world_add_sphere(w, sp), str);
 }

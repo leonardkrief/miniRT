@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 05:14:20 by lkrief            #+#    #+#             */
-/*   Updated: 2023/04/01 23:10:18 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/14 18:59:08 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_object_list	*new_object(const int id)
 
 	obj = NULL;
 	new = NULL;
-	if ((unsigned int)id < MIN_ID || (unsigned int)id > MAX_ID)
+	if ((unsigned int)id > MAX_ID)
 		return (ft_puterror(UNKNOWN_OBJECT, (char *)__func__), NULL);
 	if (id == SPHERE_ID)
 		obj = sphere();

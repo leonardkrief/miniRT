@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 02:40:42 by lkrief            #+#    #+#             */
-/*   Updated: 2023/04/01 22:54:14 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/14 19:44:40 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ t_tmp_pixel	shade_hit(const t_world *w, const t_computations *c)
 	else if (c->id == CYLINDER_ID)
 		mat = &((t_cylinder *)(c->ob))->mat;
 	else
-		return (tmp_pixel(TMP_PIXEL_BLACK));
+		return (tmp_pixel(0, 0, 0, 0));
+	color = tmp_pixel_mul(c->world->ambient, mat->color);
 	while (i < w->nb_lights)
 	{
 		color = tmp_pixel_add(color, lighting(c, mat, &w->lights[i],
@@ -124,7 +125,7 @@ t_tmp_pixel	point_in_front_light(const t_computations *c, const t_material *mat,
 	reflectv = tuple_reflect(tuple_neg(lightv), c->normal);
 	reflect_dot_eye = tuple_dotprod(reflectv, c->eye);
 	if (reflect_dot_eye <= 0)
-		specular = tmp_pixel(TMP_PIXEL_BLACK);
+		specular = tmp_pixel(0, 0, 0, 0);
 	else
 	{
 		factor = powf(reflect_dot_eye, mat->shininess);

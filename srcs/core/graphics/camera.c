@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 12:33:22 by lkrief            #+#    #+#             */
-/*   Updated: 2023/04/02 16:10:49 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/11 18:21:41 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,20 @@ void	pixel_size(t_camera *c)
 // So I had to find a 'to' vector that assured that condition.
 // If from ^ upn is non-zero, then to = -from works.
 // Else, I just take to = ux or to = uy according to what works.
-void	view_transform(t_camera *c, t_tuple from, t_tuple to, t_tuple up)
+void	view_transform(t_camera *c, t_tuple from, t_tuple forward, t_tuple up)
 {
-	t_tuple		forward;
 	t_tuple		upn;
 	t_tuple		left;
 	t_tuple		true_up;
 	t_matrix	orientation;
 
 	upn = tuple_normalize(up);
-	to = tuple_neg(from);
-	if (tuple_eq(tuple_crossprod(from, upn), vector(0, 0, 0)))
+	if (tuple_eq(tuple_crossprod(forward, upn), vector(0, 0, 0)))
 	{
-		to = point(1, 0, 0);
-		if (tuple_eq(tuple_crossprod(to, upn), vector(0, 0, 0)))
-			to = point(0, 1, 0);
+		upn = vector(0, 0, 1);
+		if (tuple_eq(tuple_crossprod(forward, upn), vector(0, 0, 0)))
+			upn = vector(1, 0, 0);
 	}
-	forward = tuple_normalize(tuple_sub(to, from));
 	left = tuple_crossprod(forward, upn);
 	true_up = tuple_crossprod(left, forward);
 	orientation = matrix_transpose(

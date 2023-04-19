@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 20:38:29 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/01 00:58:35 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/14 19:29:25 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	all(t_all *args, t_canvas *cvs, t_camera *c, t_world *w)
 	args->world = w;
 }
 
+// mlx_mouse_hook(cvs->window.win, &input_mouse, args);
+// jai enleve le mouse input car genere un leak de la mlx
+// je le laisse en com car peut etre utile au debuggage
 void	display_loop(t_all *args)
 {
 	t_canvas	*cvs;
@@ -34,7 +37,6 @@ void	display_loop(t_all *args)
 	mlx_hook(cvs->window.win, 2, 1UL << 0, &input_key, args);
 	mlx_hook(cvs->window.win, CLOSE_WINDOW_BUTTON_EVENT, 0,
 		&exit_program, args);
-	mlx_mouse_hook(cvs->window.win, &input_mouse, args);
 	mlx_loop(cvs->window.mlx);
 }
 
