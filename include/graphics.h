@@ -6,53 +6,25 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/03/02 18:20:05 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/11 12:39:19 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
 
-# if __APPLE__
-#  include <mlx.h>
-#  define FREE_DISPLAY(X)
-# elif __linux__
-#  include "mlx.h"
-#  define FREE_DISPLAY(X) mlx_destroy_display(X)
-# endif
-
-# include <stdlib.h>
-# include <stdio.h>
-# include <math.h>
+# include "mlx.h"
 # include "structs_all.h"
 # include "tuples.h"
 # include "world.h"
+# include <math.h>
+# include <stdio.h>
+# include <stdlib.h>
 
-# define WINDOW_NAME	"miniRT"
-# define WINDOW_HEIGHT	400
-# define WINDOW_WIDTH	400
+# define WINDOW_NAME "miniRT"
+# define WINDOW_HEIGHT 400
+# define WINDOW_WIDTH 400
 
-# if __APPLE__
-typedef enum e_input
-{
-	KEY_ESC = 53,
-	KEY_UP = 126,
-	KEY_DOWN = 125,
-	KEY_LEFT = 124,
-	KEY_RIGHT = 123,
-	KEY_Z = 13,
-	KEY_S = 1,
-	KEY_Q = 0,
-	KEY_D = 2,
-	KEY_W = 6,
-	KEY_X = 7,
-	KEY_SLASH = 47,
-	KEY_PLUS = 44,
-	MOUSE_ZOOM_IN = 5,
-	MOUSE_ZOOM_OUT = 4,
-	CLOSE_WINDOW_BUTTON_EVENT = 17,
-}	t_input;
-# elif __linux__
 typedef enum e_input
 {
 	KEY_ESC = 65307,
@@ -72,21 +44,21 @@ typedef enum e_input
 	MOUSE_ZOOM_OUT = 5,
 	CLOSE_WINDOW_BUTTON_EVENT = 17,
 }	t_input;
-# endif
 
-# define TMP_PIXEL_BLACK	0, 0, 0, 0
-# define TMP_PIXEL_WHITE	1, 1, 1, 0
-# define PIXEL_BLACK		0, 0, 0, 0
-# define PIXEL_WHITE		255, 255, 255, 0
+// # define TMP_PIXEL_BLACK	0, 0, 0, 0
+// # define TMP_PIXEL_WHITE	1, 1, 1, 0
+// # define PIXEL_BLACK		0, 0, 0, 0
+// # define PIXEL_WHITE		255, 255, 255, 0
 
 // core/graphics/display.c
 void			all(t_all *args, t_canvas *cvs, t_camera *c, t_world *w);
 void			display_loop(t_all *args);
-void			render(const t_canvas *cvs, const t_camera *c, const t_world *w);
+void			render(const t_canvas *cvs, const t_camera *c,
+					const t_world *w);
 
 // core/graphics/tmp_pixels/tmp_pixels.c
 t_tmp_pixel		tmp_pixel(const float r, const float g, const float b,
-				const float a);
+					const float a);
 t_pixel			tmp_pixel_to_pixel(const t_tmp_pixel p);
 t_tmp_pixel		pixel_to_tmp_pixel(const t_pixel p);
 
@@ -116,7 +88,7 @@ void			pixel_print(const t_pixel p, const char *name);
 
 // core/graphics/pixels/pixels.c
 t_pixel			pixel(const t_pixel_color r, const t_pixel_color g,
-		const t_pixel_color b, const t_pixel_color a);
+					const t_pixel_color b, const t_pixel_color a);
 t_pixel_color	pixel_get_a(const t_pixel pixel);
 t_pixel_color	pixel_get_r(const t_pixel pixel);
 t_pixel_color	pixel_get_g(const t_pixel pixel);
@@ -131,7 +103,8 @@ t_pixel			pixel_mul(const t_pixel p, const t_pixel q);
 // core/graphics/camera.c
 t_camera		camera(double camera_width, double camera_height, double fov);
 void			pixel_size(t_camera *c);
-void			view_transform(t_camera *c, t_tuple from, t_tuple to, t_tuple up);
+void			view_transform(t_camera *c, t_tuple from, t_tuple to,
+					t_tuple up);
 t_ray			ray_for_pixel(const t_camera *c, const int i, const int j);
 void			camera_transform(t_camera *c, const t_matrix transform);
 

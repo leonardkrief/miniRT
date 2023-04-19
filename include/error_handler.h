@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:08:50 by lkrief            #+#    #+#             */
-/*   Updated: 2023/02/28 22:26:34 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/11 12:44:26 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdio.h>
 # include <stdint.h>
 # include "libft.h"
-
 
 typedef enum e_failure{
 	NO_FAILURE,

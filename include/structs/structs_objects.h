@@ -20,12 +20,13 @@
 # include "structs_pixels.h"
 # include <stdbool.h>
 
-typedef struct s_light{
-	t_tuple		position;
-	t_tmp_pixel	intensity;
-}	t_light;
+typedef struct s_light
+{
+	t_tuple					position;
+	t_tmp_pixel				intensity;
+}							t_light;
 
-typedef void	t_object;
+typedef void				t_object;
 
 typedef enum e_pattern_id
 {
@@ -36,27 +37,35 @@ typedef enum e_pattern_id
 	PLATINIUM_STRIPED_PATTERN,
 	MASTER_PATTERN,
 	TEST_PATTERN,
-}	t_pattern_id;
+}							t_pattern_id;
 
 // A pattern is null if f == NULL
-typedef struct s_pattern{
-	t_tmp_pixel	color1;
-	t_tmp_pixel	color2;
-	t_matrix	m;
-	t_tmp_pixel	(*f)(const t_tuple p, const struct s_pattern *pat);
-}	t_pattern;
 
-typedef struct s_material{
-	t_tmp_pixel	color;
-	double		ambient;
-	double		diffuse;
-	double		specular;
-	double		shininess;
-	double		reflective;
-	t_pattern	pattern;
-}	t_material;
+typedef struct s_pattern	t_pattern;
 
-typedef void	t_object;
+typedef t_tmp_pixel			(*t_ptr_fun)(const t_tuple p,
+				const struct s_pattern *pat);
+
+typedef struct s_pattern
+{
+	t_tmp_pixel				color1;
+	t_tmp_pixel				color2;
+	t_matrix				m;
+	t_ptr_fun				f;
+}							t_pattern;
+
+typedef struct s_material
+{
+	t_tmp_pixel				color;
+	double					ambient;
+	double					diffuse;
+	double					specular;
+	double					shininess;
+	double					reflective;
+	t_pattern				pattern;
+}							t_material;
+
+typedef void				t_object;
 typedef enum e_object_id
 {
 	SPHERE_ID,
@@ -65,29 +74,32 @@ typedef enum e_object_id
 	TRIANGLE_ID,
 	MIN_ID = SPHERE_ID,
 	MAX_ID = TRIANGLE_ID
-}	t_object_id;
+}							t_object_id;
 
 // WARNING : in my objects structs, the m matrix is already inverted
 // You dont have to always recalculate it that way
-typedef struct s_sphere{
-	t_material	mat;
-	t_matrix	m;
-	t_matrix	t_m;
-}	t_sphere;
+typedef struct s_sphere
+{
+	t_material				mat;
+	t_matrix				m;
+	t_matrix				t_m;
+}							t_sphere;
 
-typedef struct s_plane{
-	t_material	mat;
-	t_matrix	m;
-	t_matrix	t_m;
-}	t_plane;
+typedef struct s_plane
+{
+	t_material				mat;
+	t_matrix				m;
+	t_matrix				t_m;
+}							t_plane;
 
-typedef struct s_cylinder{
-	bool		capped;
-	double		hgt;
-	t_material	mat;
-	t_matrix	m;
-	t_matrix	t_m;
-}	t_cylinder;
+typedef struct s_cylinder
+{
+	bool					capped;
+	double					hgt;
+	t_material				mat;
+	t_matrix				m;
+	t_matrix				t_m;
+}							t_cylinder;
 
 // typedef struct s_triangle{
 // 	t_tuple		a;
@@ -101,6 +113,6 @@ typedef struct s_object_list
 	t_object_id				id;
 	t_object				*ob;
 	struct s_object_list	*next;
-}	t_object_list;
+}							t_object_list;
 
 #endif
