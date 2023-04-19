@@ -3,6 +3,7 @@
 Welcome to my simple CPU-based raytracer
 
 ## How to use ?
+#### Installation
 This program is compatible with Mac and Linux based systems  
 Just clone the repo and run the ```installer.sh``` script:  
 ```
@@ -11,24 +12,26 @@ cd miniRT
 sh installer.sh
 ```
 
-The executable miniRT will be generated and you will be able to load any scene in it: ```./miniRT path_to_scene```  
+The executable miniRT will be generated and you will be able to load a scene in it with ```./miniRT path_to_scene```  
 For example
 ```
 ./miniRT maps/ra.rt
 ```
+#### Movements
+Once the scene is loaded, you can move inside it !  
+Here are the commands for ***french keyboards***: 
+* To translate the camera, use the ```ZQSD``` keys + ```WX``` keys for vertical translations.  
+* To rotate the camera, use the arrows + ```/+``` keys for axial view rotations.  
+* Press ```ESC``` key or click the cross to quit.  
 
-Once the scene is loaded, you will be able to move inside of it !
-Here are the commands for ***french keyboards***. If you don't have a french keyboard, just enter random input, you will end up finding :)  
-To translate the camera, use the ```ZQSD``` keys + ```WX``` keys for vertical translations.
-To rotate the camera, use the arrows + ```/+``` keys for axial view rotations.
-Press ```ESC``` key or click the cross to quit.
+If you don't have a french keyboard just enter random input, you will find  
 
 ## Creating a scene
 
 A scene is a file containing all of the objects that will load into your raytracer. It's extension MUST BE ```.rt```  
-In that file will be mentionned 2 types of objects: special objects, and shapes.  
-Special objects are the *Ambient Lightning*, the *Camera* and the *Lights*  
-Available shapes are *spheres*, *plans* and *cylinders*  
+In that file will be mentionned 2 types of objects: ***special objects***, and ***shapes objects***.  
+***3 special objects***: *Ambient Lightning*, *Camera*, *Lights*  
+***3 shapes objects***: *Spheres*, *Plans*, *Cylinders*  
 Below is a detailed manual for every objects you can mention in your scenes
 ***
 
