@@ -17,6 +17,12 @@ For example
 ./miniRT maps/ra.rt
 ```
 
+Once the scene is loaded, you will be able to move inside of it !
+Here are the commands for ***french keyboards***. If you don't have a french keyboard, just enter random input, you will end up finding :)  
+To translate the camera, use the ```ZQSD``` keys + ```WX``` keys for vertical translations.
+To rotate the camera, use the arrows + ```/+``` keys for axial view rotations.
+Press ```ESC``` key or click the cross to quit.
+
 ## Creating a scene
 
 A scene is a file containing all of the objects that will load into your raytracer. It's extension MUST BE ```.rt```  
