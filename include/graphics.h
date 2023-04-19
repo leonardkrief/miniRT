@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/04/19 21:04:50 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/19 22:23:30 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <stdlib.h>
 
 # define WINDOW_NAME "miniRT"
-# define WINDOW_HEIGHT 800
+# define WINDOW_HEIGHT 400
 # define WINDOW_WIDTH 400
 
 # if __APPLE__
