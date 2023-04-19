@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:06:55 by lkrief            #+#    #+#             */
-/*   Updated: 2023/04/11 11:44:45 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/19 15:11:57 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 
 // default camera movements settings
 # define CAMERA_TRANSLATION_SENSITIVITY 0.4
-// # define CAMERA_ROTATION_SENSITIVITY	M_PI / 20
+# define CAMERA_ROTATION_SENSITIVITY	M_PI / 20
 
 // core/world/print.c
 void			world_print(t_world *world);

@@ -6,7 +6,7 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:44:07 by lkrief            #+#    #+#             */
-/*   Updated: 2023/04/11 10:59:24 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/19 15:11:50 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	input_key_camera_movements(t_input keysym, t_all *args)
 	double	r_tick;
 
 	t_tick = CAMERA_TRANSLATION_SENSITIVITY;
-	r_tick = M_PI / 20;
+	r_tick = CAMERA_ROTATION_SENSITIVITY;
 	if (input_key_camera_movements_aux(keysym, args, t_tick, r_tick) == 0)
 	{
 		render(args->canvas, args->camera, args->world);

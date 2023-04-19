@@ -6,12 +6,20 @@
 /*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:23:13 by lkrief            #+#    #+#             */
-/*   Updated: 2023/04/11 12:39:19 by lkrief           ###   ########.fr       */
+/*   Updated: 2023/04/19 15:16:54 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
+
+# if __APPLE__
+#  include <mlx.h>
+#  define FREE_DISPLAY(X)
+# elif __linux__
+#  include "mlx.h"
+#  define FREE_DISPLAY(X) mlx_destroy_display(X)
+# endif
 
 # include "mlx.h"
 # include "structs_all.h"
@@ -25,6 +33,28 @@
 # define WINDOW_HEIGHT 400
 # define WINDOW_WIDTH 400
 
+# if __APPLE__
+typedef enum e_input
+{
+	KEY_ESC = 53,
+	KEY_UP = 126,
+	KEY_DOWN = 125,
+	KEY_LEFT = 124,
+	KEY_RIGHT = 123,
+	KEY_Z = 13,
+	KEY_S = 1,
+	KEY_Q = 0,
+	KEY_D = 2,
+	KEY_W = 6,
+	KEY_X = 7,
+	KEY_SLASH = 47,
+	KEY_PLUS = 44,
+	MOUSE_ZOOM_IN = 5,
+	MOUSE_ZOOM_OUT = 4,
+	CLOSE_WINDOW_BUTTON_EVENT = 17,
+}	t_input;
+
+# elif __linux__
 typedef enum e_input
 {
 	KEY_ESC = 65307,
@@ -44,6 +74,8 @@ typedef enum e_input
 	MOUSE_ZOOM_OUT = 5,
 	CLOSE_WINDOW_BUTTON_EVENT = 17,
 }	t_input;
+
+# endif
 
 // # define TMP_PIXEL_BLACK	0, 0, 0, 0
 // # define TMP_PIXEL_WHITE	1, 1, 1, 0
